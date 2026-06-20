@@ -5,6 +5,7 @@
     "dev": "npx tsx --env-file=.env src/adapters/node.ts",
     "dev:cf": "wrangler dev",
     "dev:deno": "deno run --allow-net --allow-read src/adapters/deno.ts",
+    "build:edgeone": "esbuild functions/[[default]].ts --bundle --platform=browser --target=es2022 --format=esm --outfile=functions/[[default]].js",
     "deploy:cf": "wrangler deploy --minify",
     "deploy:vercel": "vercel --prod",
     "deploy:deno": "deno run --allow-net --allow-read src/adapters/deno.ts",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@hono/node-server": "^1.13.7",
+    "esbuild": "^0.25.0",
     "tsx": "^4.19.2",
     "wrangler": "^4.4.0"
   }
