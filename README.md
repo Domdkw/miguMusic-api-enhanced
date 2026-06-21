@@ -75,17 +75,82 @@ pnpm run deploy:deno
 
 ## API 接口
 
-项目提供丰富的音乐 API 接口，包括：
+### 搜索
 
-- 搜索（歌曲、歌手、专辑）
-- 歌单信息
-- 歌手信息
-- 排行榜
-- 推荐内容
-- 评论
-- 音频资源
+| 接口路径 | 方法 | 说明 | 参数 |
+| -------- | ---- | ---- | ---- |
+| `/search` | GET | 搜索歌曲 | `text`(关键词), `page`(页码) |
+| `/search/singer` | GET | 搜索歌手 | `text`(关键词) |
+| `/search/album` | GET | 搜索专辑 | `text`(关键词), `page`(页码) |
+| `/search/all` | GET | 综合搜索 | `text`(关键词), `page`(页码) |
+| `/search/hot` | GET | 热门搜索排行 | - |
+| `/search/default` | GET | 默认搜索文本 | - |
+| `/search/singerTab` | GET | 歌手标签 | - |
+| `/search/singerTab/list` | GET | 歌手列表 | `tab`(标签) |
 
-详细接口文档请参考 `postman/enhanced-api.postman_collection.json`。
+### 专辑
+
+| 接口路径 | 方法 | 说明 | 参数 |
+| -------- | ---- | ---- | ---- |
+| `/album/info` | GET | 专辑详情 | `albumId` |
+| `/album/song` | GET | 专辑歌曲列表 | `albumId`, `page`(页码) |
+
+### 歌单
+
+| 接口路径 | 方法 | 说明 | 参数 |
+| -------- | ---- | ---- | ---- |
+| `/playlist/info` | GET | 播放列表信息 | `playlistId` |
+| `/playlist/song` | GET | 播放列表歌曲 | `playlistId`, `page`(页码), `size`(数量) |
+
+### 歌手
+
+| 接口路径 | 方法 | 说明 | 参数 |
+| -------- | ---- | ---- | ---- |
+| `/singer/index` | GET | 歌手信息 | `singerId` |
+| `/singer/songlist` | GET | 歌手歌曲列表 | `singerId`, `page`(页码) |
+| `/singer/album` | GET | 歌手专辑列表 | `singerId` |
+
+### 排行榜
+
+| 接口路径 | 方法 | 说明 | 参数 |
+| -------- | ---- | ---- | ---- |
+| `/rank/index` | GET | 排行榜栏目 | - |
+| `/rank/info` | GET | 排行榜内容 | `rankId`, `page`(页码) |
+
+### 推荐
+
+| 接口路径 | 方法 | 说明 | 参数 |
+| -------- | ---- | ---- | ---- |
+| `/recommend/playlist` | GET | 推荐播放列表 | - |
+| `/recommend/song` | GET | 推荐歌曲 | `size`(数量), `scene`(场景) |
+
+### 评论
+
+| 接口路径 | 方法 | 说明 | 参数 |
+| -------- | ---- | ---- | ---- |
+| `/comment` | GET | 获取评论 | `resourceId`, `resourceType`(类型), `hotCommentStart`(起始位置), `size`(数量) |
+
+### 资源
+
+| 接口路径 | 方法 | 说明 | 参数 |
+| -------- | ---- | ---- | ---- |
+| `/resourceinfo` | GET | 资源信息 | `resourceId`, `resourceType`(类型) |
+| `/can-listen` | POST | 检查歌曲是否可听 | JSON 请求体 |
+| `/opNum` | GET | 歌曲播放次数 | `ids`(歌曲ID列表) |
+
+### 播放地址
+
+| 接口路径 | 方法 | 说明 | 参数 |
+| -------- | ---- | ---- | ---- |
+| `/url/v1` | GET | 播放地址 v1 | `contentId`, `copyrightId`, `resourceType` |
+| `/url/v2` | GET | 播放地址 v2 | `contentId`, `copyrightId`, `resourceType` |
+| `/url/h5v2.4` | GET | 播放地址 h5v2.4 (不稳定，但可以VIP播放)| `contentId`, `copyrightId`, `resourceType` |
+
+### 其他
+
+| 接口路径 | 方法 | 说明 | 参数 |
+| -------- | ---- | ---- | ---- |
+| `/version` | GET | 安装包信息 | `channel`(渠道), `version`(版本), `ua`(用户代理) |
 
 ## 许可证
 

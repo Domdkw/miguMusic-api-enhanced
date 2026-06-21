@@ -26,6 +26,7 @@ import singerIndex from './singer_index';
 import singerSong from './singer_song';
 import urlV1 from './url_v1';
 import urlV2 from './url_v2';
+import urlH5v2 from './url_h5v2.4';
 import version from './version';
 
 
@@ -63,6 +64,7 @@ const routeModules = [
     singerSong,
     urlV1,
     urlV2,
+    urlH5v2,
     version,
 ];
 

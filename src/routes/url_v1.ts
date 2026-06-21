@@ -9,9 +9,10 @@ export default function (app: Hono) {
     app.get('/url/v1', async (c) => {
         const contentId = c.req.query('contentId') || '';
         const copyrightId = c.req.query('copyrightId') || '';
+        const resourceType = c.req.query('resourceType') || '2';
         
         const data = await h5fetch(
-            `https://app.c.nf.migu.cn/MIGUM3.0/strategy/pc/listen/v1.0?contentId=${contentId}&copyrightId=${copyrightId}&resourceType=2&toneFlag=PQ`
+            `https://app.c.nf.migu.cn/MIGUM3.0/strategy/pc/listen/v1.0?contentId=${contentId}&copyrightId=${copyrightId}&resourceType=${resourceType}&toneFlag=PQ`
             ,{
                 headers: {
                     "Channel": "014X031"

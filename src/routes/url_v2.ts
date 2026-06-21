@@ -12,6 +12,7 @@ export default function (app: Hono) {
     app.get('/url/v2', async (c) => {
         const contentId = c.req.query('contentId') || '';
         const copyrightId = c.req.query('copyrightId') || '';
+        const resourceType = c.req.query('resourceType') || '2';
         
         const deviceId = getDeviceId();
         const timestamp = Date.now();
@@ -39,13 +40,13 @@ export default function (app: Hono) {
         };
         
         const res = await fetch(
-            `https://app.c.nf.migu.cn/strategy/pc/listen/v2.0?contentId=${contentId}&copyrightId=${copyrightId}&scene=&netType=01&resourceType=2&toneFlag=PQ`
+            `https://app.c.nf.migu.cn/strategy/pc/listen/v2.0?contentId=${contentId}&copyrightId=${copyrightId}&scene=&netType=01&resourceType=${resourceType}&toneFlag=PQ`
             ,{
                 headers: headers
             },);
-        const data = await res.blob();
+        const blob = await res.blob();
 
-        const encryptedData = await decryptData(data);
+        const encryptedData = await decryptData(blob);
 
         return c.json({
             success: true,
