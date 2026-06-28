@@ -1,6 +1,8 @@
 {
   "name": "migu-api-enhanced",
-  "version": "1.2.0",
+  "version": "1.2.1",
+  "license": "Apache-2.0",
+  "author": "Domdkw",
   "description": "咪咕音乐 API 增强 SDK（多平台部署 + NPM 包）",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -19,6 +21,7 @@
     "LICENSE"
   ],
   "sideEffects": false,
+  "keywords": ["migu music","migu","api","enhanced"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Domdkw/migu-api-enhanced.git"
@@ -45,12 +48,11 @@
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
     "prepublishOnly": "pnpm run build"
   },
-  "dependencies": {
-    "hono": "^4.12.23",
-    "hono-mem-cache": "^0.4.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@hono/node-server": "^1.13.7",
+    "hono": "^4.12.23",
+    "hono-mem-cache": "^0.4.0",
     "@types/node": "^26.0.1",
     "esbuild": "^0.25.0",
     "tsup": "^8.5.1",

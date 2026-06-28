@@ -1,6 +1,6 @@
 # migu-api-enhanced
 
-基于 Hono 框架的咪咕音乐 API 服务，支持多平台部署。
+基于 Hono 框架的咪咕音乐 API 服务，支持多平台部署。受[https://github.com/jsososo/MiguMusicApi](https://github.com/jsososo/MiguMusicApi)项目启发。
 
 ## 技术栈
 
@@ -84,6 +84,7 @@ pnpm run build:edgeone
 
 ```bash
 # Node.js 生产部署（构建 + 启动）
+pnpm install         # 安装依赖（包括 devDependencies）
 pnpm run build:node  # 编译
 pnpm start           # 启动
 # 以后直接运行 pnpm start 即可，无需重新构建
@@ -225,13 +226,22 @@ pnpm add migu-api-enhanced
 # 或
 npm install migu-api-enhanced
 ```
+>[!NOTE]
+> 建议使用最新版本。后续会更新接口。请加上```@latest```获取最新版本。(npm i migu-api-enhanced@latest)
 
-### 方式一：`createClient` 工厂（推荐，支持自定义配置）
+### 方式一：命名导入（推荐，开箱即用，默认 5 秒超时）
 
+```ts
+import { getAlbumInfo, getUrlV2 } from 'migu-api-enhanced';
+
+const album = await getAlbumInfo('1123');
+const urlInfo = await getUrlV2('contentId', 'copyrightId');
+```
+### 方式二：`createClient` 工厂函数
 ```ts
 import { createClient } from 'migu-api-enhanced';
 
-const migu = createClient({ timeout: 10000 });
+const migu = createClient();
 
 // 搜索歌曲
 const data = await migu.searchSong('周杰伦', 1);
@@ -240,15 +250,6 @@ console.log(data);
 // 获取专辑详情
 const album = await migu.getAlbumInfo('1123');
 console.log(album);
-```
-
-### 方式二：命名导入（开箱即用，默认 5 秒超时）
-
-```ts
-import { getAlbumInfo, getUrlV2 } from 'migu-api-enhanced';
-
-const album = await getAlbumInfo('1123');
-const urlInfo = await getUrlV2('contentId', 'copyrightId');
 ```
 
 ### 构建

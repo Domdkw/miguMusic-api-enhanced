@@ -50,7 +50,7 @@ app.use('/api/*', memCache({
 app.get('/', (c) => {
   return c.json({
     message: 'Migu API Enhanced',
-    version: '1.0.0',
+    version: '1.2.1',
     status: 'running'
   });
 });

@@ -7,13 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      hono:
-        specifier: ^4.12.23
-        version: 4.12.26
-      hono-mem-cache:
-        specifier: ^0.4.0
-        version: 0.4.0(hono@4.12.26)
     devDependencies:
       '@hono/node-server':
         specifier: ^1.13.7
@@ -24,6 +17,12 @@ importers:
       esbuild:
         specifier: ^0.25.0
         version: 0.25.12
+      hono:
+        specifier: ^4.12.23
+        version: 4.12.26
+      hono-mem-cache:
+        specifier: ^0.4.0
+        version: 0.4.0(hono@4.12.26)
       tsup:
         specifier: ^8.5.1
         version: 8.5.1(tsx@4.22.4)(typescript@5.0.2)
