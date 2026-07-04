@@ -16,7 +16,8 @@ export default function (app: Hono) {
         const contentId = c.req.query('contentId') || '';
         const copyrightId = c.req.query('copyrightId') || '';
         const resourceType = c.req.query('resourceType') || '2';
-        const data = await getUrlV2(contentId, copyrightId, resourceType);
+        const pacmtoken = c.req.query('pacmtoken') || '';
+        const data = await getUrlV2(contentId, copyrightId, resourceType, pacmtoken);
         return c.json({ success: true, data });
     });
 

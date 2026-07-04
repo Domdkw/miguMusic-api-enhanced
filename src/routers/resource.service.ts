@@ -4,6 +4,8 @@ import { getComment } from '../modules/comment';
 import { getOpNum } from '../modules/opNum';
 import { getVersion } from '../modules/version';
 import { getResourceInfo } from '../modules/resourceinfo';
+import { getTicketInfo } from '../modules/ticket';
+
 
 export default function (app: Hono) {
     app.post('/can-listen', async (c) => {
@@ -23,12 +25,12 @@ export default function (app: Hono) {
         const resourceId = c.req.query('resourceId') ?? '';
         const resourceType = c.req.query('resourceType') ?? 2;
         const hotCommentStart = c.req.query('hotCommentStart') ?? 0;
-        const size = c.req.query('size') ?? 20;
+        const size = c.req.query('size') ?? 10;
         const data = await getComment(
             resourceId,
             Number(resourceType),
+            Number(size),
             Number(hotCommentStart),
-            Number(size)
         );
         return c.json({ success: true, data });
     });
@@ -51,6 +53,13 @@ export default function (app: Hono) {
         const resourceId = c.req.query('resourceId') ?? '';
         const resourceType = c.req.query('resourceType') ?? 2;
         const data = await getResourceInfo(resourceId, Number(resourceType));
+        return c.json({ success: true, data });
+    });
+
+    app.get('/ticket', async (c) => {
+        const page = c.req.query('page') ?? 1;
+        const pageCount = c.req.query('pageCount') ?? 10;
+        const data = await getTicketInfo(Number(page), Number(pageCount));
         return c.json({ success: true, data });
     });
 }

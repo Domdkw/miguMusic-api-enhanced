@@ -7,7 +7,9 @@ import rankService from './rank.service';
 import recommendService from './recommend.service';
 import singerService from './singer.service';
 import urlService from './url.service';
-import otherService from './resource.service';
+import passportService from './passport.service';
+import resourceService from './resource.service';
+import mvService from './mv.service';
 
 const routes = new Hono();
 
@@ -19,7 +21,9 @@ const services = [
     recommendService,
     singerService,
     urlService,
-    otherService,
+    passportService,
+    resourceService,
+    mvService,
 ];
 
 services.forEach(register => register(routes));

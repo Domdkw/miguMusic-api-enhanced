@@ -16,7 +16,7 @@ export default function (app: Hono) {
         return c.json({ success: true, data });
     });
 
-    app.get('/singer/songlist', async (c) => {
+    app.get('/singer/song', async (c) => {
         const singerId = c.req.query('singerId') ?? '';
         const page = c.req.query('page') ?? 1;
         const data = await getSingerSong(singerId, Number(page));

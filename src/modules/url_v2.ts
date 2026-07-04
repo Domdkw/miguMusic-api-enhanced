@@ -1,4 +1,6 @@
-export const getUrlV2 = async (contentId: string, copyrightId: string, resourceType: string = '2') => {
+import { getDeviceId } from '../utils/deviceID'
+
+export const getUrlV2 = async (contentId: string, copyrightId: string, resourceType: string = '2', pacmtoken: string = '') => {
     const deviceId = getDeviceId();
     const timestamp = Date.now();
 
@@ -9,7 +11,7 @@ export const getUrlV2 = async (contentId: string, copyrightId: string, resourceT
         "subchannel": "014X031",
         "logId": "cfrom=&appId=h5",
         "uid": "",
-        "pacmtoken": "",
+        "pacmtoken": pacmtoken,
         "appId": "h5",
         "platform": "H5",
         "deviceId": deviceId,
@@ -37,12 +39,6 @@ export const getUrlV2 = async (contentId: string, copyrightId: string, resourceT
 
 const SECURE = "Jk8qzuePiJ1qE3mDYhLQ3T73DtDoAhLP"
 const aw = 171,iw = 205,ow = 1;
-
-function getDeviceId(): string {
-  const random = Array.from({ length: 32 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
-  const a = `${random.substring(0, 8)}-${random.substring(8, 12)}-${random.substring(12, 16)}-${random.substring(16, 20)}-${random.substring(20)}`;
-  return a.toUpperCase();
-}
 
 function textEncode(e: string) {
   return new TextEncoder().encode(e)
