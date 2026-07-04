@@ -3,6 +3,10 @@ import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 import { memCache } from 'hono-mem-cache';
 import apiRoutes from './routers';
+// 通过 import 引入 package.json，esbuild / tsup 在构建时会将 JSON 内联到产物中
+// 这样在 Node、Cloudflare Workers、Vercel Edge、Deno、EdgeOne 等所有 bundler 平台都能直接读取版本号
+// 需要 tsconfig 启用 "resolveJsonModule": true
+import pkg from '../package.json';
 
 /**
  * 环境变量类型定义
@@ -50,7 +54,7 @@ app.use('/api/*', memCache({
 app.get('/', (c) => {
   return c.json({
     message: 'Migu API Enhanced',
-    version: '1.2.1',
+    version: pkg.version,
     status: 'running'
   });
 });

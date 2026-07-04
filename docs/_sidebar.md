@@ -1,0 +1,20 @@
+- [首页](/README.md)
+
+- 快速开始
+  - [安装](/installation.md)
+  - [部署](/deployment.md)
+  - [NPM 包使用](/npm-package.md)
+  - [使用前须知](/beforeUse.md)
+
+- API 接口文档
+  - [搜索接口](/api/search.md)
+  - [专辑接口](/api/album.md)
+  - [歌单接口](/api/playlist.md)
+  - [歌手接口](/api/singer.md)
+  - [排行榜接口](/api/rank.md)
+  - [推荐接口](/api/recommend.md)
+  - [MV 接口](/api/mv.md)
+  - [登录认证](/api/passport.md)
+  - [资源接口](/api/resource.md)
+  - [播放地址](/api/url.md)
+  - [其他接口](/api/others.md)

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>咪咕音乐 API 增强 - Migu Music API Enhanced</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="基于 Hono 框架的咪咕音乐 API 增强服务，支持多平台部署（Cloudflare Workers / Vercel / Deno / EdgeOne / Node.js）与 NPM 包使用。提供搜索、专辑、歌手、歌单、播放地址等接口。">
+  <meta name="keywords" content="咪咕音乐,Migu,API,咪咕API,音乐API,Hono,Cloudflare Workers,Vercel,EdgeOne,Deno,NPM">
+  <meta name="author" content="Domdkw">
+  <meta name="theme-color" content="#42b983">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <!-- Open Graph / 社交分享 -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="咪咕音乐 API 增强 - Migu Music API Enhanced">
+  <meta property="og:description" content="基于 Hono 框架的咪咕音乐 API 增强服务，支持多平台部署与 NPM 包使用。">
+  <meta property="og:url" content="https://github.com/Domdkw/migu-api-enhanced">
+  <meta property="og:locale" content="zh_CN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="咪咕音乐 API 增强 - Migu Music API Enhanced">
+  <meta name="twitter:description" content="基于 Hono 框架的咪咕音乐 API 增强服务，支持多平台部署与 NPM 包使用。">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Theme -->
+  <link rel="stylesheet" href="https://unpkg.com/docsify/lib/themes/vue.css">
+
+  <!-- Custom Styles -->
+  <style>
+    :root {
+      --theme-color: #42b983;
+      --theme-color-dark: #2c8060;
+    }
+    .sidebar-nav > ul > li > p {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .markdown-section h1 {
+      color: var(--theme-color);
+    }
+    .markdown-section h2 {
+      color: var(--theme-color-dark);
+    }
+  </style>
+</head>
+<body>
+  <div id="app">加载中...</div>
+
+  <script>
+    window.$docsify = {
+      name: '咪咕音乐 API 增强',
+      nameLink: '#/',
+      repo: 'Domdkw/migu-api-enhanced',
+      loadSidebar: '_sidebar.md',
+      loadNavbar: '_navbar.md',
+      coverpage: '_coverpage.md',
+      maxLevel: 4,
+      subMaxLevel: 2,
+      auto2top: true,
+      autoHeader: true,
+      executeScript: true,
+      mergeNavbar: true,
+      formatUpdated: '{YYYY}-{MM}-{DD} {HH}:{mm}',
+      externalLinkTarget: '_blank',
+      cornerExternalLinkTarget: '_blank',
+      loadFooter: false,
+      onlyCover: false,
+
+      // 搜索配置（浏览器检索）
+      search: {
+        maxAge: 86400000,           // 索引缓存过期时间（毫秒），默认 1 天
+        paths: [
+          '/',
+          '/installation',
+          '/deployment',
+          '/npm-package',
+          '/beforeUse',
+          '/api/'
+        ],
+        placeholder: '搜索文档...',
+        noData: '没有找到结果',
+        depth: 6,                   // 标题检索深度
+        hideOtherSidebarContent: false,
+        usePathAsDefaultHeader: false,
+        namespace: 'migu-api-docs'
+      },
+
+      // 分页导航
+      pagination: {
+        previousText: '上一章节',
+        nextText: '下一章节',
+        crossChapter: true,
+        crossChapterText: true,
+      },
+
+      // 代码复制
+      copyCode: {
+        buttonText: '复制',
+        errorText: '错误',
+        successText: '已复制'
+      }
+    }
+  </script>
+
+  <!-- Docsify Core -->
+  <script src="https://unpkg.com/docsify/lib/docsify.min.js"></script>
+
+  <!-- Plugins -->
+  <script src="https://unpkg.com/docsify/lib/plugins/search.min.js"></script>
+  <script src="https://unpkg.com/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="https://unpkg.com/docsify-copy-code@2.1.1/dist/docsify-copy-code.min.js"></script>
+  <script src="https://unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+
+  <!-- External Link Plugin -->
+  <script src="https://unpkg.com/docsify/lib/plugins/external-script.min.js"></script>
+
+  <!-- Prism.js for Syntax Highlighting -->
+  <script src="https://unpkg.com/prismjs/components/prism-bash.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-typescript.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-json.min.js"></script>
+
+  <!-- Emoji Support -->
+  <!--<script src="https://unpkg.com/docsify/lib/plugins/emoji.min.js"></script>-->
+</body>
+</html>
