@@ -19,11 +19,24 @@ export const getPacmToken = async (
         }
     );
     const headers = res.headers;
-    //const pamc = headers.get('pacmtoken')
-    const cookie = headers.getSetCookie() || [];
+    // 获取 Set-Cookie 头部
+    let cookie: string[] = [];
+
+    // 优先使用 getSetCookie() 方法（如果可用）
+    if (typeof (headers as any).getSetCookie === 'function') {
+        cookie = (headers as any).getSetCookie() || [];
+    } else {
+        // 降级方案：使用 get('set-cookie')
+        const setCookieHeader = headers.get('set-cookie');
+        if (setCookieHeader) {
+            // 多个 Set-Cookie 可能用逗号分隔，但也可能在响应头中分别设置
+            cookie = setCookieHeader.split(',').map(c => c.trim());
+        }
+    }
+
     let pacmToken = '';
 
-    cookie.forEach((item) => {
+    cookie.forEach((item: string) => {
         if(item.includes('pacmtoken=')){
             pacmToken = item.split(';')[0];
             pacmToken = pacmToken.split('=')[1];
