@@ -119,9 +119,13 @@ ALLOWED_ORIGINS=https://example.com pnpm start
 | 接口路径 | 方法 | 说明 | 参数 |
 | -------- | ---- | ---- | ---- |
 | `/search` | GET | 搜索歌曲 | `text`(关键词), `page`(页码) |
-| `/search/singer` | GET | 搜索歌手 | `text`(关键词) |
-| `/search/album` | GET | 搜索专辑 | `text`(关键词), `page`(页码) |
-| `/search/all` | GET | 综合搜索 | `text`(关键词), `page`(页码) |
+| `/search/singer` | GET | 搜索歌手 | `text`(关键词), `page`(页码) |
+| `/search/album` | GET | 搜索专辑 | `text`(关键词), `page`(页码), `typeOrder`(排序方式, 默认0) |
+| `/search/video` | GET | 搜索视频 | `text`(关键词), `page`(页码), `typeOrder`(排序方式, 默认0) |
+| `/search/concert` | GET | 搜索演唱会 | `text`(关键词), `page`(页码) |
+| `/search/rbt` | GET | 搜索彩铃 | `text`(关键词), `page`(页码) |
+| `/search/ticket` | GET | 搜索票务 | `text`(关键词), `page`(页码) |
+| `/search/suggest` | GET | 搜索建议 | `text`(关键词) |
 | `/search/hot` | GET | 热门搜索排行 | - |
 | `/search/default` | GET | 默认搜索文本 | - |
 | `/search/singerTab` | GET | 歌手标签 | - |
@@ -146,7 +150,7 @@ ALLOWED_ORIGINS=https://example.com pnpm start
 | 接口路径 | 方法 | 说明 | 参数 |
 | -------- | ---- | ---- | ---- |
 | `/singer/index` | GET | 歌手信息 | `singerId` |
-| `/singer/songlist` | GET | 歌手歌曲列表 | `singerId`, `page`(页码) |
+| `/singer/song` | GET | 歌手歌曲列表 | `singerId`, `page`(页码) |
 | `/singer/album` | GET | 歌手专辑列表 | `singerId` |
 
 ### 排行榜
@@ -163,6 +167,21 @@ ALLOWED_ORIGINS=https://example.com pnpm start
 | `/recommend/playlist` | GET | 推荐播放列表 | - |
 | `/recommend/song` | GET | 推荐歌曲 | `size`(数量), `scene`(场景) |
 
+### MV
+
+| 接口路径 | 方法 | 说明 | 参数 |
+| -------- | ---- | ---- | ---- |
+| `/mv/info` | GET | MV 详情 | `mvIds`(MV ID), `needAbsoluteUrl`(是否返回绝对地址) |
+| `/mv/hls` | GET | MV HLS 播放地址 | `mvContentId`, `mvCopyrightId`, `url`, `size`, `format`(画质, 默认HQ), `needHttps`(是否HTTPS, 默认true) |
+
+### 登录与认证
+
+| 接口路径 | 方法 | 说明 | 参数 |
+| -------- | ---- | ---- | ---- |
+| `/login/np` | GET | 账号密码登录 | `username`(用户名), `password`(密码), `isNeedPacm`(是否同时获取pacmToken) |
+| `/passport/getPacmToken` | GET | 获取 PACM Token | `token`, `type`(类型, 默认2), `sourceId`(默认220029), `activityId`(默认MUSIC-WWW) |
+| `/passport/checkToken` | GET | 校验 Token | `pacmtoken` |
+
 ### 评论
 
 | 接口路径 | 方法 | 说明 | 参数 |
@@ -176,13 +195,14 @@ ALLOWED_ORIGINS=https://example.com pnpm start
 | `/resourceinfo` | GET | 资源信息 | `resourceId`, `resourceType`(类型) |
 | `/can-listen` | POST | 检查歌曲是否可听 | JSON 请求体 |
 | `/opNum` | GET | 歌曲播放次数 | `ids`(歌曲ID列表) |
+| `/ticket` | GET | 票务信息 | `page`(页码), `pageCount`(每页数量) |
 
 ### 播放地址
 
 | 接口路径 | 方法 | 说明 | 参数 |
 | -------- | ---- | ---- | ---- |
 | `/url/v1` | GET | 播放地址 v1 | `contentId`, `copyrightId`, `resourceType` |
-| `/url/v2` | GET | 播放地址 v2 | `contentId`, `copyrightId`, `resourceType` |
+| `/url/v2` | GET | 播放地址 v2 | `contentId`, `copyrightId`, `resourceType`, `pacmtoken`(PACM Token) |
 | `/url/h5v2.4` | GET | 播放地址 h5v2.4 (不稳定，但可以VIP播放)| `contentId`, `copyrightId`, `resourceType` |
 
 ### 其他
