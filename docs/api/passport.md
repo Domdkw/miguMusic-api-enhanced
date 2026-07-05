@@ -20,7 +20,7 @@
 | ------- | ------ | ------ | ------ | ------ |
 | username | string | 是 | 用户名* | 用户名 |
 | password | string | 是 | 密码* | 密码 |
-| isNeedPacm | number | 否 | 是否同时获取 pacmToken，1 为是，默认 0 | 1 |
+| isNeedPacm | number | 否 | 是否同时获取 pacmtoken，1 为是，默认 0 | 1 |
 
 ### 请求示例
 

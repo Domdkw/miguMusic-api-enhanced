@@ -15,6 +15,8 @@
   - [推荐接口](/api/recommend.md)
   - [MV 接口](/api/mv.md)
   - [登录认证](/api/passport.md)
+  - [用户接口](/api/user.md)
   - [资源接口](/api/resource.md)
   - [播放地址](/api/url.md)
   - [其他接口](/api/others.md)
+  - [Postman文件](https://raw.githubusercontent.com/Domdkw/miguMusic-api-enhanced/refs/heads/main/postman/enhanced-api.postman_collection.json)

@@ -1,4 +1,4 @@
-import { h5fetch } from '../utils/h5fetch';
+import { parseSetCookies, getCookieValue } from '../utils/setCookie';
 
 export const getPacmToken = async (
     token: string = '', 
@@ -10,7 +10,7 @@ export const getPacmToken = async (
         `https://c.musicapp.migu.cn/user/h5/token-validate/v3.0?token=${token}&type=${type}&sourceId=${sourceId}&activityId=${activityId}`,
         {
             headers: {
-                "Cookie": "idmpauth=true@passport.migu.cn", //?
+                "Cookie": "idmpauth=true@passport.migu.cn",
                 "Origin": "https://music.migu.cn",
                 "Pragma": "no-cache",
                 "Referer": "https://music.migu.cn/"
@@ -18,31 +18,9 @@ export const getPacmToken = async (
             method:'GET',
         }
     );
-    const headers = res.headers;
-    // 获取 Set-Cookie 头部
-    let cookie: string[] = [];
 
-    // 优先使用 getSetCookie() 方法（如果可用）
-    if (typeof (headers as any).getSetCookie === 'function') {
-        cookie = (headers as any).getSetCookie() || [];
-    } else {
-        // 降级方案：使用 get('set-cookie')
-        const setCookieHeader = headers.get('set-cookie');
-        if (setCookieHeader) {
-            // 多个 Set-Cookie 可能用逗号分隔，但也可能在响应头中分别设置
-            cookie = setCookieHeader.split(',').map(c => c.trim());
-        }
-    }
-
-    let pacmToken = '';
-
-    cookie.forEach((item: string) => {
-        if(item.includes('pacmtoken=')){
-            pacmToken = item.split(';')[0];
-            pacmToken = pacmToken.split('=')[1];
-            return;
-        }
-    })
+    const cookie = parseSetCookies(res.headers);
+    const pacmToken = getCookieValue(cookie, 'pacmtoken');
     const body = await res.json();
-    return {pacmToken, cookie, body};
+    return { pacmToken, cookie, body };
 };

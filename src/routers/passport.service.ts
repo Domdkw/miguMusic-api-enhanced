@@ -1,5 +1,5 @@
 import type { Hono } from 'hono';
-import { getPacmToken } from '../modules/passport_pacmToken';
+import { getPacmToken } from '../modules/passport_pacmtoken';
 import { loginNP } from '../modules/login_np';
 import { checkToken } from '../modules/passport_checkToken';
 
@@ -26,23 +26,23 @@ export default function (app: Hono) {
             return c.json({ success: false, error: authnData.error });
         }
         
-        // 检查是否需要pacmToken
+        // 检查是否需要pacmtoken
         if(isNeedPacm === 'false' || isNeedPacm === '0' || !isNeedPacm){
             return c.json({ success: true, data: authnData });
         }
 
-        // 状态码为2000时,需要获取pacmToken
+        // 状态码为2000时,需要获取pacmtoken
         if(authnData.status !== '2000' && authnData.status !== 2000){
             return c.json({ success: false, error: authnData });
         }
 
         const token = authnData?.result?.token || '';
-        const pacmTokenData = await getPacmToken(token);
+        const pacmtokenData = await getPacmToken(token);
 
-        if(pacmTokenData.body && pacmTokenData.body.error && pacmTokenData.body.error !== ''){
-            return c.json({ success: false, error: pacmTokenData.body.error });
+        if(pacmtokenData.body && pacmtokenData.body.error && pacmtokenData.body.error !== ''){
+            return c.json({ success: false, error: pacmtokenData.body.error });
         }
-        return c.json({ success: true, data: pacmTokenData});
+        return c.json({ success: true, data: pacmtokenData});
     });
 
     app.get('/passport/checkToken', async (c) => {

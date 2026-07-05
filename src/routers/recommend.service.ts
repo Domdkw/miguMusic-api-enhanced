@@ -1,6 +1,7 @@
 import type { Hono } from 'hono';
 import { getRecommendPlaylist } from '../modules/recommend_playlist';
-import { getRecommendSong } from '../modules/recommend_song';
+import { getSceneRecommend } from '../modules/recommend_song';
+import { getRadioRecommend } from '../modules/recommend_radio';
 
 export default function (app: Hono) {
     app.get('/recommend/playlist', async (c) => {
@@ -9,9 +10,15 @@ export default function (app: Hono) {
     });
 
     app.get('/recommend/song', async (c) => {
-        const size = c.req.query('size') ?? 20;
         const scene = c.req.query('scene') ?? 'TODAY_RECOMMEND';
-        const data = await getRecommendSong(Number(size), String(scene));
+        const size = c.req.query('size') ?? 10;
+        const data = await getSceneRecommend( String(scene), Number(size));
+        return c.json({ success: true, data });
+    });
+
+    app.get('/recommend/radio', async (c) => {
+        const type = c.req.query('type') ?? 1;
+        const data = await getRadioRecommend(Number(type));
         return c.json({ success: true, data });
     });
 }

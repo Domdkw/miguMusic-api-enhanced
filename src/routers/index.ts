@@ -10,6 +10,8 @@ import urlService from './url.service';
 import passportService from './passport.service';
 import resourceService from './resource.service';
 import mvService from './mv.service';
+import userService from './user.service';
+
 
 const routes = new Hono();
 
@@ -24,6 +26,7 @@ const services = [
     passportService,
     resourceService,
     mvService,
+    userService,
 ];
 
 services.forEach(register => register(routes));
