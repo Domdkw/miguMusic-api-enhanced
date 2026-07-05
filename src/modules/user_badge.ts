@@ -6,6 +6,9 @@ export const getUserBadge = async (pacmtoken: string) => {
             method: 'GET',
             headers: {
                 "Cookie": `pacmtoken=${pacmtoken}`,
+                "Referer": "https://music.migu.cn/",
+                "channel": "014X031",
+                "timestamp": Date.now().toString()
             }
         }
     );
