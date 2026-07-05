@@ -1,5 +1,5 @@
 import type { Hono } from 'hono';
-import { getPacmToken } from '../modules/passport_pacmtoken';
+import { getPacmToken } from '../modules/passport_pacmToken';
 import { loginNP } from '../modules/login_np';
 import { checkToken } from '../modules/passport_checkToken';
 

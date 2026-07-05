@@ -38,7 +38,7 @@ export { getMvInfo } from './mv_info';
 export { getMvHls } from './mv_hls';
 export { loginNP } from './login_np';
 export { checkToken } from './passport_checkToken';
-export { getPacmToken } from './passport_pacmtoken';
+export { getPacmToken } from './passport_pacmToken';
 export { getTicketInfo } from './ticket';
 export { getUserBadge } from './user_badge';
 export { queryUserInfo } from './user_queryInfo';
