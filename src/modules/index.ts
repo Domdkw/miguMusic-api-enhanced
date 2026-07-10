@@ -44,3 +44,6 @@ export { getUserBadge } from './user_badge';
 export { queryUserInfo } from './user_queryInfo';
 export { getUserHomePage } from './user_homePage';
 export { getTodayRecommend } from './user_recom_today';
+export { loginSim } from './login_sim';
+export { getUserCollect } from './user_collect';
+export { getUserMyList } from './user_myList';

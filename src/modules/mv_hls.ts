@@ -4,11 +4,10 @@ export const getMvHls = async (
     mvContentId: string, 
     mvCopyrightId: string, 
     url: string,
-    size: number|string,
+    size: number,
     format: string = '050012',
     needHttps: boolean = true,
 ) => {
-    size = size.toString();
     url = encodeURIComponent(url);
     return await h5fetch(
         `https://c.musicapp.migu.cn/MIGUM2.0/v1.0/content/mvplayinfo.do?format=${format}&mvContentId=${mvContentId}&mvCopyrightId=${mvCopyrightId}&needHttps=${needHttps}&size=${size}&url=${url}`
