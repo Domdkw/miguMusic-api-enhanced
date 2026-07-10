@@ -55,3 +55,22 @@
 ```
 /recommend/playlist?scene=recommend_playlist
 ```
+
+---
+
+## 相似歌曲
+
+**接口地址**: `/recommend/similarSong`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| contentId | string | 是 | 歌曲 ID | 600929000000900351 |
+
+### 请求示例
+
+```
+/recommend/similarSong?contentId=600929000000900351
+```
