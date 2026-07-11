@@ -6,6 +6,7 @@
 
 import rsaModule from '../utils/rsalib.js'
 import { getPublicKey } from '../utils/publicKey'
+import { URLParams } from '../utils/URLParams.js';
 
 const RSAKey = rsaModule.RSAKey;
 
@@ -54,11 +55,7 @@ export const loginSim = {
 
         //console.log('[$ object]', $);
 
-        const form = new URLSearchParams();
-        for (const [key, value] of Object.entries($)) {
-            form.append(key, String(value));
-        }
-
+        const form = URLParams($);
         const send = await fetch(`https://passport.migu.cn/api/simauth/send`
             ,{
                 method:'POST',

@@ -1,6 +1,6 @@
 {
   "name": "migu-api-enhanced",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "license": "Apache-2.0",
   "author": "Domdkw",
   "description": "咪咕音乐 API 增强 SDK（多平台部署 + NPM 包）",

@@ -1,12 +1,13 @@
 // login.np.js
 // origin: https://passport.migu.cn/
-// https://gist.github.com/Domdkw/041f098949981e0798b03af114427e8e
+// author: Domdkw
 
 // ====================================
 
 
 import rsaModule from '../utils/rsalib.js'
 import { getPublicKey } from '../utils/publicKey'
+import { URLParams } from '../utils/URLParams.js';
 
 const RSAKey = rsaModule.RSAKey;
 
@@ -18,9 +19,13 @@ function randomString(): string {
 }
 
 export const loginNP = {
-    async authn(username: string, password: string){
-        var error = '';
-        
+    /**
+     * 账号密码登录
+     * @param username 用户名
+     * @param password 密码
+     * @returns 登录成功后的 pacmtoken
+     */
+    async authn(username: string, password: string): Promise<object | { error: string }> {
         var $ = {
             "isAsync": true,
             "enpassword": "",
@@ -39,8 +44,7 @@ export const loginNP = {
         //console.log(p)
         const {publicExponent, modulus} = p || {};
         if (!modulus || !publicExponent) {
-            error = '获取公钥失败';
-            return {error};
+            return {error:'获取公钥失败'};
         }
 
         //init rsa
@@ -61,10 +65,7 @@ export const loginNP = {
 
         //console.log('[$ object]', $);
 
-        const form = new URLSearchParams();
-        for (const [key, value] of Object.entries($)) {
-            form.append(key, String(value));
-        }
+        const form = URLParams($);
 
         const res = await fetch(`https://passport.migu.cn/authn`
             ,{
@@ -75,7 +76,7 @@ export const loginNP = {
                 body:form,
             }
         );
-        if(!res.ok) return {error:['请求登录失败']};
+        if(!res.ok) return {error:'请求登录失败'};
         const body = await res.json();
         return body;
     }

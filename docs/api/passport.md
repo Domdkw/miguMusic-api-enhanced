@@ -9,7 +9,7 @@
 
 !> 如果你作为开发者，强烈建议使用SDK登录认证，而不是直接使用账号密码登录接口
 
-## SIM 卡登录（移动）
+## 1.移动 SIM 卡登录（推荐）
 
 ?> 通过中国移动 SIM 卡认证实现一键登录，整个流程分两步：
 > 1. 调用 `/login/sim/send` 发送加密后的手机号并获取 `sessionId`；
@@ -50,7 +50,6 @@
 ```
 
 ---
-
 ## 查询 SIM 登录结果
 
 **接口地址**: `/login/sim/query`  
@@ -73,6 +72,93 @@
 
 ---
 
+## 2.账号密码登录
+
+?> 不提供账号密码登录接口，建议使用npm SDK登录认证。
+
+**模块**: `/src/modules/login_np.ts`  
+**函数接口**: `loginNP.authn(username: string, password: string)`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| username | string | 是 | 用户名 | 用户名 |
+| password | string | 是 | 密码 | 密码 |
+
+### 返回值 （登录成功）
+
+```json
+{
+    "status": 2000,
+    "message": "",
+    "header": {
+        "resultcode": "104000"
+    },
+    "result": {
+        "risk_resultCode": "00000",
+        "redirectURL": "<any>",//https://passport.migu.cn/portal/sso/authn
+        "authNType": "MiguPassport",
+        "risk_LevelCode": "0",
+        "risk_ruleCode": "00000000",
+        "risk_measureCode": "000000",
+        //important
+        "token": "STnidxxxxxxxxxxxxxxxxxxx"
+    }
+}
+```
+
+---
+
+## 3.手机IP一键登录
+
+?> 依托IP，提供不了😅
+
+**模块**: `/src/modules/login_oneclick.ts`  
+**函数接口**: `loginOneClick.authn()`
+
+### 参数说明
+无
+### 返回值 （登录成功）
+
+```json
+{
+    "status": 2000,
+    "message": "",
+    "header": {
+        "resultcode": "104000"
+    },
+    "result": {
+        "redirectURL": "https://y.migu.cn/app/v3/p/api/auth/index.html",
+        "msisdn": "123****1234",
+        "token": "STnidxxxxxx"
+    }
+}
+```
+
+---
+
+## 获取 PACM Token
+
+**接口地址**: `/passport/getPacmToken`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 默认值 |
+| ------- | ------ | ------ | ------ | ------ |
+| token | string | 是 | Token | - |
+| type | number | 否 | 类型 | 2 |
+| sourceId | string | 否 | Source ID | 220029 |
+| activityId | string | 否 | Activity ID | MUSIC-WWW |
+
+### 请求示例
+
+```
+/passport/getPacmToken?token=YOUR_TOKEN&type=2&sourceId=220029&activityId=MUSIC-WWW
+```
+
+---
 ## 获取 PACM Token
 
 **接口地址**: `/passport/getPacmToken`  

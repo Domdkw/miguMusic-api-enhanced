@@ -3,6 +3,8 @@ export const getUrlH5V24 = async (contentId: string, copyrightId: string, resour
         "birth": "h5page",
         "channel": "014X031",
         "Referer": "https://y.migu.cn/",
+        "location-data": "30.6698676660,104.1229614820",
+        "location-info": "",
     }
 
     const res = await fetch(

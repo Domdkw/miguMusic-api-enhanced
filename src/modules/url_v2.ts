@@ -23,7 +23,9 @@ export const getUrlV2 = async (contentId: string, copyrightId: string, resourceT
         "timestamp": timestamp.toString(),
         "Content-Type": "application/json;charset=UTF-8",
         "referer": "https://music.migu.cn/",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0",
+        "location-data": "30.6698676660,104.1229614820",
+        "location-info": "",
     };
 
     const res = await fetch(

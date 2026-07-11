@@ -11,7 +11,7 @@
 **接口地址**: `/url/v1`  
 **请求方法**: `GET`
 
-此接口原返回值未加密
+未加密
 
 ### 参数说明
 
@@ -47,6 +47,8 @@
 | netType | string | 否 | 网络类型 | 01 |
 | toneFlag | string | （不建议传入） | 音质标识（默认 PQ） | PQ |
 
+?> 在有cookie:pacmtoken(是VIP用户)的情况下，可以播放 VIP 歌曲。使用范围：c.migu.cn微信歌曲分享，music.migu.cn PC版网页播放歌曲
+
 ### 请求示例
 
 ```
@@ -70,7 +72,7 @@
 | netType | string | 否 | 网络类型 | 01 |
 | toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
 
-!> 此接口不稳定，但可以播放 可以试听 (VIP) 歌曲
+?> 此接口可以播放/试听 VIP 歌曲，使用范围：y.migu.cn歌单歌曲分享，m.music.migu.cn播放歌曲，h5.hf.migu.cn活动页
 原返回值为加密blob
 
 ### 请求示例

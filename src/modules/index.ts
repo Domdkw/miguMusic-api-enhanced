@@ -49,3 +49,4 @@ export { getUserCollect } from './user_collect';
 export { getUserMyList } from './user_myList';
 export { getSingerSimilar } from './singer_similar';
 export { getSimilarSongRecommend } from './recommend_similarSong';
+export { loginOneClick, YDRZ } from './login_oneclick';

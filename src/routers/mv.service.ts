@@ -5,10 +5,7 @@ import { getMvHls } from '../modules/mv_hls';
 export default function (app: Hono) {
     app.get('/mv/info', async (c) => {
         const mvIds = c.req.query('mvIds') ?? '';
-        const needAbsoluteUrl = c.req.query('needAbsoluteUrl') === 'true';
-        const data = await getMvInfo(mvIds, {
-            needAbsoluteUrl,
-        });
+        const data = await getMvInfo(mvIds);
         return c.json({ success: true, data });
     });
 
@@ -23,7 +20,7 @@ export default function (app: Hono) {
             mvContentId, 
             mvCopyrightId, 
             url, 
-            size, 
+            Number(size), 
             format, 
             needHttps
         );

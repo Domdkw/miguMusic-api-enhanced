@@ -16,12 +16,11 @@
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
 | mvIds | string | 是 | MV ID | 600906000000476885 |
-| needAbsoluteUrl | boolean | 否 | 是否返回绝对地址，默认 false | true或1 |
 
 ### 请求示例
 
 ```
-/mv/info?mvIds=600906000000476885&needAbsoluteUrl=true
+/mv/info?mvIds=600906000000476885
 ```
 
 ---
@@ -39,8 +38,8 @@
 | mvCopyrightId | string | 是 | MV Copyright ID | 690273Y0015 |
 | url | string | 是 | URL 参数 | - |
 | size | number | 是 | 大小 | 38641875 |
-| format | string | 否 | 画质，默认 050019 | 050019 |
-| needHttps | boolean | 否 | 是否 HTTPS，默认 false | false |
+| format | string | 否 | 画质，默认 050019 (HQ高清) | 050019 |
+| needHttps | boolean | 否 | 是否 HTTPS，默认 true | true |
 
 ### 请求示例
 
