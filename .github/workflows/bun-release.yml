@@ -5,6 +5,11 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag version (e.g. v1.2.6)'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -15,6 +20,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -26,7 +33,12 @@ jobs:
 
       - name: Get version from tag
         id: get_version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "VERSION=${{ github.event.inputs.tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
 
       - name: Build Linux x64
         run: |
@@ -65,6 +77,7 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.inputs.tag != ''
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -77,7 +90,12 @@ jobs:
 
       - name: Get version from tag
         id: get_version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "VERSION=${{ github.event.inputs.tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
@@ -86,7 +104,32 @@ jobs:
           name: Release ${{ steps.get_version.outputs.VERSION }}
           body: |
             ## Migu API Enhanced - Bun Executables
-                        
+            
+            ### Downloads
+            
+            | Platform | Architecture | Download |
+            |----------|-------------|----------|
+            | Linux | x64 | `migu-api-server-linux-x64.tar.gz` |
+            | Linux | ARM64 | `migu-api-server-linux-arm64.tar.gz` |
+            | Windows | x64 | `migu-api-server-windows-x64.zip` |
+            
+            ### Usage
+            
+            Extract the archive and run:
+            
+            ```bash
+            # Linux
+            chmod +x migu-api-server-*
+            ./migu-api-server-*
+            
+            # Windows
+            migu-api-server-windows-x64.exe
+            ```
+            
+            Server will start on `http://0.0.0.0:6200`
+            
+            ### Checksums
+            
             See `checksums.txt` for SHA256 checksums of all files.
           files: |
             dist-bun/*.tar.gz
