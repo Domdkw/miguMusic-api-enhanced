@@ -75,15 +75,13 @@ ALLOWED_ORIGINS="http://localhost:3000,http://example.com" ./dist-bun/migu-api-s
 
 ALL:
 
-推荐使用 .env 文件：
+推荐使用 .env 文件：将根目录下的 .env.example 复制到 bun程序所在目录，重命名为 .env 并根据需要修改。
 
 在所有平台上，Bun 会自动读取同目录下的 .env 文件
 
-```output
-Bun Server is running on http://0.0.0.0:6200
-Allowed CORS origins: Not configured, allowing all origins
-Started development server: http://0.0.0.0:6200
-......
+```
+# CORS 允许的源，多个源用逗号分隔
+ALLOWED_ORIGINS=http://localhost:6200,http://localhost:3000
 ```
 
 ## 下一步

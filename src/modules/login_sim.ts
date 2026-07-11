@@ -51,7 +51,7 @@ export const loginSim = {
         const fakeFingerprint = randomString();
         $.fingerPrint = fakeFingerprint;
         $.fingerPrintDetail = fakeFingerprint;
-        $.encMsisdn = encPhone;
+        $.encMsisdn = encPhone || '';
 
         //console.log('[$ object]', $);
 

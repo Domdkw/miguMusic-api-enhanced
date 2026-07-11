@@ -60,8 +60,8 @@ export const loginNP = {
         const fakeFingerprint = randomString();
         $.fingerPrint = fakeFingerprint;
         $.fingerPrintDetail = fakeFingerprint;
-        $.enpassword = rsa_pwd;
-        $.loginID = rsa_username;
+        $.enpassword = rsa_pwd || '';
+        $.loginID = rsa_username || '';
 
         //console.log('[$ object]', $);
 

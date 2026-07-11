@@ -46,6 +46,10 @@ migu-api-enhanced/
 └── package.json
 ```
 
+## API 接口
+
+[API 文档](https://domdkw.github.io/miguMusic-api-enhanced/api/search.md)
+
 ## 快速开始
 
 ### 安装依赖
@@ -59,6 +63,9 @@ pnpm install
 ```bash
 # Node.js 环境
 pnpm run dev
+
+# Bun 环境
+pnpm run start:bun --watch
 
 # Cloudflare Workers
 pnpm run dev:cf
@@ -112,10 +119,6 @@ pnpm run deploy:deno
 ALLOWED_ORIGINS=https://example.com pnpm start
 ```
 
-## API 接口
-
-[API 文档](https://domdkw.github.io/miguMusic-api-enhanced/api/search.md)
-
 ## TypeScript 配置
 
 本项目使用 TypeScript 5.x，配置分为两部分：
@@ -154,7 +157,7 @@ npm install migu-api-enhanced
 >[!NOTE]
 > 建议使用最新版本。后续会更新接口。请加上```@latest```获取最新版本。(npm i migu-api-enhanced@latest)
 
-### 方式一：命名导入（推荐，开箱即用，默认 5 秒超时）
+### 方式一：命名导入
 
 ```ts
 import { getAlbumInfo, getUrlV2 } from 'migu-api-enhanced';
