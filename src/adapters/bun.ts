@@ -4,10 +4,12 @@
  */
 import app from '../app';
 
-const port = 6200;
-const hostname = '0.0.0.0';
+const port = Number(process.env.PORT) || 6200;
+const hostname = process.env.HOST || '0.0.0.0';
+
 
 console.log(`Bun Server is running on http://${hostname}:${port}`);
+console.log(`Allowed CORS origins: ${process.env.ALLOWED_ORIGINS || 'Not configured, allowing all origins'}`);
 
 export default {
   hostname,

@@ -2,42 +2,41 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 import { memCache } from 'hono-mem-cache';
+import { env, getRuntimeKey } from 'hono/adapter';
 import apiRoutes from './routers';
 // 通过 import 引入 package.json，esbuild / tsup 在构建时会将 JSON 内联到产物中
 // 这样在 Node、Cloudflare Workers、Vercel Edge、Deno、EdgeOne 等所有 bundler 平台都能直接读取版本号
 // 需要 tsconfig 启用 "resolveJsonModule": true
 import pkg from '../package.json';
 
-/**
- * 环境变量类型定义
- */
-type EnvBindings = {
-    ALLOWED_ORIGINS?: string;
-};
-
-const app = new Hono<{ Bindings: EnvBindings }>();
-
-/**
- * 从环境变量获取允许的源列表
- * 兼容 Cloudflare Workers、Vercel Edge、Node.js 等多平台
- */
-const getAllowedOrigins = (env: EnvBindings): string[] => {
-    const origins = env.ALLOWED_ORIGINS || '';
-    return origins.split(',').map(origin => origin.trim()).filter(Boolean);
-};
+const app = new Hono();
 
 // 全局中间件
 app.use('*', logger());
 
+/**
+ * CORS 配置
+ * 支持从环境变量读取允许的源列表
+ * 当未配置 ALLOWED_ORIGINS 时，允许所有跨域请求（*）
+ */
 app.use('*', cors({
     origin: (origin: string, c) => {
-        const allowedOrigins = getAllowedOrigins(c.env);
-        if (allowedOrigins.includes(origin)) {
+        const { ALLOWED_ORIGINS } = env<{ ALLOWED_ORIGINS: string }>(c);
+        const origins = ALLOWED_ORIGINS.split(',');
+        if (origins[0] === '*') { // 当配置为 * 时，允许所有跨域请求
             return origin;
         }
-        return allowedOrigins[0] || 'localhost';
+        if (origins.length === 0) { // 当未配置 ALLOWED_ORIGINS 时，拒绝所有跨域请求（安全策略）
+            return null;
+        }
+        // 当请求源不在允许列表中时，返回 null 表示拒绝
+        return origins.includes(origin) ? origin : null;
     },
-    allowMethods: ['GET', 'OPTIONS'],
+    allowMethods: ['GET', 'POST', 'OPTIONS'],
+    allowHeaders: ['Content-Type', 'Authorization'],
+    exposeHeaders: ['Content-Length', 'X-Kuma-Revision'],
+    maxAge: 600,
+    credentials: true,
 }));
 
 /**
@@ -55,7 +54,8 @@ app.get('/', (c) => {
   return c.json({
     message: 'Migu API Enhanced',
     version: pkg.version,
-    status: 'running'
+    status: 'running',
+    runtime: getRuntimeKey()
   });
 });
 

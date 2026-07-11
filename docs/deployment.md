@@ -47,6 +47,45 @@ pnpm start
 以后直接启动服务即可，无需指定端口，默认端口为 6200。
 npm start
 
+## Bun 本地部署 （推荐）
+
+当然，你也可以使用高性能的 Bun 进行部署。
+
+### 已构建成品
+
+你可以在 [Releases](https://github.com/Domdkw/miguMusic-api-enhanced/releases) 页面下载 Bun 可执行文件。
+目前支持 Windows x64 和 Linux x64/arm64 平台。
+
+### 配置环境变量
+
+Windows:
+
+```bash
+# 临时设置环境变量
+$env:ALLOWED_ORIGINS="http://localhost:3000,http://example.com"
+.\dist-bun\migu-api-server.exe
+```
+
+Linux:
+
+```bash
+# 临时设置环境变量并运行
+ALLOWED_ORIGINS="http://localhost:3000,http://example.com" ./dist-bun/migu-api-server-*
+```
+
+ALL:
+
+推荐使用 .env 文件：
+
+在所有平台上，Bun 会自动读取同目录下的 .env 文件
+
+```output
+Bun Server is running on http://0.0.0.0:6200
+Allowed CORS origins: Not configured, allowing all origins
+Started development server: http://0.0.0.0:6200
+......
+```
+
 ## 下一步
 
 - [NPM 包使用](npm-package.md) - 在项目中使用

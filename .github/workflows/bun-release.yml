@@ -103,29 +103,6 @@ jobs:
           body: |
             ## Migu API Enhanced - Bun Executables
             
-            ### Downloads
-            
-            | Platform | Architecture | Download |
-            |----------|-------------|----------|
-            | Linux | x64 | `migu-api-server-linux-x64.tar.gz` |
-            | Linux | ARM64 | `migu-api-server-linux-arm64.tar.gz` |
-            | Windows | x64 | `migu-api-server-windows-x64.zip` |
-            
-            ### Usage
-            
-            Extract the archive and run:
-            
-            ```bash
-            # Linux
-            chmod +x migu-api-server-*
-            ./migu-api-server-*
-            
-            # Windows
-            migu-api-server-windows-x64.exe
-            ```
-            
-            Server will start on `http://0.0.0.0:6200`
-            
             ### Checksums
             
             See `checksums.txt` for SHA256 checksums of all files.

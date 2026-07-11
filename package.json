@@ -34,7 +34,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "dev": "npx tsx --env-file=.env src/adapters/node.ts",
+    "dev": "npx tsx --env-file=.env src/adapters/node.ts --watch",
     "dev:cf": "wrangler dev",
     "dev:deno": "deno run --allow-net --allow-read src/adapters/deno.ts",
     "build": "tsup",
