@@ -25,13 +25,13 @@ importers:
         version: 0.4.0(hono@4.12.26)
       tsup:
         specifier: ^8.5.1
-        version: 8.5.1(tsx@4.22.4)(typescript@5.0.2)
+        version: 8.5.1(tsx@4.22.4)(typescript@5.9.3)
       tsx:
         specifier: ^4.19.2
         version: 4.22.4
       typescript:
-        specifier: ^5.0.0
-        version: 5.0.2
+        specifier: ^5.9.3
+        version: 5.9.3
       wrangler:
         specifier: ^4.4.0
         version: 4.102.0
@@ -1156,9 +1156,9 @@ packages:
     engines: {node: '>=18.0.0'}
     hasBin: true
 
-  typescript@5.0.2:
-    resolution: {integrity: sha512-wVORMBGO/FAs/++blGNeAVdbNKtIh1rbBL2EyQ1+J9lClJ93KiiKe8PmFIVdXhHcyv44SL9oglmfeSsndo0jRw==}
-    engines: {node: '>=12.20'}
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
     hasBin: true
 
   ufo@1.6.4:
@@ -2004,7 +2004,7 @@ snapshots:
   tslib@2.8.1:
     optional: true
 
-  tsup@8.5.1(tsx@4.22.4)(typescript@5.0.2):
+  tsup@8.5.1(tsx@4.22.4)(typescript@5.9.3):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.27.7)
       cac: 6.7.14
@@ -2024,7 +2024,7 @@ snapshots:
       tinyglobby: 0.2.17
       tree-kill: 1.2.2
     optionalDependencies:
-      typescript: 5.0.2
+      typescript: 5.9.3
     transitivePeerDependencies:
       - jiti
       - supports-color
@@ -2037,7 +2037,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  typescript@5.0.2: {}
+  typescript@5.9.3: {}
 
   ufo@1.6.4: {}
 

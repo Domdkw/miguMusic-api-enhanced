@@ -1,6 +1,6 @@
 {
   "name": "migu-api-enhanced",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "license": "Apache-2.0",
   "author": "Domdkw",
   "description": "咪咕音乐 API 增强 SDK（多平台部署 + NPM 包）",
@@ -21,7 +21,7 @@
     "LICENSE"
   ],
   "sideEffects": false,
-  "keywords": ["migu music","migu","api","enhanced"],
+  "keywords": ["migu music api","migu music","migu","api","enhanced"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Domdkw/migu-api-enhanced.git"
@@ -42,22 +42,24 @@
     "typecheck": "tsc --project tsconfig.sdk.json",
     "build:edgeone": "esbuild functions/[[default]].ts --bundle --platform=browser --target=es2022 --format=esm --outfile=functions/[[default]].js",
     "start": "node dist-server/index.js",
+    "start:bun": "bun run src/adapters/bun.ts",
     "deploy:cf": "wrangler deploy --minify",
     "deploy:vercel": "vercel --prod",
     "deploy:deno": "deno run --allow-net --allow-read src/adapters/deno.ts",
+    "build:bun:linux": "bun build src/adapters/bun.ts --compile --minify --target=bun-linux-x64 --outfile dist-bun/migu-api-server-linux",
+    "build:bun:windows": "bun build src/adapters/bun.ts --compile --minify --target=bun-windows-x64 --outfile dist-bun/migu-api-server.exe",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
     "prepublishOnly": "pnpm run build"
   },
-  "dependencies": {},
   "devDependencies": {
     "@hono/node-server": "^1.13.7",
-    "hono": "^4.12.23",
-    "hono-mem-cache": "^0.4.0",
     "@types/node": "^26.0.1",
     "esbuild": "^0.25.0",
+    "hono": "^4.12.23",
+    "hono-mem-cache": "^0.4.0",
     "tsup": "^8.5.1",
     "tsx": "^4.19.2",
-    "typescript": "^5.0.0",
+    "typescript": "^5.9.3",
     "wrangler": "^4.4.0"
   }
 }
