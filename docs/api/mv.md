@@ -9,18 +9,40 @@
 
 返回的MP4 URL为相对路径，需要在前端拼接 `https://freevod.nf.migu.cn` 以获得完整路径。
 
-当然你也可以传入 `needAbsoluteUrl=true` 来自动获得绝对路径。自动追加键值 `absoluteUrl`。
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| mvContentId | string | 是 | MV Content ID | 600906000000476885 |
+
+### 请求示例
+
+```
+/mv/info?mvContentId=600906000000476885
+```
+
+---
+
+## 根据 MV 推荐
+
+**接口地址**: `/mv/recommend`  
+**请求方法**: `GET`
+
+可以从此接口返回的 data[].rateFormats[].url 中提取出mp4播放地址。
+
+返回的MP4 URL为相对路径。
 
 ### 参数说明
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
-| mvIds | string | 是 | MV ID | 600906000000476885 |
+| mvContentId | string | 是 | MV Content ID | 600906000000476885 |
+| page | number | 否 | 页码，默认 1 | 1 |
 
 ### 请求示例
 
 ```
-/mv/info?mvIds=600906000000476885
+/mv/recommend?mvContentId=600906000000476885&page=1
 ```
 
 ---

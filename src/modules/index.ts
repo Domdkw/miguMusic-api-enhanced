@@ -50,3 +50,5 @@ export { getUserMyList } from './user_myList';
 export { getSingerSimilar } from './singer_similar';
 export { getSimilarSongRecommend } from './recommend_similarSong';
 export { loginOneClick, YDRZ } from './login_oneclick';
+export { loginPhone } from './login_phone';
+export { getMVRecommend } from './mv_recommend';

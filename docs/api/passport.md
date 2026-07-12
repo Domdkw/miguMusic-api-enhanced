@@ -46,10 +46,11 @@
 ### 请求示例
 
 ```
-/login/sim/send?phone=13800138000
+/login/sim/send?phone=12300001111
 ```
 
 ---
+
 ## 查询 SIM 登录结果
 
 **接口地址**: `/login/sim/query`  
@@ -62,7 +63,7 @@
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
 | sessionId | string | 是 | sim 登录会话 ID，由 `/login/sim/send` 返回 | xxxxxxxxxxxxxxxx |
-| isNeedPacm | string | 否 | 是否同时获取 pacmtoken，1 为是，默认 0 | 1 |
+| isNeedPacm | string | 否 | 是否同时获取 pacmtoken，1 为是，默认 1 | 1/true |
 
 ### 请求示例
 
@@ -138,6 +139,84 @@
 
 ---
 
+## 4.验证码登陆
+
+?> 通过验证码登录，整个流程分两步：
+> 1. 调用 `/login/phone/msgCode` 发送验证码并获取 `msgCode`；
+> 2. 调用 `/login/phone/authn` 使用 `msgCode` 登录。
+
+---
+
+**模块**: `/src/modules/login_phone.ts`  
+**函数接口**: `loginPhone` 详见文件
+
+## 发送验证码
+
+**接口地址**: `/login/phone/msgCode`  
+**请求方法**: `GET`
+
+!> 如果一个手机号请求过多，可能会触发图形验证码进一步验证，暂不支持转发图形验证码信息。
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| phone | string | 是 | 待登录的手机号 | 12300001111 |
+
+### 请求示例
+
+```
+/login/phone/msgCode?phone=12300001111
+```
+
+---
+
+## 验证验证码（登录）
+
+**接口地址**: `/login/phone/authn`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| phone | string | 是 | 待登录的手机号 | 12300001111 |
+| msgCode | string | 是 | 验证码 | 123456 |
+| isNeedPacm | string | 否 | 是否同时获取 pacmtoken，1 为是，默认 1 | 1/true |
+
+### 请求示例
+
+```
+/login/phone/authn?phone=12300001111&msgCode=123456
+```
+
+### 返回示例 （登录成功）
+
+```json
+{
+  "success": true,
+  "data": {
+    "pacmToken":"xxxxxxxxxxxxxx",
+    "cookie": [
+      "pacmtoken=xxxxxxxxxxxxxx; Expires=Sun, 12-Jul-26 07:20:32 GMT; Domain=migu.cn; Path=/"
+    ],
+    "body": {
+      "code": "000000",
+      "info": "操作成功",
+      "data": {
+        "userId": "1xxx",
+        "msisdn": "123****1111",
+        "passId": "xxxx",
+        "authType": "DS",
+        "usessionId": "UDnidxxxxxxxx"
+      }
+    }
+  }
+}
+```
+
+---
+
 ## 获取 PACM Token
 
 **接口地址**: `/passport/getPacmToken`  
@@ -152,32 +231,12 @@
 | sourceId | string | 否 | Source ID | 220029 |
 | activityId | string | 否 | Activity ID | MUSIC-WWW |
 
+?> 只用传一个token就够了
+
 ### 请求示例
 
 ```
 /passport/getPacmToken?token=YOUR_TOKEN&type=2&sourceId=220029&activityId=MUSIC-WWW
-```
-
----
-## 获取 PACM Token
-
-**接口地址**: `/passport/getPacmToken`  
-**请求方法**: `GET`
-
-### 参数说明
-
-| 参数名 | 类型 | 必填 | 说明 | 默认值 |
-| ------- | ------ | ------ | ------ | ------ |
-| token | string | 是 | Token | - |
-| type | number | 否 | 类型 | 2 |
-| sourceId | string | 否 | Source ID | 220029 |
-
-建议带一个token就可以了，其他的不懂不要改（我也不懂有啥用）
-
-### 请求示例
-
-```
-/passport/getPacmToken?token=YOUR_TOKEN
 ```
 
 ---

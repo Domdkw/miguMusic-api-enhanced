@@ -41,3 +41,16 @@
 ```
 /version
 ```
+---
+
+### 此应用接口
+
+`/`: 返回此应用的版本信息
+```json
+{
+    "message": "Migu API Enhanced",
+    "version": "版本号",
+    "status": "running",
+    "runtime": "Node.js/bun/workerd/<others>"
+}
+```
