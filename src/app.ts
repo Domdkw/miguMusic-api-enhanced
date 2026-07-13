@@ -22,8 +22,11 @@ app.use('*', logger());
 app.use('*', cors({
     origin: (origin: string, c) => {
         const { ALLOWED_ORIGINS } = env<{ ALLOWED_ORIGINS: string }>(c);
+        if (!ALLOWED_ORIGINS) {
+            return origin; // 当未配置 ALLOWED_ORIGINS 时，允许所有跨域请求（*）
+        }
         const origins = ALLOWED_ORIGINS.split(',');
-        if (origins[0] === '*') { // 当配置为 * 时，允许所有跨域请求
+        if (origins[0] === '*') { // 当配置为 '*' 时，允许所有跨域请求
             return origin;
         }
         if (origins.length === 0) { // 当未配置 ALLOWED_ORIGINS 时，拒绝所有跨域请求（安全策略）
@@ -44,7 +47,7 @@ app.use('*', cors({
  * max: 最大缓存项数
  * ttl: 缓存过期时间（毫秒）
  */
-app.use('/api/*', memCache({
+app.use('*', memCache({
   max: 100,
   ttl: 300000, // 5分钟缓存
 }));
