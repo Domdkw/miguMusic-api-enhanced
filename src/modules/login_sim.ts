@@ -4,11 +4,9 @@
 //author: Domdkw 2026.7.9
 
 
-import rsaModule from '../utils/rsalib.js'
+import { RSAKey } from '../utils/rsalib'
 import { getPublicKey } from '../utils/publicKey'
-import { URLParams } from '../utils/URLParams.js';
-
-const RSAKey = rsaModule.RSAKey;
+import { URLParams } from '../utils/URLParams';
 
 //main
 
@@ -60,8 +58,10 @@ export const loginSim = {
             ,{
                 method:'POST',
                 headers:{
-                    //'User-Agent': ua,
-                    'Host':'passport.migu.cn'
+                    'Host':'passport.migu.cn',
+                    'Content-Type':'application/x-www-form-urlencoded',
+                    'Referer': 'https://passport.migu.cn/login',
+                    'Origin': 'https://passport.migu.cn',
                 },
                 body:form,
             }
@@ -97,7 +97,12 @@ export const loginSim = {
         const query = await fetch(`https://passport.migu.cn/api/simauth/query`
             ,{
                 method:'POST',
-                headers:{'Host':'passport.migu.cn'},
+                headers:{
+                    'Host':'passport.migu.cn',
+                    'Content-Type':'application/x-www-form-urlencoded',
+                    'Referer': 'https://passport.migu.cn/login',
+                    'Origin': 'https://passport.migu.cn',
+                },
                 body:form,
             }
         );

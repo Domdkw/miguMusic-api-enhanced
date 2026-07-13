@@ -51,5 +51,3 @@ export class RSAKey {
         }
     }
 }
-
-export default { RSAKey };

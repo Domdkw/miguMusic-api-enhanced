@@ -5,11 +5,10 @@
 // ====================================
 
 
-import rsaModule from '../utils/rsalib.js'
+import { RSAKey } from '../utils/rsalib'
 import { getPublicKey } from '../utils/publicKey'
-import { URLParams } from '../utils/URLParams.js';
+import { URLParams } from '../utils/URLParams';
 
-const RSAKey = rsaModule.RSAKey;
 
 //main
 
@@ -71,7 +70,10 @@ export const loginNP = {
             ,{
                 method:'POST',
                 headers:{
-                    'Host':'passport.migu.cn'
+                    'Host':'passport.migu.cn',
+                    'Content-Type':'application/x-www-form-urlencoded',
+                    'Referer': 'https://passport.migu.cn/login',
+                    'Origin': 'https://passport.migu.cn',
                 },
                 body:form,
             }

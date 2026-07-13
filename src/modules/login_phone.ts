@@ -1,8 +1,7 @@
-import rsaModule from '../utils/rsalib'
+import { RSAKey } from '../utils/rsalib'
 import { getPublicKey } from '../utils/publicKey'
 import { URLParams } from '../utils/URLParams'
 
-const RSAKey = rsaModule.RSAKey;
 
 function randomString(){
   const random = Array.from({ length: 32 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
@@ -48,7 +47,9 @@ export const loginPhone = {
             ,{
                 method:'GET',
                 headers:{
-                    'Host':'passport.migu.cn'
+                    'Host':'passport.migu.cn',
+                    'Referer': 'https://passport.migu.cn/login',
+                    'Origin': 'https://passport.migu.cn',
                 }
             }
         );
