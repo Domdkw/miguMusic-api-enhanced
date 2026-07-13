@@ -7,7 +7,7 @@ export default function (app: Hono) {
     app.get('/mv/info', async (c) => {
         const mvContentId = c.req.query('mvContentId') ?? '';
         const data = await getMvInfo(mvContentId);
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 
     app.get('/mv/hls', async (c) => {
@@ -25,13 +25,13 @@ export default function (app: Hono) {
             format, 
             needHttps
         );
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 
     app.get('/mv/recommend', async (c) => {
         const mvContentId = c.req.query('mvContentId') ?? '';
         const page = Number(c.req.query('page') ?? '1');
         const data = await getMVRecommend(mvContentId, page);
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 }

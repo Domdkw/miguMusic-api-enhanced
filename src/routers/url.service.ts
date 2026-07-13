@@ -9,7 +9,7 @@ export default function (app: Hono) {
         const copyrightId = c.req.query('copyrightId') || '';
         const resourceType = c.req.query('resourceType') || '2';
         const data = await getUrlV1(contentId, copyrightId, resourceType);
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 
     app.get('/url/v2', async (c) => {
@@ -18,7 +18,7 @@ export default function (app: Hono) {
         const resourceType = c.req.query('resourceType') || '2';
         const pacmtoken = c.req.query('pacmtoken') || '';
         const data = await getUrlV2(contentId, copyrightId, resourceType, pacmtoken);
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 
     app.get('/url/h5v2.4', async (c) => {
@@ -26,6 +26,6 @@ export default function (app: Hono) {
         const copyrightId = c.req.query('copyrightId') || '';
         const resourceType = c.req.query('resourceType') || '2';
         const data = await getUrlH5V24(contentId, copyrightId, resourceType);
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 }

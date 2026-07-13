@@ -24,6 +24,43 @@ typeOrder : 类型排序，默认 0
 
 ---
 
+## 热门搜索
+
+**接口地址**: `/search/hot`  
+**请求方法**: `GET`
+
+### 参数说明
+
+无需参数
+
+### 请求示例
+
+```
+/search/hot
+```
+
+---
+
+## 默认搜索文本
+
+**接口地址**: `/search/default`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| resourceVersion | number | （不建议传入） | 资源版本，默认 2 | 2 |
+
+!> 建议传入参数为空，使用默认值除非你知道你在干什么
+### 请求示例
+
+```
+/search/default?resourceVersion=2
+```
+
+---
+
 ## 搜索歌手
 
 **接口地址**: `/search/singer`  
@@ -64,39 +101,43 @@ typeOrder : 类型排序，默认 0
 
 ---
 
-## 热门搜索
+## 搜索视频（mv）
 
-**接口地址**: `/search/hot`  
-**请求方法**: `GET`
-
-### 参数说明
-
-无需参数
-
-### 请求示例
-
-```
-/search/hot
-```
-
----
-
-## 默认搜索文本
-
-**接口地址**: `/search/default`  
+**接口地址**: `/search/video`  
 **请求方法**: `GET`
 
 ### 参数说明
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
-| resourceVersion | number | （不建议传入） | 资源版本，默认 2 | 2 |
+| text | string | 是 | 搜索关键词 | APT. |
+| page | number | 否 | 页码，默认 1 | 1 |
+| typeOrder | number | 否 | 类型排序，默认 0 | 0 |
 
-!> 建议传入参数为空，使用默认值除非你知道你在干什么
 ### 请求示例
 
 ```
-/search/default?resourceVersion=2
+/search/video?text=APT.&page=1&typeOrder=0
+```
+
+---
+
+## 搜索歌词
+
+**接口地址**: `/search/lrc`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| text | string | 是 | 搜索关键词 | APT. |
+| page | number | 否 | 页码，默认 1 | 1 |
+
+### 请求示例
+
+```
+/search/lrc?text=APT.&page=1
 ```
 
 ---
@@ -138,27 +179,6 @@ typeOrder : 类型排序，默认 0
 
 ```
 /search/concert?text=APT.&page=1
-```
-
----
-
-## 搜索视频（mv）
-
-**接口地址**: `/search/video`  
-**请求方法**: `GET`
-
-### 参数说明
-
-| 参数名 | 类型 | 必填 | 说明 | 示例 |
-| ------- | ------ | ------ | ------ | ------ |
-| text | string | 是 | 搜索关键词 | APT. |
-| page | number | 否 | 页码，默认 1 | 1 |
-| typeOrder | number | 否 | 类型排序，默认 0 | 0 |
-
-### 请求示例
-
-```
-/search/video?text=APT.&page=1&typeOrder=0
 ```
 
 ---

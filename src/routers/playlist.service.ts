@@ -6,7 +6,7 @@ export default function (app: Hono) {
     app.get('/playlist/info', async (c) => {
         const playlistId = c.req.query('playlistId') ?? '';
         const data = await getPlaylistInfo(playlistId);
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 
     app.get('/playlist/song', async (c) => {
@@ -14,6 +14,6 @@ export default function (app: Hono) {
         const page = c.req.query('page') ?? 1;
         const size = c.req.query('size') ?? 20;
         const data = await getPlaylistSong(playlistId, Number(page), Number(size));
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 }

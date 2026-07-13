@@ -13,7 +13,7 @@ export default function (app: Hono) {
         if(data.body && data.body.error && data.body.error !== ''){
             return c.json({ success: false, error: data.body.error });
         }
-        return c.json({ success: true, data});
+        return c.json({ success: true, ...data });
     });
 
     app.get('/passport/checkToken', async (c) => {
@@ -23,7 +23,7 @@ export default function (app: Hono) {
         if(code !== '000000'){
             return c.json({ success: false, error: data });
         }
-        return c.json({ success: true, data});
+        return c.json({ success: true, ...data });
     });
 
     app.get('/login/sim/send', async(c) => {
@@ -33,7 +33,7 @@ export default function (app: Hono) {
             return c.json({ success: false, error: data.error });
         }
         
-        return c.json({ success: true, data});
+        return c.json({ success: true, ...data });
     })
 
     app.get('/login/sim/query', async (c) => {
@@ -78,7 +78,7 @@ export default function (app: Hono) {
             return c.json({ success: false, error: data });
         }
         
-        return c.json({ success: true, data});
+        return c.json({ success: true, ...data });
     })
 
     app.get('/login/phone/authn', async(c) => {

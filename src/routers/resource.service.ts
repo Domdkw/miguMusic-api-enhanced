@@ -12,7 +12,7 @@ export default function (app: Hono) {
         try {
             const body = await c.req.json();
             const data = await checkCanListen(body);
-            return c.json({ success: true, data });
+            return c.json({ success: true, ...data });
         } catch (e) {
             return c.json({
                 success: false,
@@ -32,13 +32,13 @@ export default function (app: Hono) {
             Number(size),
             Number(hotCommentStart),
         );
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 
     app.get('/opNum', async (c) => {
         const ids = c.req.query('ids') ?? '';
         const data = await getOpNum(ids);
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 
     app.get('/version', async (c) => {
@@ -46,20 +46,20 @@ export default function (app: Hono) {
         const version = c.req.query('version') ?? '8.4.0';
         const ua = c.req.query('ua') ?? 'Android_migu';
         const data = await getVersion(channel, version, ua);
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 
     app.get('/resourceinfo', async (c) => {
         const resourceId = c.req.query('resourceId') ?? '';
         const resourceType = c.req.query('resourceType') ?? 2;
         const data = await getResourceInfo(resourceId, Number(resourceType));
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 
     app.get('/ticket', async (c) => {
         const page = c.req.query('page') ?? 1;
         const pageCount = c.req.query('pageCount') ?? 10;
         const data = await getTicketInfo(Number(page), Number(pageCount));
-        return c.json({ success: true, data });
+        return c.json({ success: true, ...data });
     });
 }
