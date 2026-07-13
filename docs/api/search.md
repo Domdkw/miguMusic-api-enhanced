@@ -230,10 +230,9 @@ typeOrder : 类型排序，默认 0
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
 | tab | string | 是 | 歌手标签 | huayu-nan |
-| templateVersion | number | （不建议传入） | 模板版本，默认 3 | 3 |
 
 ### 请求示例
 
 ```
-/search/singerTab/list?tab=huayu-nan&templateVersion=3
+/search/singerTab/list?tab=huayu-nan
 ```

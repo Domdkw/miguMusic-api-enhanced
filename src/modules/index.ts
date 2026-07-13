@@ -52,3 +52,7 @@ export { getSimilarSongRecommend } from './recommend_similarSong';
 export { loginOneClick, YDRZ } from './login_oneclick';
 export { loginPhone } from './login_phone';
 export { getMVRecommend } from './mv_recommend';
+export { getPlaylistSquare } from './playlist_square';
+export { searchLrc } from './search_lrc';
+export { getNinanSong } from './ninan_song';
+export { getNinanByDate } from './ninan_date';

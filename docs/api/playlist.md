@@ -37,3 +37,22 @@
 ```
 /playlist/song?playlistId=231760782&page=1&size=50
 ```
+
+---
+
+## 获取歌单广场
+
+**接口地址**: `/playlist/square`  
+**请求方法**: `GET`
+
+### 参数说明
+无
+
+### 请求示例
+
+```
+/playlist/square
+```
+
+---
+
