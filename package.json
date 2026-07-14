@@ -54,7 +54,7 @@
   "devDependencies": {
     "@hono/node-server": "^1.13.7",
     "@types/node": "^26.0.1",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.28.1",
     "hono": "^4.12.23",
     "hono-mem-cache": "^0.4.0",
     "tsup": "^8.5.1",
