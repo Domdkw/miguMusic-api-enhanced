@@ -1,0 +1,8 @@
+dist/
+dist-server/
+dist-bun/
+node_modules/
+coverage/
+*.min.js
+pnpm-lock.yaml
+postman/

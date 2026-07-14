@@ -1,6 +1,6 @@
 import { getDeviceId } from '../utils/deviceID'
 
-export const getUrlV2 = async (contentId: string, copyrightId: string, resourceType: string = '2', pacmtoken: string = '') => {
+export const getUrlV2 = async (contentId: string, copyrightId: string, toneFlag: string = 'PQ', resourceType: string = '2', pacmtoken: string = '') => {
     const deviceId = getDeviceId();
     const timestamp = Date.now();
 
@@ -29,7 +29,7 @@ export const getUrlV2 = async (contentId: string, copyrightId: string, resourceT
     };
 
     const res = await fetch(
-        `https://app.c.nf.migu.cn/strategy/pc/listen/v2.0?contentId=${contentId}&copyrightId=${copyrightId}&scene=&netType=01&resourceType=${resourceType}&toneFlag=PQ`,
+        `https://app.c.nf.migu.cn/strategy/pc/listen/v2.0?contentId=${contentId}&copyrightId=${copyrightId}&scene=&netType=01&resourceType=${resourceType}&toneFlag=${toneFlag}`,
         {
             headers: headers
         }

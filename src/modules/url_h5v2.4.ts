@@ -1,4 +1,4 @@
-export const getUrlH5V24 = async (contentId: string, copyrightId: string, resourceType: string = '2') => {
+export const getUrlH5V24 = async (contentId: string, copyrightId: string, toneFlag: string = 'PQ', resourceType: string = '2') => {
     const headers = {
         "birth": "h5page",
         "channel": "014X031",
@@ -8,7 +8,7 @@ export const getUrlH5V24 = async (contentId: string, copyrightId: string, resour
     }
 
     const res = await fetch(
-        `https://c.musicapp.migu.cn/strategy/listen-url/h5/v2.4?contentId=${contentId}&copyrightId=${copyrightId}&resourceType=${resourceType}&netType=01&toneFlag=PQ&scene=&lowerQualityContentId=${contentId}`,
+        `https://c.musicapp.migu.cn/strategy/listen-url/h5/v2.4?contentId=${contentId}&copyrightId=${copyrightId}&resourceType=${resourceType}&netType=01&toneFlag=${toneFlag}&scene=&lowerQualityContentId=${contentId}`,
         {
             headers: headers
         }
