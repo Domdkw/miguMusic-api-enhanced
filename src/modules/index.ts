@@ -56,3 +56,4 @@ export { getPlaylistSquare } from './playlist_square';
 export { searchLrc } from './search_lrc';
 export { getNinanSong } from './ninan_song';
 export { getNinanByDate } from './ninan_date';
+export { getRadioRecommendAll } from './recommend_radio_all';

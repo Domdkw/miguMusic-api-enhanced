@@ -1,8 +1,9 @@
 import type { Hono } from 'hono';
 import { getRecommendPlaylist } from '../modules/recommend_playlist';
 import { getSceneRecommend } from '../modules/recommend_song';
-import { getRadioRecommend } from '../modules/recommend_radio';
 import { getSimilarSongRecommend } from '../modules/recommend_similarSong';
+import { getRadioRecommend } from '../modules/recommend_radio';
+import { getRadioRecommendAll } from '../modules/recommend_radio_all';
 
 export default function (app: Hono) {
     app.get('/recommend/playlist', async (c) => {
@@ -26,6 +27,12 @@ export default function (app: Hono) {
     app.get('/recommend/similarSong', async (c) => {
         const contentId = c.req.query('contentId') ?? '';
         const data = await getSimilarSongRecommend(contentId);
+        return c.json({ success: true, ...data });
+    });
+
+    app.get('/recommend/radio/all', async (c) => {
+        const pacmtoken = c.req.query('pacmtoken') ?? '';
+        const data = await getRadioRecommendAll(pacmtoken);
         return c.json({ success: true, ...data });
     });
 }

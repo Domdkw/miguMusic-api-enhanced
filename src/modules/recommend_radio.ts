@@ -2,8 +2,8 @@ import { h5fetch } from '../utils/h5fetch';
 import { getDeviceId } from '../utils/deviceID'
 
 /**
- * 获取电台推荐
- * @param type 1：上瘾电台 2：听见不同
+ * 获取电台推荐 （主页电台）
+ * @param type 1：上瘾电台 2：听见不同 <- 私人FM <-ALL
  * @returns 
  */
 export const getRadioRecommend = async (type: number = 1) => {
