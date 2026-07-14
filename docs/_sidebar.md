@@ -18,5 +18,6 @@
   - [用户接口](/api/user.md)
   - [资源接口](/api/resource.md)
   - [播放地址](/api/url.md)
+  - [活动接口](/api/action.md)
   - [其他接口](/api/others.md)
   - [Postman文件](https://raw.githubusercontent.com/Domdkw/miguMusic-api-enhanced/refs/heads/main/postman/enhanced-api.postman_collection.json)
