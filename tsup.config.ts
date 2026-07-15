@@ -15,4 +15,5 @@ export default defineConfig({
     shims: false,            // Node 18+ 自带 fetch/Blob/TextEncoder，无需 shim
     minify: false,
     skipNodeModulesBundle: true, // 保持 import 路径清晰，不内联 hono 等无关依赖
+    bundle: true,            // 将所有模块打包到一个文件中，解决 ESM 导入路径问题
 });
