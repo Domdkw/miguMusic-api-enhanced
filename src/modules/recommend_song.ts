@@ -8,7 +8,7 @@ export const getSceneRecommend = async (scene: string = 'TODAY_RECOMMEND', size:
     } else if (scene === 'TODAY_RECOMMEND') {
         params = `scene=TODAY_RECOMMEND&action=1&size=${size}`;//&algorithm=v1
     }else{
-        return {error:'scene参数错误'};
+        return {error:'scene参数错误 PRIVATE_FM 或 TODAY_RECOMMEND'};
     }
     return await h5fetch(`https://app.c.nf.migu.cn/pc/resource-dataloader/recommend-song/v1.0?${params}`
         ,{

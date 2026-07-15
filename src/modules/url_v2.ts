@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { getDeviceId } from '../utils/deviceID'
 
 export const getUrlV2 = async (contentId: string, copyrightId: string, toneFlag: string = 'PQ', resourceType: string = '2', pacmtoken: string = '') => {
@@ -28,15 +29,15 @@ export const getUrlV2 = async (contentId: string, copyrightId: string, toneFlag:
         "location-info": "",
     };
 
-    const res = await fetch(
+    const res = await axios.get(
         `https://app.c.nf.migu.cn/strategy/pc/listen/v2.0?contentId=${contentId}&copyrightId=${copyrightId}&scene=&netType=01&resourceType=${resourceType}&toneFlag=${toneFlag}`,
         {
-            headers: headers
+            headers: headers,
+            responseType: 'arraybuffer'
         }
     );
-    const blob = await res.blob();
 
-    return await decryptData(blob);
+    return await decryptData(res.data);
 };
 
 const SECURE = "Jk8qzuePiJ1qE3mDYhLQ3T73DtDoAhLP"
@@ -49,7 +50,6 @@ function textDecode(e: ArrayBufferView) {
   return new TextDecoder('utf-8').decode(e)
 }
 
-const blobToArrayBuffer = async(blob: Blob) => { return blob.arrayBuffer(); }
 function decryptBlob(e: Uint8Array, r: string) {
     if (r.length == 0)
         return null;
@@ -62,18 +62,16 @@ function decryptBlob(e: Uint8Array, r: string) {
     return o
 }
 
-async function decryptData(blob: Blob) {
-  return await blobToArrayBuffer(blob).then(buf => {
-    let l = buf,
-    a = SECURE,
-    u = decryptBlob(new Uint8Array(l), a),
-    p = u ? textDecode(u) : null;
+function decryptData(buf: ArrayBuffer) {
+  let l = buf,
+  a = SECURE,
+  u = decryptBlob(new Uint8Array(l), a),
+  p = u ? textDecode(u) : null;
 
-    try{
-      const data = p ? JSON.parse(p) : null;
-      return data
-    }catch(e) {
-        return null;
-    };
-  })
+  try{
+    const data = p ? JSON.parse(p) : null;
+    return data
+  }catch(e) {
+      return null;
+  };
 }

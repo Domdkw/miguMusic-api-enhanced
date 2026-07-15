@@ -3,7 +3,7 @@
 //origin: https://passport.migu.cn
 //author: Domdkw 2026.7.9
 
-
+import axios from 'axios';
 import { RSAKey } from '../utils/rsalib'
 import { getPublicKey } from '../utils/publicKey'
 import { URLParams } from '../utils/URLParams';
@@ -54,20 +54,20 @@ export const loginSim = {
         //console.log('[$ object]', $);
 
         const form = URLParams($);
-        const send = await fetch(`https://passport.migu.cn/api/simauth/send`
+        
+        const send = await axios.post(`https://passport.migu.cn/api/simauth/send`
+            ,form
             ,{
-                method:'POST',
                 headers:{
                     'Host':'passport.migu.cn',
                     'Content-Type':'application/x-www-form-urlencoded',
                     'Referer': 'https://passport.migu.cn/login',
                     'Origin': 'https://passport.migu.cn',
                 },
-                body:form,
             }
         );
-        if(!send.ok) return {error:'simauth f:net error'};
-        const sendbody = await send.json();
+        
+        const sendbody = send.data;
 
         if(!sendbody && sendbody.status != '2000'){
             return {error:sendbody};
@@ -80,21 +80,17 @@ export const loginSim = {
     },
 
     async simQuery(sim_sessionid: string){
-        var $;
-        
         //query start
-        $ = {
+        const $ = {
             "isAsync":true,
             "sim_sessionid":sim_sessionid,
             "sourceID":"220029"
         }
 
-        const form = new URLSearchParams();
-        for (const [key, value] of Object.entries($)) {
-            form.append(key, String(value));
-        }
+        const form = URLParams($);
 
-        const query = await fetch(`https://passport.migu.cn/api/simauth/query`
+        const query = await axios.post(`https://passport.migu.cn/api/simauth/query`
+            ,form
             ,{
                 method:'POST',
                 headers:{
@@ -103,12 +99,10 @@ export const loginSim = {
                     'Referer': 'https://passport.migu.cn/login',
                     'Origin': 'https://passport.migu.cn',
                 },
-                body:form,
             }
         );
 
-        if(!query.ok) return {error:'simauth e'};
-        const querybody = await query.json();
+        const querybody = query.data;
 
         if(querybody.status == '4071'){
             //waiting

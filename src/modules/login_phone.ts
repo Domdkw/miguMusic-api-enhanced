@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { RSAKey } from '../utils/rsalib'
 import { getPublicKey } from '../utils/publicKey'
 import { URLParams } from '../utils/URLParams'
@@ -43,9 +44,8 @@ export const loginPhone = {
 
         const query = URLParams($);
 
-        const res = await fetch(`https://passport.migu.cn/login/dynamicpassword?${query}`
+        const res = await axios.get(`https://passport.migu.cn/login/dynamicpassword?${query}`
             ,{
-                method:'GET',
                 headers:{
                     'Host':'passport.migu.cn',
                     'Referer': 'https://passport.migu.cn/login',
@@ -54,8 +54,7 @@ export const loginPhone = {
             }
         );
 
-        if(!res.ok) return {error:'gmc e'};
-        const data = await res.json();
+        const data = res.data;
         return data;
     },
 
@@ -94,20 +93,19 @@ export const loginPhone = {
 
         const form = URLParams($);
 
-        const res = await fetch(`https://passport.migu.cn/authn/dynamicpassword`
+        const res = await axios.post(`https://passport.migu.cn/authn/dynamicpassword`
+            ,form
             ,{
-                method:'POST',
                 headers:{
                     'Host':'passport.migu.cn',
                     'Content-Type':'application/x-www-form-urlencoded',
                     'Referer': 'https://passport.migu.cn/login',
                     'Origin': 'https://passport.migu.cn',
                 },
-                body:form,
             }
         );
-        if(!res.ok) return {error:'gmc e'};
-        const data = await res.json();
+        
+        const data = res.data;
         //console.log('data', data);
         return data;
     }

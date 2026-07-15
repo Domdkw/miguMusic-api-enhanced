@@ -57,3 +57,18 @@ export const getSetCookieValue = (headers: Headers, key: string): string => {
     const cookies = parseSetCookies(headers);
     return getCookieValue(cookies, key);
 };
+
+/**
+ * 从 axios 响应头（普通对象）中提取指定 cookie 的值
+ * @param headers - axios 响应头对象
+ * @param key - 需要查找的 cookie 键名
+ * @returns 对应的 cookie 值，未找到返回空字符串
+ */
+export const getSetCookieValueFromObject = (headers: Record<string, any>, key: string): string => {
+    const setCookieHeader: string | string[] | undefined = headers['set-cookie'];
+    if (!setCookieHeader) {
+        return '';
+    }
+    const cookies = Array.isArray(setCookieHeader) ? setCookieHeader : setCookieHeader.split(',').map(c => c.trim());
+    return getCookieValue(cookies, key);
+};

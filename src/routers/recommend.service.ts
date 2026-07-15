@@ -32,7 +32,7 @@ export default function (app: Hono) {
 
     app.get('/recommend/radio/all', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
-        const data = await getRadioRecommendAll(pacmtoken);
-        return c.json({ success: true, ...data });
+        const {data, newPacmToken} = await getRadioRecommendAll(pacmtoken);
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 }

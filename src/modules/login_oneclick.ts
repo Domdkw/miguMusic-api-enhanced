@@ -5,6 +5,7 @@
 // origin: https://passport.migu.cn/login?sourceid=220029&forceAuthn=true&hideRegister=1&hideForgetPass=1&callbackURL=PostToken
 
 
+import axios from 'axios';
 import crypto from 'crypto'
 import { URLParams } from '../utils/URLParams';
 import { getDeviceId } from '../utils/deviceID';
@@ -137,19 +138,18 @@ export const YDRZ = {
         }
         //console.log(requestData);
         
-        const res = await fetch("https://verify.cmpassport.com/h5/getPreMobile"
+        const res = await axios.post("https://verify.cmpassport.com/h5/getPreMobile"
+            ,requestData
             ,{
-                method:'POST',
                 headers:{
                     'Referer':'https://passport.migu.cn/',
                     'Origin':'https://passport.migu.cn',
                 },
-                body:JSON.stringify(requestData),
             }
         );
         
-        if(!res.ok) return; //console.error('fetch yd e');
-        const json = await res.json(), token = json.body?.token || '';
+        if(!res.data) return; //console.error('fetch yd e');
+        const json = res.data, token = json?.token || '';
         if(!token) return; //console.error('no token',json)
         //console.log(token)
         return token;
@@ -197,11 +197,10 @@ const genInternetSign = async(): Promise<string | undefined>=> {
     // 发送请求
     const url = `https://passport.migu.cn/api/genInternetSign?preSign=${preSign}&msgid=${msgId}&systemtime=${time}&sourceid=220029&signature=${signature}`;
     //console.log(url)
-    const res = await fetch(url);
+    const res = await axios.get(url);
 
     // 解析响应
-    if(!res.ok) return undefined;
-    const data = await res.json();
+    const data = res.data;
     if(!data || data.status !== 2000) return undefined;
 
     // 提取rsaSign
@@ -227,18 +226,16 @@ const getSTToken = async(uniToken: string): Promise<{token: string, msisdn: stri
     }
     const form = URLParams($);
     
-    const res = await fetch('https://passport.migu.cn/authn/uniTokenValidate'
+    const res = await axios.post('https://passport.migu.cn/authn/uniTokenValidate'
         ,{
-            method:'POST',
             headers:{
                 'content-type':'application/x-www-form-urlencoded; charset=UTF-8'
             },
-            body:form
         }
     );
-    if(!res.ok) return {error:'fetch uni e'}
+    if(!res.data) return {error:'fetch uni e'}
     
-    const json = await res.json(), 
+    const json = res.data, 
         status:string = json.status?.toString() || '', 
         token:string = json.result?.token || '',
         msisdn:string = json.result?.msisdn || '';

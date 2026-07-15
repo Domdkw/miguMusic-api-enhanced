@@ -1,4 +1,5 @@
-import { parseSetCookies, getCookieValue } from '../utils/setCookie';
+import axios from 'axios';
+import { getSetCookieValueFromObject } from '../utils/setCookie';
 
 export const getPacmToken = async (
     token: string = '', 
@@ -6,7 +7,7 @@ export const getPacmToken = async (
     sourceId: string = '220029',
     activityId: string = 'MUSIC-WWW'
 ) => {
-    const res = await fetch(
+    const res = await axios.get(
         `https://c.musicapp.migu.cn/user/h5/token-validate/v3.0?token=${token}&type=${type}&sourceId=${sourceId}&activityId=${activityId}`,
         {
             headers: {
@@ -15,12 +16,9 @@ export const getPacmToken = async (
                 "Pragma": "no-cache",
                 "Referer": "https://music.migu.cn/"
             },
-            method:'GET',
         }
     );
 
-    const cookie = parseSetCookies(res.headers);
-    const pacmToken = getCookieValue(cookie, 'pacmtoken');
-    const body = await res.json();
-    return { pacmToken, cookie, body };
+    const pacmToken = getSetCookieValueFromObject(res.headers, 'pacmtoken');
+    return { pacmToken, body: res.data };
 };

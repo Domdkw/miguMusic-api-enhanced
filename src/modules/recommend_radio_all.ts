@@ -1,4 +1,5 @@
-import { h5fetch } from '../utils/h5fetch';
+import axios from 'axios';
+import { getSetCookieValueFromObject } from '../utils/setCookie';
 
 /**
  * 获取电台推荐 （所有电台）
@@ -7,12 +8,14 @@ import { h5fetch } from '../utils/h5fetch';
  * @returns 
  */
 export const getRadioRecommendAll = async (pacmtoken = '') => {
-    return await h5fetch(`https://app.c.nf.migu.cn/pc/bmw/page-data/music-radio/v1.0?templateVersion=1`
+    const res = await axios.get(`https://app.c.nf.migu.cn/pc/bmw/page-data/music-radio/v1.0?templateVersion=1`
         ,{
-            method: 'GET',
             headers: {
                 "Cookie": `pacmtoken=${pacmtoken}`,
             }
         }
     );
+    
+    const newPacmToken = getSetCookieValueFromObject(res.headers, 'pacmtoken');
+    return { data: res.data, newPacmToken };
 };

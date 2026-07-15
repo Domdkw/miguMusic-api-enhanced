@@ -1,18 +1,13 @@
-import { getSetCookieValue } from '../utils/setCookie';
+import axios from 'axios';
+import { getSetCookieValueFromObject } from '../utils/setCookie';
 
 export const getUserHomePage = async (pacmtoken: string) => {
-    const res = await fetch(`https://app.c.nf.migu.cn/pc/user/home-page/v2.0`
-        ,{
-            method: 'GET',
-            headers: {
-                "Cookie": `pacmtoken=${pacmtoken}`,
-                //"channel": "014X031",
-                //"Referer": `https://music.migu.cn/`
-            }
+    const res = await axios.get('https://app.c.nf.migu.cn/pc/user/home-page/v2.0', {
+        headers: {
+            "Cookie": `pacmtoken=${pacmtoken}`,
         }
-    );
+    });
 
-    const newPacmToken = getSetCookieValue(res.headers, 'pacmtoken');
-    const data = await res.json();
-    return { data, pacmtoken: newPacmToken };
+    const newPacmToken = getSetCookieValueFromObject(res.headers, 'pacmtoken');
+    return { data: res.data, newPacmToken };
 };

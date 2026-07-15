@@ -5,6 +5,7 @@
 // ====================================
 
 
+import axios from 'axios';
 import { RSAKey } from '../utils/rsalib'
 import { getPublicKey } from '../utils/publicKey'
 import { URLParams } from '../utils/URLParams';
@@ -66,20 +67,17 @@ export const loginNP = {
 
         const form = URLParams($);
 
-        const res = await fetch(`https://passport.migu.cn/authn`
-            ,{
-                method:'POST',
+        const res = await axios.post(`https://passport.migu.cn/authn`,
+            form,
+            {
                 headers:{
                     'Host':'passport.migu.cn',
                     'Content-Type':'application/x-www-form-urlencoded',
                     'Referer': 'https://passport.migu.cn/login',
                     'Origin': 'https://passport.migu.cn',
                 },
-                body:form,
             }
         );
-        if(!res.ok) return {error:'请求登录失败'};
-        const body = await res.json();
-        return body;
+        return res.data;
     }
 }

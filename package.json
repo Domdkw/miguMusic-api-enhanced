@@ -1,6 +1,6 @@
 {
   "name": "migu-api-enhanced",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "license": "Apache-2.0",
   "author": "Domdkw",
   "description": "咪咕音乐 API 增强 SDK（多平台部署 + NPM 包）",
@@ -21,7 +21,15 @@
     "LICENSE"
   ],
   "sideEffects": false,
-  "keywords": ["backend","migu-api","migu music api","migu music","migu","api","enhanced"],
+  "keywords": [
+    "backend",
+    "migu-api",
+    "migu music api",
+    "migu music",
+    "migu",
+    "api",
+    "enhanced"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Domdkw/migu-api-enhanced.git"
@@ -61,5 +69,8 @@
     "tsx": "^4.19.2",
     "typescript": "^5.9.3",
     "wrangler": "^4.4.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.8"
   }
 }

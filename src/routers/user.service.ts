@@ -9,34 +9,34 @@ import { getUserMyList } from '../modules/user_myList';
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
-        const data = await getUserBadge(pacmtoken);
-        return c.json({ success: true, ...data });
+        const {data, newPacmToken} = await getUserBadge(pacmtoken);
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 
     app.get('/user/info', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
-        const data = await queryUserInfo(pacmtoken);
-        return c.json({ success: true, ...data });
+        const {data, newPacmToken} = await queryUserInfo(pacmtoken);
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 
     app.get('/user/homePage', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
-        const data = await getUserHomePage(pacmtoken);
-        return c.json({ success: true, ...data });
+        const {data, newPacmToken} = await getUserHomePage(pacmtoken);
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 
     app.get('/user/recommend/today', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
-        const data = await getTodayRecommend(pacmtoken);
-        return c.json({ success: true, ...data });
+        const {data, newPacmToken} = await getTodayRecommend(pacmtoken);
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 
     app.get('/user/collect', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
         const page = Number(c.req.query('page') ?? 1);
         const size = Number(c.req.query('size') ?? 20);
-        const data = await getUserCollect(pacmtoken, page, size);
-        return c.json({ success: true, ...data });
+        const {data, newPacmToken} = await getUserCollect(pacmtoken, page, size);
+        return c.json({ success: true, ...data, pacmtoken:newPacmToken });
     });
 
     app.get('/user/myList', async (c) => {
@@ -44,7 +44,7 @@ export default function (app: Hono) {
         const page = Number(c.req.query('page') ?? 1);
         const size = Number(c.req.query('size') ?? 20);
         const queryType = Number(c.req.query('queryType') ?? 0);
-        const data = await getUserMyList(pacmtoken, queryType, page, size);
-        return c.json({ success: true, ...data });
+        const {data, newPacmToken} = await getUserMyList(pacmtoken, queryType, page, size);
+        return c.json({ success: true, ...data, pacmtoken:newPacmToken });
     });
 }

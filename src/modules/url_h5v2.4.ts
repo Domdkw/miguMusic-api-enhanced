@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const getUrlH5V24 = async (contentId: string, copyrightId: string, toneFlag: string = 'PQ', resourceType: string = '2') => {
     const headers = {
         "birth": "h5page",
@@ -7,22 +9,18 @@ export const getUrlH5V24 = async (contentId: string, copyrightId: string, toneFl
         "location-info": "",
     }
 
-    const res = await fetch(
+    const res = await axios.get(
         `https://c.musicapp.migu.cn/strategy/listen-url/h5/v2.4?contentId=${contentId}&copyrightId=${copyrightId}&resourceType=${resourceType}&netType=01&toneFlag=${toneFlag}&scene=&lowerQualityContentId=${contentId}`,
         {
-            headers: headers
+            headers: headers,
+            responseType: 'arraybuffer'
         }
     );
-    const blob = await res.blob();
 
-    return await decryptData(blob);
+    return await decryptData(res.data);
 };
 
 const SECURE = ["Jk8qzuePiJ1qE3mDYhLQ3T73DtDoAhLP"];
-
-const blobToArrayBuffer = async(blob: Blob) => {
-    return await blob.arrayBuffer();
-}
 
 function strToUtf8Bytes(e: string) {
     return new TextEncoder().encode(e)
@@ -69,14 +67,9 @@ function decode(e: Uint8Array, t: string) {
     return i
 }
 
-const decryptData = async (blob: Blob) => {
-    const ab = await blobToArrayBuffer(blob);
-
+const decryptData = (ab: ArrayBuffer) => {
     const r = decode(new Uint8Array(ab), SECURE[0]);
-    
     const d = utf8Bytes2str(r as Uint8Array);
-
-    const data = JSON.parse(d);
-    return data;
+    return JSON.parse(d);
 }
 
