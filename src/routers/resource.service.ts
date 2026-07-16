@@ -51,8 +51,9 @@ export default function (app: Hono) {
 
     app.get('/resourceinfo', async (c) => {
         const resourceId = c.req.query('resourceId') ?? '';
+        const copyrightId = c.req.query('copyrightId') ?? '';
         const resourceType = c.req.query('resourceType') ?? 2;
-        const data = await getResourceInfo(resourceId, Number(resourceType));
+        const data = await getResourceInfo(resourceId, copyrightId, Number(resourceType));
         return c.json({ success: true, ...data });
     });
 
