@@ -63,6 +63,8 @@
 | format | string | 否 | 画质，默认 050019 (HQ高清) | 050019 |
 | needHttps | boolean | 否 | 是否 HTTPS，默认 true | true |
 
+!> 上述参数都需要从 `/mv/info` 接口获取
+
 ### 请求示例
 
 ```

@@ -12,6 +12,7 @@ import resourceService from './resource.service';
 import mvService from './mv.service';
 import userService from './user.service';
 import actionService from './action.service';
+import svideoService from './svideo.service';
 
 
 const routes = new Hono();
@@ -29,6 +30,7 @@ const services = [
     mvService,
     userService,
     actionService,
+    svideoService,
 ];
 
 services.forEach(register => register(routes));

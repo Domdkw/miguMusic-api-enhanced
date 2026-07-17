@@ -1,5 +1,34 @@
 # 资源接口
 
+## 获取歌曲歌词
+
+**接口地址**: `/lyric`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| contentId | string | 是 | 单个Content ID | 600929000001520013 |
+
+### 请求示例
+
+```
+/lyric?contentId=600929000001520013
+```
+
+### 响应示例
+
+```json
+{
+  "lrc": "[00:01.00]APT. - ROSÉ/Bruno Mars",
+  "success": true,
+  "lrcUrl": "https://d.musicapp.migu.cn/xx/xxx"
+}
+```
+
+---
+
 ## 资源信息
 
 **接口地址**: `/resourceinfo`  
@@ -9,13 +38,16 @@
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
-| resourceId | string | 是 | 资源 ID（支持竖线分隔多 ID） | 1131254786\|1000002956 |
+| resourceIds | string | 是 | 资源 ID 列表（逗号分隔） | 1131254786,1000002956 |
+| copyrightIds | string | 是 | 版权 ID 列表（逗号分隔） | ... |
 | resourceType | string | 是 | 资源类型 | 2002 |
+
+!> 资源id和版权id二选一传入, 2002为歌手, 2为歌曲
 
 ### 请求示例
 
 ```
-/resourceinfo?resourceId=1131254786|1000002956&resourceType=2002
+/resourceinfo?resourceIds=1131254786,1000002956&resourceType=2002
 ```
 
 ---

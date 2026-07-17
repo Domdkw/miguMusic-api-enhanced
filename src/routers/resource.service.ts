@@ -5,6 +5,7 @@ import { getOpNum } from '../modules/opNum';
 import { getVersion } from '../modules/version';
 import { getResourceInfo } from '../modules/resourceinfo';
 import { getTicketInfo } from '../modules/ticket';
+import { getLyric } from '../modules/lyric';
 
 
 export default function (app: Hono) {
@@ -50,10 +51,10 @@ export default function (app: Hono) {
     });
 
     app.get('/resourceinfo', async (c) => {
-        const resourceId = c.req.query('resourceId') ?? '';
-        const copyrightId = c.req.query('copyrightId') ?? '';
+        const resourceIds = c.req.query('resourceIds') ?? '';
+        const copyrightIds = c.req.query('copyrightIds') ?? '';
         const resourceType = c.req.query('resourceType') ?? 2;
-        const data = await getResourceInfo(resourceId, copyrightId, Number(resourceType));
+        const data = await getResourceInfo(resourceIds, copyrightIds, Number(resourceType));
         return c.json({ success: true, ...data });
     });
 
@@ -62,5 +63,11 @@ export default function (app: Hono) {
         const pageCount = c.req.query('pageCount') ?? 10;
         const data = await getTicketInfo(Number(page), Number(pageCount));
         return c.json({ success: true, ...data });
+    });
+
+    app.get('/lyric', async (c) => {
+        const contentId = c.req.query('contentId') ?? '';
+        const data = await getLyric(contentId);
+        return c.json(data); // 不用套success,内部已处理,更详细
     });
 }

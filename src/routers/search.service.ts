@@ -5,7 +5,7 @@ import { searchSinger } from '../modules/search_singer';
 import { searchConcert } from '../modules/search_concert';
 import { getSearchHot } from '../modules/search_hot';
 import { getSearchDefault } from '../modules/search_default';
-import { searchVideo } from '../modules/search_video';
+import { searchMv } from '../modules/search_mv';
 import { searchSuggest } from '../modules/search_suggest';
 import { searchRbt } from '../modules/search_rbt';
 import { searchTicket } from '../modules/search_ticket';
@@ -47,11 +47,11 @@ export default function (app: Hono) {
         return c.json({ success: true, ...data });
     });
 
-    app.get('/search/video', async (c) => {
+    app.get('/search/mv', async (c) => {
         const text = c.req.query('text') ?? '';
         const page = c.req.query('page') ?? 1;
         const typeOrder = c.req.query('typeOrder') ?? 0;
-        const data = await searchVideo(text, Number(page), Number(typeOrder));
+        const data = await searchMv(text, Number(page), Number(typeOrder));
         return c.json({ success: true, ...data });
     });
 
