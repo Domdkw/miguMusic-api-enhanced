@@ -11,13 +11,9 @@
 ![Deno](https://img.shields.io/badge/Deno-000000?logo=deno&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)
 
-## 一键部署
-[![npm version](https://img.shields.io/npm/v/migu-api-enhanced.svg?logo=npm)](https://www.npmjs.com/package/migu-api-enhanced)
+## API 接口
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Domdkw/migu-api-enhanced)
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Domdkw/migu-api-enhanced)
-[![使用 EdgeOne Pages 部署](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://edgeone.ai/pages/new?repository-url=https://github.com/Domdkw/migu-api-enhanced)
-[![Deploy on Deno](https://deno.com/button)](https://console.deno.com/new?clone=https://github.com/Domdkw/migu-api-enhanced)
+[API 文档](https://domdkw.github.io/miguMusic-api-enhanced/)
 
 ## 特性
 
@@ -45,10 +41,6 @@ migu-api-enhanced/
 ├── tsup.config.ts     # tsup 构建配置
 └── package.json
 ```
-
-## API 接口
-
-[API 文档](https://domdkw.github.io/miguMusic-api-enhanced/api/search.md)
 
 ## 快速开始
 
