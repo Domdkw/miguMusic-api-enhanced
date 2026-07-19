@@ -13,7 +13,7 @@
 
 ## API 接口
 
-[API 文档](https://domdkw.github.io/miguMusic-api-enhanced/)
+更新于 [API 文档](https://domdkw.github.io/miguMusic-api-enhanced/)
 
 ## 特性
 
@@ -26,7 +26,6 @@
 ## 项目结构
 
 ```
-migu-api-enhanced/
 ├── src/
 │   ├── adapters/      # 平台适配器
 │   ├── modules/       # API 模块（NPM 包导出）
@@ -35,11 +34,6 @@ migu-api-enhanced/
 │   ├── utils/         # 工具函数
 │   ├── app.ts         # 应用入口
 │   └── index.ts       # NPM 包入口
-├── functions/         # EdgeOne 边缘函数
-├── tsconfig.json      # TypeScript 基础配置
-├── tsconfig.sdk.json  # SDK 类型检查配置
-├── tsup.config.ts     # tsup 构建配置
-└── package.json
 ```
 
 ## 快速开始
@@ -88,51 +82,13 @@ pnpm run build:node  # 编译
 pnpm start           # 启动
 # 以后直接运行 pnpm start 即可，无需重新构建
 
-# Cloudflare Workers
-pnpm run deploy:cf
-
-# Vercel
-pnpm run deploy:vercel
-
-# Deno
-pnpm run deploy:deno
+# Bun 生产环境
+pnpm run start:bun
 ```
 
 ### 环境变量
 
-服务端部署时可通过环境变量配置：
-
-| 变量名 | 说明 | 示例 |
-| ------ | ---- | ---- |
-| `ALLOWED_ORIGINS` | CORS 允许的源（逗号分隔） | `https://example.com,https://api.example.com` |
-
-```bash
-# Node.js 启动时设置环境变量
-ALLOWED_ORIGINS=https://example.com pnpm start
-```
-
-## TypeScript 配置
-
-本项目使用 TypeScript 5.x，配置分为两部分：
-
-| 配置文件 | 用途 |
-| -------- | ---- |
-| `tsconfig.json` | 基础配置，定义编译选项 |
-| `tsconfig.sdk.json` | SDK/NPM 包类型检查，排除应用层代码 |
-
-### 多平台部署说明
-
-各平台部署使用不同的构建工具：
-
-| 平台 | 部署方式 | 构建工具 |
-| ---- | -------- | -------- |
-| Node.js | `pnpm run deploy:node` | esbuild |
-| Node.js | `tsx` 直接运行 | 无需编译 |
-| Cloudflare Workers | `wrangler deploy` | wrangler 内置 |
-| Vercel | `vercel --prod` | Vercel 内置 |
-| Deno | `deno run` | 无需编译 |
-| EdgeOne | `esbuild` | esbuild |
-| NPM 包 | `tsup` | tsup |
+请参考 [deployment.md](/docs/deployment.md) 部署说明。
 
 ## 作为 NPM 包使用
 
@@ -153,9 +109,7 @@ npm install migu-api-enhanced
 
 ```ts
 import { getAlbumInfo, getUrlV2 } from 'migu-api-enhanced';
-
 const album = await getAlbumInfo('1123');
-const urlInfo = await getUrlV2('contentId', 'copyrightId');
 ```
 ### 方式二：`createClient` 工厂函数
 ```ts
@@ -166,22 +120,7 @@ const migu = createClient();
 // 搜索歌曲
 const data = await migu.searchSong('周杰伦', 1);
 console.log(data);
-
-// 获取专辑详情
-const album = await migu.getAlbumInfo('1123');
-console.log(album);
 ```
-
-### 构建
-
-```bash
-pnpm run build
-# 产物输出到 dist/：index.js（ESM）+ index.cjs（CJS）+ index.d.ts（类型声明）
-```
-
-## 许可证
-
-本项目采用 [Apache License 2.0](LICENSE) 许可证。
 
 ## 免责声明
 

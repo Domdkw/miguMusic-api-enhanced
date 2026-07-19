@@ -69,11 +69,13 @@ pnpm run typecheck
 
 ```bash
 # 搜索接口测试
-curl "http://localhost:6200/search?text=周杰伦"
+curl "http://localhost:6200/api/search?text=周杰伦"
 
 # 热门搜索测试
-curl "http://localhost:6200/search/hot"
+curl "http://localhost:6200/api/search/hot"
 ```
+
+?> 推荐使用[Postman](https://raw.githubusercontent.com/Domdkw/miguMusic-api-enhanced/refs/heads/main/postman/enhanced-api.postman_collection.json)文件进行测试
 
 ## 下一步
 
