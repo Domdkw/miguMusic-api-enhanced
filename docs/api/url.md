@@ -72,7 +72,7 @@
 | netType | string | 否 | 网络类型 | 01 |
 | toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
 
-?> 此接口可以播放/试听 VIP 歌曲，使用范围：y.migu.cn歌单歌曲分享，m.music.migu.cn播放歌曲，h5.hf.migu.cn活动页
+?> 使用范围：y.migu.cn歌单歌曲分享，m.music.migu.cn播放歌曲，h5.hf.migu.cn活动页
 原返回值为加密blob
 
 ### 请求示例

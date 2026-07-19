@@ -26,16 +26,6 @@
 - [NPM 包使用](npm-package.md)
 - [API 接口文档](api/search.md)
 
-## 一键部署 (测试中，先别用)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Domdkw/migu-api-enhanced)
-
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Domdkw/migu-api-enhanced)
-
-[![使用 EdgeOne Pages 部署](https://cdnstatic.tencentcs.com/edgeone/pages/deploy.svg)](https://edgeone.ai/pages/new?repository-url=https://github.com/Domdkw/migu-api-enhanced)
-
-[![Deploy on Deno](https://deno.com/button)](https://console.deno.com/new?clone=https://github.com/Domdkw/migu-api-enhanced)
-
 ## 项目结构
 
 ```
@@ -62,6 +52,8 @@ migu-api-enhanced/
 本项目仅供学习和研究使用，不得用于商业用途。
 
 本项目通过非官方接口获取数据，与咪咕音乐官方无任何关联。使用本项目所产生的一切后果由使用者自行承担，项目作者不承担任何责任。
+
+本项目仅在于收集网络公开的文章，未进行非法破解，只在请求转发，面向对象：咪咕音乐开发人员
 
 本项目所涉及的音视频资源版权归咪咕音乐所有，请支持正版音乐。
 

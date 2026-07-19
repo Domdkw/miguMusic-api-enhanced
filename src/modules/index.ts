@@ -67,3 +67,5 @@ export { getVrbtUrl } from './vrbt_url';
 export { getLyric } from './lyric';
 export { addUserCollect } from './user_collect_add';
 export { removeUserCollect } from './user_collect_remove';
+export { likeSong } from './user_like';
+export { dislikeSong } from './user_dislike';
