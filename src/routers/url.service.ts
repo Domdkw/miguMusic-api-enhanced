@@ -16,9 +16,8 @@ export default function (app: Hono) {
         const contentId = c.req.query('contentId') || '';
         const copyrightId = c.req.query('copyrightId') || '';
         const toneFlag = c.req.query('toneFlag') || 'PQ';
-        const resourceType = c.req.query('resourceType') || '2';
         const pacmtoken = c.req.query('pacmtoken') || '';
-        const data = await getUrlV2(contentId, copyrightId, toneFlag, resourceType, pacmtoken);
+        const data = await getUrlV2(contentId, copyrightId, toneFlag, pacmtoken);
         return c.json({ success: true, ...data });
     });
 
@@ -26,8 +25,7 @@ export default function (app: Hono) {
         const contentId = c.req.query('contentId') || '';
         const copyrightId = c.req.query('copyrightId') || '';
         const toneFlag = c.req.query('toneFlag') || 'PQ';
-        const resourceType = c.req.query('resourceType') || '2';
-        const data = await getUrlH5V24(contentId, copyrightId, toneFlag, resourceType);
+        const data = await getUrlH5V24(contentId, copyrightId, toneFlag);
         return c.json({ success: true, ...data });
     });
 }

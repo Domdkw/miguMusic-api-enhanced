@@ -126,28 +126,6 @@
 
 ---
 
-## 我的歌单
-
-**接口地址**: `/user/myList`  
-**请求方法**: `GET`
-
-### 参数说明
-
-| 参数名 | 类型 | 必填 | 说明 | 示例 |
-| ------- | ------ | ------ | ------ | ------ |
-| pacmtoken | string | 是 | 登录凭证 |  |
-| queryType | number | 否 | 查询类型，默认 0 | 0 |
-| page | number | 否 | 页码，默认 1 | 1 |
-| size | number | 否 | 每页数量，默认 20 | 20 |
-
-### 请求示例
-
-```
-/user/myList?pacmtoken=xxx&queryType=0&page=1&size=20
-```
-
----
-
 ## 收藏-列表
 
 **接口地址**: `/user/collect/list`  
@@ -206,6 +184,71 @@
 
 ```
 /user/collect/remove?pacmtoken=xxx&playlistId=234040856
+```
+
+---
+
+## 自建歌单-列表
+
+**接口地址**: `/user/myList`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 是 | 登录凭证 |  |
+| queryType | number | 否 | 查询类型，默认 0 | 0 |
+| page | number | 否 | 页码，默认 1 | 1 |
+| size | number | 否 | 每页数量，默认 20 | 20 |
+
+### 请求示例
+
+```
+/user/myList?pacmtoken=xxx&queryType=0&page=1&size=20
+```
+
+---
+
+## 自建歌单-操作
+
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 |  说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 登录凭证 |  |
+| title | string | 歌单名称 | 自建歌单 |
+| playlistId | number | 歌单 ID | 123456 |
+
+### 添加
+
+**接口地址**: `/user/myList/add` 
+
+需要 ： pacmtoken, title
+
+```
+/user/myList/add?pacmtoken=xxx&title=自建歌单
+```
+
+### 移除
+
+**接口地址**: `/user/myList/remove` 
+
+需要 ： pacmtoken, playlistId
+
+```
+/user/myList/remove?pacmtoken=xxx&playlistId=123456
+```
+
+### 编辑
+**接口地址**: `/user/myList/edit` 
+
+需要 ： pacmtoken, playlistId, title
+
+```
+/user/myList/edit?pacmtoken=xxx&playlistId=123456&title=自建歌单
 ```
 
 ---

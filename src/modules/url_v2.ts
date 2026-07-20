@@ -1,36 +1,21 @@
 import axios from 'axios';
 import { getDeviceId } from '../utils/deviceID'
 
-export const getUrlV2 = async (contentId: string, copyrightId: string, toneFlag: string = 'PQ', resourceType: string = '2', pacmtoken: string = '') => {
+export const getUrlV2 = async (contentId: string, copyrightId: string, toneFlag: string = 'PQ', pacmtoken: string = '') => {
     const deviceId = getDeviceId();
-    const timestamp = Date.now();
 
     const headers = {
-        "Accept": "application/json, text/plain, */*",
-        "test": "00",
         "channel": "014X031",
         "subchannel": "014X031",
-        "logId": "cfrom=&appId=h5",
-        "uid": "",
         "pacmtoken": pacmtoken,
-        "appId": "h5",
-        "platform": "H5",
         "deviceId": deviceId,
-        "ua": "Android_migu",
-        "version": "6.8.8",
-        "activityId": "MUSIC-WWW",
-        "birth": "h5page",
-        "signature": "1",
-        "timestamp": timestamp.toString(),
-        "Content-Type": "application/json;charset=UTF-8",
         "referer": "https://music.migu.cn/",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0",
         "location-data": "30.6698676660,104.1229614820",
         "location-info": "",
     };
 
     const res = await axios.get(
-        `https://app.c.nf.migu.cn/strategy/pc/listen/v2.0?contentId=${contentId}&copyrightId=${copyrightId}&scene=&netType=01&resourceType=${resourceType}&toneFlag=${toneFlag}`,
+        `https://app.c.nf.migu.cn/strategy/pc/listen/v2.0?contentId=${contentId}&copyrightId=${copyrightId}&scene=&netType=01&resourceType=2&toneFlag=${toneFlag}`,
         {
             headers: headers,
             responseType: 'arraybuffer'
