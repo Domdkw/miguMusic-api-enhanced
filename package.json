@@ -1,6 +1,6 @@
 {
   "name": "migu-api-enhanced",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "license": "Apache-2.0",
   "author": "Domdkw",
   "description": "咪咕音乐 API 增强 SDK（多平台部署 + NPM 包）",
@@ -62,6 +62,7 @@
   "devDependencies": {
     "@hono/node-server": "^1.13.7",
     "@types/node": "^26.0.1",
+    "@types/pako": "^2.0.4",
     "esbuild": "^0.28.1",
     "hono": "^4.12.23",
     "hono-mem-cache": "^0.4.0",
@@ -71,6 +72,10 @@
     "wrangler": "^4.4.0"
   },
   "dependencies": {
-    "axios": "^1.6.8"
+    "@libsql/client": "^0.17.4",
+    "axios": "^1.6.8",
+    "db0": "^0.3.4",
+    "pako": "^3.0.1",
+    "unstorage": "^1.17.5"
   }
 }
