@@ -12,7 +12,7 @@ importers:
         specifier: ^0.17.4
         version: 0.17.4
       axios:
-        specifier: ^1.6.8
+        specifier: ^1.18.0
         version: 1.18.1
       db0:
         specifier: ^0.3.4
@@ -2124,13 +2124,6 @@ snapshots:
       - supports-color
 
   iron-webcrypto@1.2.1: {}
-
-  https-proxy-agent@5.0.1:
-    dependencies:
-      agent-base: 6.0.2
-      debug: 4.4.3
-    transitivePeerDependencies:
-      - supports-color
 
   joycon@3.1.1: {}
 

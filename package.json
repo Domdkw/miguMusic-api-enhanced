@@ -73,7 +73,7 @@
   },
   "dependencies": {
     "@libsql/client": "^0.17.4",
-    "axios": "^1.6.8",
+    "axios": "^1.18.0",
     "db0": "^0.3.4",
     "pako": "^3.0.1",
     "unstorage": "^1.17.5"
