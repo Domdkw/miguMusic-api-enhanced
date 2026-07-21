@@ -3,6 +3,10 @@ import { getUrlV1 } from '../modules/url_v1';
 import { getUrlV2 } from '../modules/url_v2';
 import { getUrlH5V24 } from '../modules/url_h5v2.4';
 
+import { saveUrlToDB, getUrlFromDB } from '../middleware/urlSaver';
+import { env } from 'hono/adapter';
+
+
 export default function (app: Hono) {
     app.get('/url/v1', async (c) => {
         const contentId = c.req.query('contentId') || '';
@@ -26,6 +30,36 @@ export default function (app: Hono) {
         const copyrightId = c.req.query('copyrightId') || '';
         const toneFlag = c.req.query('toneFlag') || 'PQ';
         const data = await getUrlH5V24(contentId, copyrightId, toneFlag);
+
+        // 是否使用数据库
+        const USE_DATABASE = env<{ USE_DATABASE: string }>(c).USE_DATABASE === 'true';
+        if (USE_DATABASE) {
+            const url = data?.data?.url || '';
+            if (url !== '') {
+                await saveUrlToDB(contentId, url);
+            }
+        }
+        // ===END===
+
         return c.json({ success: true, ...data });
+    });
+
+    app.get('/url/db', async (c) => {
+
+        // 是否使用数据库
+        const USE_DATABASE = env<{ USE_DATABASE: string }>(c).USE_DATABASE === 'true';
+        if (!USE_DATABASE) {
+            return c.json({ success: false, error: '数据库未启用' }, 400);
+        }
+        // ===END===
+
+        const contentId = c.req.query('contentId') || '';
+
+        if (!contentId) {
+            return c.json({ success: false, error: 'contentId 参数不能为空' }, 400);
+        }
+
+        const result = await getUrlFromDB(contentId);
+        return c.json(result);
     });
 }
