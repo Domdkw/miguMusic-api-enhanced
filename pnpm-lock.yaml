@@ -2125,6 +2125,13 @@ snapshots:
 
   iron-webcrypto@1.2.1: {}
 
+  https-proxy-agent@5.0.1:
+    dependencies:
+      agent-base: 6.0.2
+      debug: 4.4.3
+    transitivePeerDependencies:
+      - supports-color
+
   joycon@3.1.1: {}
 
   js-base64@3.9.1: {}
