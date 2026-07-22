@@ -1,7 +1,8 @@
 import type { Hono } from 'hono';
 import { getPlaylistInfo } from '../modules/playlist_info';
 import { getPlaylistSong } from '../modules/playlist_song';
-import { getPlaylistSquare } from '../modules/playlist_square';
+import { getPlaylistSquarePage } from '../modules/playlist_square_page';
+import { getRadioSong } from '../modules/radio_song';
 
 export default function (app: Hono) {
     app.get('/playlist/info', async (c) => {
@@ -18,8 +19,15 @@ export default function (app: Hono) {
         return c.json({ success: true, ...data });
     });
 
-    app.get('/playlist/square', async (c) => {
-        const data = await getPlaylistSquare();
+    app.get('/playlist/square/page', async (c) => {
+        const data = await getPlaylistSquarePage();
+        return c.json({ success: true, ...data });
+    });
+
+    app.get('/radio/song', async (c) => {
+        const radioId = c.req.query('radioId') ?? '';
+        const page = c.req.query('page') ?? 1;
+        const data = await getRadioSong(radioId, Number(page));
         return c.json({ success: true, ...data });
     });
 }

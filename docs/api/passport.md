@@ -231,12 +231,12 @@
 | sourceId | string | 否 | Source ID | 220029 |
 | activityId | string | 否 | Activity ID | MUSIC-WWW |
 
-?> 只用传一个token就够了
+?> 咪咕音乐只用传一个token
 
 ### 请求示例
 
 ```
-/passport/getPacmToken?token=YOUR_TOKEN&type=2&sourceId=220029&activityId=MUSIC-WWW
+/passport/getPacmToken?token=YOUR_TOKEN
 ```
 
 ---

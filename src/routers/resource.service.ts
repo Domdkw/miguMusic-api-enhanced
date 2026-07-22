@@ -9,10 +9,10 @@ import { getLyric } from '../modules/lyric';
 
 
 export default function (app: Hono) {
-    app.post('/can-listen', async (c) => {
+    app.get('/can-listen', async (c) => {
         try {
-            const body = await c.req.json();
-            const data = await checkCanListen(body);
+            const contentIds = c.req.query('contentIds') ?? '';
+            const data = await checkCanListen(contentIds);
             return c.json({ success: true, ...data });
         } catch (e) {
             return c.json({
