@@ -210,7 +210,7 @@
 
 ***
 
-## 自建歌单-操作
+## 自建歌单-歌单操作
 
 **请求方法**: `GET`
 
@@ -222,7 +222,7 @@
 | title      | string | 歌单名称  | 自建歌单   |
 | playlistId | number | 歌单 ID | 123456 |
 
-### 添加
+### 添加新歌单
 
 **接口地址**: `/user/myList/add`
 
@@ -232,7 +232,7 @@
 /user/myList/add?pacmtoken=xxx&title=自建歌单
 ```
 
-### 移除
+### 移除旧歌单
 
 **接口地址**: `/user/myList/remove`
 
@@ -242,7 +242,7 @@
 /user/myList/remove?pacmtoken=xxx&playlistId=123456
 ```
 
-### 编辑
+### 编辑歌单
 
 **接口地址**: `/user/myList/edit`
 
@@ -254,3 +254,35 @@
 
 ***
 
+## 自建歌单-歌曲操作
+
+**请求方法**: `GET`
+
+### 添加歌曲到歌单
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 是 | 登录凭证 |  |
+| playlistId | number | 是 | 歌单 ID | 123456 |
+| contentIds | string | 是 | 歌曲 ID 列表，多个 ID 用逗号分隔 | 1,2,3 |
+
+```
+/user/myList/song/add?pacmtoken=xxx&playlistId=123456&contentIds=600929000000900351
+```
+
+### 从歌单移除歌曲
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 是 | 登录凭证 |  |
+| playlistId | number | 是 | 歌单 ID | 123456 |
+| contentId | string | 是 | 单个歌曲 ID | 1 |
+
+?> 从歌单移除歌曲接口只能移除单个歌曲的`contentId`，添加接口支持`contentIds`的逗号列表传入。
+
+
+```
+/user/myList/song/remove?pacmtoken=xxx&playlistId=123456&contentId=600929000000900351
+```
+
+***

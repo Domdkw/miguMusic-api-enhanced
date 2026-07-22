@@ -2,28 +2,25 @@ import axios from 'axios';
 import { getSetCookieValueFromObject } from '../utils/setCookie';
 
 /**
- * 编辑播放列表
+ * 删除播放列表中的歌曲
  * @param pacmtoken 用户token
- * @param title 播放列表名称
  * @param playlistId 播放列表id
+ * @param contentId 单个歌曲id
  * @returns 
  */
-export const editUserMyList = async (pacmtoken: string, title: string, playlistId: string) => {
+export const removeSongFromMyList = async (pacmtoken: string, playlistId: string, contentId: string) => {
     const body = {
-        "title": title,
         "channel": "23",
-        "id": playlistId,
-        "songflag": "0"
+        "songflag": "2",
+        "contentId": contentId,
+        "id": playlistId
     };
-    //API与dislike.ts相同
     const res = await axios.post(`https://app.c.nf.migu.cn/pc/user/h5-import-musiclist/v1.0`
-        ,body
-        ,{ 
-            headers: {
-                "Cookie": `pacmtoken=${pacmtoken}`,
-            }
+        ,body,{
+        headers: {
+            "Cookie": `pacmtoken=${pacmtoken}`,
         }
-    );
+    });
 
     const newPacmToken = getSetCookieValueFromObject(res.headers, 'pacmtoken');
     return { data: res.data, newPacmToken };

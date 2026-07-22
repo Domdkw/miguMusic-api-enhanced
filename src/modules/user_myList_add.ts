@@ -1,7 +1,12 @@
 import axios from 'axios';
 import { getSetCookieValueFromObject } from '../utils/setCookie';
-import { parseBody } from 'hono/utils/body';
 
+/**
+ * 创建播放列表
+ * @param pacmtoken 用户token
+ * @param title 播放列表名称
+ * @returns 
+ */
 export const addUserMyList = async (pacmtoken: string, title: string) => {
     const body = {
         "title": title,

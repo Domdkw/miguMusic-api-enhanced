@@ -2,21 +2,18 @@ import axios from 'axios';
 import { getSetCookieValueFromObject } from '../utils/setCookie';
 
 /**
- * 编辑播放列表
- * @param pacmtoken 用户token
- * @param title 播放列表名称
+ * 添加歌曲到播放列表
+ * @param pacmtoken 
  * @param playlistId 播放列表id
+ * @param contentIds 歌曲id列表，逗号分隔
  * @returns 
  */
-export const editUserMyList = async (pacmtoken: string, title: string, playlistId: string) => {
+export const addSongToMyList = async (pacmtoken: string, playlistId: string, contentIds:string) => {
     const body = {
-        "title": title,
-        "channel": "23",
         "id": playlistId,
-        "songflag": "0"
+        "contentIds": contentIds.split(',')
     };
-    //API与dislike.ts相同
-    const res = await axios.post(`https://app.c.nf.migu.cn/pc/user/h5-import-musiclist/v1.0`
+    const res = await axios.post(`https://app.c.nf.migu.cn/pc/user/api/add-music-list-song/v1.0`
         ,body
         ,{ 
             headers: {

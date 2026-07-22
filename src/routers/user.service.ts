@@ -12,6 +12,8 @@ import { dislikeSong } from '../modules/user_dislike';
 import { editUserMyList } from '../modules/user_myList_edit';
 import { addUserMyList } from '../modules/user_myList_add';
 import { removeUserMyList } from '../modules/user_myList_remove';
+import { addSongToMyList } from '../modules/user_myList_add_song';
+import { removeSongFromMyList } from '../modules/user_myList_remove_song';
 
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
@@ -105,6 +107,24 @@ export default function (app: Hono) {
             c.req.query('pacmtoken') ?? '',
             c.req.query('title') ?? '',
             c.req.query('playlistId') ?? ''
+        );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+    
+    app.get('/user/myList/song/add', async (c) => {
+        const {data, newPacmToken} = await addSongToMyList(
+            c.req.query('pacmtoken') ?? '',
+            c.req.query('playlistId') ?? '',
+            c.req.query('contentIds') ?? ''
+        );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/myList/song/remove', async (c) => {
+        const {data, newPacmToken} = await removeSongFromMyList(
+            c.req.query('pacmtoken') ?? '',
+            c.req.query('playlistId') ?? '',
+            c.req.query('contentId') ?? '',
         );
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
