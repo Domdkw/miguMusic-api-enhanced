@@ -54,7 +54,7 @@
 /column/info?columnId=15279065
 ```
 
-?> 此接口会返回`<=200`条数据，特别需要处理[资源类型](/api/resource.md#资源类型)。[Postman API测试](https://raw.githubusercontent.com/Domdkw/miguMusic-api-enhanced/refs/heads/main/postman/enhanced-api.postman_collection.json)
+?> 此接口会返回`<=200`条数据，特别需要处理[资源类型](resource.md#资源类型)。[Postman API测试](https://raw.githubusercontent.com/Domdkw/miguMusic-api-enhanced/refs/heads/main/test/postman/enhanced-api.postman_collection.json)
 
 ---
 

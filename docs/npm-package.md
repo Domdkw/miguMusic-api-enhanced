@@ -76,4 +76,4 @@ const client: MiguClient = createClient();
 
 ## 下一步
 
-- [API 接口文档](/api/search.md) - 查看详细接口说明
+- [API 接口文档](api/search.md) - 查看详细接口说明

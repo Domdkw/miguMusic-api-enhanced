@@ -52,7 +52,7 @@
 /playlist/square/page
 ```
 
-返回的歌单广场数据包含多个 `columnId` 键，可通过 [columnId接口](/api/column.md#栏目信息) 获取。处理较复杂。
+返回的歌单广场数据包含多个 `columnId` 键，可通过 [columnId接口](column.md#栏目信息) 获取。处理较复杂。
 
 ---
 

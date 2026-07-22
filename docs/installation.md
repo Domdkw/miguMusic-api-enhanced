@@ -75,7 +75,7 @@ curl "http://localhost:6200/api/search?text=周杰伦"
 curl "http://localhost:6200/api/search/hot"
 ```
 
-?> 推荐使用[Postman](https://raw.githubusercontent.com/Domdkw/miguMusic-api-enhanced/refs/heads/main/postman/enhanced-api.postman_collection.json)文件进行测试
+?> 推荐使用[Postman](https://raw.githubusercontent.com/Domdkw/miguMusic-api-enhanced/refs/heads/main/test/postman/enhanced-api.postman_collection.json)文件进行测试
 
 ## 下一步
 

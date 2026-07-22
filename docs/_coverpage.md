@@ -8,7 +8,7 @@
 ## 基于 Hono 框架的高性能咪咕音乐 API 服务，支持多平台部署与 NPM 包使用
 
 [GitHub](https://github.com/Domdkw/migu-api-enhanced)
-[开始](/README.md)
+[开始](README.md)
 
 <!-- 背景色类：bg-green / bg-blue / bg-purple / bg-red / bg-black / bg-white -->
 <!-- 背景图：可使用 background-image 自定义 -->
