@@ -59,7 +59,13 @@ export default function (app: Hono) {
             return c.json({ success: false, error: 'contentId 参数不能为空' }, 400);
         }
 
-        const result = await getUrlFromDB(contentId);
-        return c.json(result);
+        const { success, url } = await getUrlFromDB(contentId);
+
+        // 统一返回结构: { success: boolean, data?: { url: string }, error?: string }
+        if (!success) {
+            const data = await getUrlV1(contentId, '', '2');
+            return c.json({ success: true, ...data, hit: false });
+        }
+        return c.json({ success: true, data: { url }, hit: true });
     });
 }
