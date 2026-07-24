@@ -6,6 +6,7 @@ import { getSVideoUrl } from '../modules/svideo_url';
 import { getSVideoUserContent } from '../modules/svideo_userContent';
 import { getVrbtOpNum } from '../modules/vrbt_opNum';
 import { getVrbtUrl } from '../modules/vrbt_url';
+import { getSVideoUserInfo } from '../modules/svideo_userInfo';
 
 export default function (app: Hono) {
     app.get('/svideo/info', async (c) => {
@@ -38,6 +39,14 @@ export default function (app: Hono) {
         const videoUserId = c.req.query('videoUserId') ?? '';
         const nextPageId = c.req.query('nextPageId') ?? '';
         const data = await getSVideoUserContent(videoUserId, nextPageId);
+        return c.json({ success: true, ...data });
+    });
+
+    app.get('/svideo/userInfo', async (c) => {
+        const type = c.req.query('type') ?? 'videoUserId';
+        const uid = c.req.query('uid') ?? '';
+        const videoUserId = c.req.query('videoUserId') ?? '';
+        const data = await getSVideoUserInfo(type, uid, videoUserId);
         return c.json({ success: true, ...data });
     });
 

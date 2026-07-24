@@ -78,3 +78,4 @@ export { getNewSongList } from './column_newSong';
 export { getColumnInfo } from './column_info';
 export { addSongToMyList } from './user_myList_add_song';
 export { removeSongFromMyList } from './user_myList_remove_song';
+export { getSVideoUserInfo } from './svideo_userInfo';

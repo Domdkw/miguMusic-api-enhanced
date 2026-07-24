@@ -62,6 +62,29 @@
 ---
 
 
+## 短视频用户信息
+
+**接口地址**: `/svideo/userInfo`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| type | string | 是 | 查询类型 | (默认videoUserId) | videoUserId |
+| videoUserId | string | 否 | 短视频用户 ID | 10268521 |
+| uid | string | 否 | 用户 UID | 0 |
+
+?> type 可选值：videoUserId, uid
+
+### 请求示例
+
+```
+/svideo/userInfo?videoUserId=10268521&type=videoUserId
+```
+
+---
+
 ## 短视频用户作品
 
 **接口地址**: `/svideo/userContent`  
