@@ -13,6 +13,17 @@
 
 ## API 接口
 
+- **搜索** - 歌曲、歌手、专辑、MV、歌词、短视频、彩铃、演唱会、票务、热门搜索、搜索建议
+- **专辑** - 详情、歌曲列表
+- **歌单** - 信息、列表歌曲、歌单广场、电台歌曲列表
+- **歌手** - 歌手信息、歌手歌曲、歌手专辑、相似歌手
+- **播放地址** - 多版本播放地址接口（v1/v2/h5v2.4）
+- **推荐** - 歌曲、歌单、相似歌曲、电台
+- **MV** - MV 详情、MV 推荐、MV 播放地址(mp4 & m3u8)
+- **资源** - 获取歌词、资源信息、播放次数、检查可听性
+- **用户** - 用户信息、我喜欢、收藏、自建歌单管理
+- **登录认证** - 手机号登录、短信登录、一键登录
+
 更新于 [API 文档](https://domdkw.github.io/miguMusic-api-enhanced/)
 
 ## 特性
@@ -110,6 +121,9 @@ npm install migu-api-enhanced
 ```ts
 import { getAlbumInfo, getUrlV2 } from 'migu-api-enhanced';
 const album = await getAlbumInfo('1123');
+// or
+import * as migu from 'migu-api-enhanced';
+const album = await migu.getAlbumInfo('1123');
 ```
 ### 方式二：`createClient` 工厂函数
 ```ts
