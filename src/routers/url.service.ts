@@ -32,13 +32,13 @@ export default function (app: Hono) {
         const data = await getUrlH5V24(contentId, copyrightId, toneFlag);
 
         // 是否使用数据库
-        const USE_DATABASE = env<{ USE_DATABASE: string }>(c).USE_DATABASE === 'true';
-        if (USE_DATABASE) {
-            const url = data?.data?.url || '';
-            if (url !== '') {
-                await saveUrlToDB(contentId, url);
-            }
-        }
+        //const USE_DATABASE = env<{ USE_DATABASE: string }>(c).USE_DATABASE === 'true';
+        //if (USE_DATABASE) {
+        //    const url = data?.data?.url || '';
+        //    if (url !== '') {
+        //        await saveUrlToDB(contentId, url);
+        //    }
+        //}
         // ===END===
 
         return c.json({ success: true, ...data });

@@ -1,5 +1,16 @@
 import { h5fetch } from '../utils/h5fetch';
 
+/**
+ * 获取mv hls url
+ * 
+ * @param mvContentId mv id
+ * @param mvCopyrightId mv copyrightId
+ * @param url mv url (url接口返回)
+ * @param size mv size (url接口获取)
+ * @param format mv format (url接口获取)
+ * @param needHttps 是否需要https (默认true)
+ * @returns 
+ */
 export const getMvHls = async (
     mvContentId: string, 
     mvCopyrightId: string, 

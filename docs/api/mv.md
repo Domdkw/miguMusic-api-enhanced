@@ -70,3 +70,85 @@
 ```
 /mv/hls?size=38641875&format=050019&mvContentId=600906000000476885&mvCopyrightId=690273Y0015
 ```
+
+---
+
+## 演唱会-简略信息
+
+**接口地址**: `/mv/concert/info`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| concertId | string | 是 | Concert ID | 87783043 |
+
+### 请求示例
+
+```
+/mv/concert/info?concertId=87783043
+```
+
+---
+
+## 演唱会-url
+
+**接口地址**: `/mv/concert/url`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| concertId | string | 是 | Concert ID | 87783043 |
+| liveId | string | 是 | Live ID | 657367212 |
+| rateLevel | string | 是 | 画质等级 | 3 |
+
+?> 1:普通 2:高清 3:超清 (默认 1)， `liveId` 需要从 [/mv/concert/info](#演唱会-简略信息) 接口获取。
+
+### 请求示例
+
+```
+/mv/concert/url?concertId=87783043&liveId=657367212&rateLevel=3
+```
+
+---
+
+## 演唱会-详细拓展
+
+**接口地址**: `/mv/concert/detail`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| concertId | string | 是 | Concert ID | 87783043 |
+
+### 请求示例
+
+```
+/mv/concert/detail?concertId=87783043
+```
+
+---
+
+## 演唱会-评论
+
+**接口地址**: `/mv/concert/comment`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| concertId | string | 是 | Concert ID | 87783043 |
+
+### 请求示例
+
+```
+/mv/concert/comment?concertId=87783043
+```
+
+---

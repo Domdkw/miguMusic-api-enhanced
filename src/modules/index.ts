@@ -79,3 +79,7 @@ export { getColumnInfo } from './column_info';
 export { addSongToMyList } from './user_myList_add_song';
 export { removeSongFromMyList } from './user_myList_remove_song';
 export { getSVideoUserInfo } from './svideo_userInfo';
+export { getConcertInfo } from './concert_info';
+export { getConcertUrl } from './concert_url';
+export { getConcertDetail } from './concert_detail';
+export { getConcertComment } from './concert_comment';
