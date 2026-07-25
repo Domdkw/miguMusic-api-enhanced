@@ -139,11 +139,11 @@ pnpm run dev
 
 ## 数据库配置
 
-当 `USE_DATABASE=true` 时，系统会自动初始化数据库连接。
+`USE_DATABASE=true`：允许通过 `/url/db` 接口查询已保存的音乐链接。
 
-`bun`、`node.js ` 和其他运行时的数据库，存储在 `/sql/` 目录下。共用一个数据库文件。
+`AUTO_STORE_URL=true`：自动保存音乐链接到数据库
 
-- 使用 `@libsql/client` 作为数据库客户端，基于SQLite数据库
+`bun`、`node.js ` 和其他运行时的数据库，存储在 `./sql/url.sqlite.db` 。共用一个数据库文件。
 
 数据库功能主要用于：
 

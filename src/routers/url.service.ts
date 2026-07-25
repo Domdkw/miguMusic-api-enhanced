@@ -31,14 +31,14 @@ export default function (app: Hono) {
         const toneFlag = c.req.query('toneFlag') || 'PQ';
         const data = await getUrlH5V24(contentId, copyrightId, toneFlag);
 
-        // 是否使用数据库
-        //const USE_DATABASE = env<{ USE_DATABASE: string }>(c).USE_DATABASE === 'true';
-        //if (USE_DATABASE) {
-        //    const url = data?.data?.url || '';
-        //    if (url !== '') {
-        //        await saveUrlToDB(contentId, url);
-        //    }
-        //}
+        // 是否自动存储 URL 到数据库
+        const AUTO_STORE_URL = env<{ AUTO_STORE_URL: string }>(c).AUTO_STORE_URL === 'true';
+        if (AUTO_STORE_URL) {
+            const url = data?.data?.url || '';
+            if (url !== '') {
+                await saveUrlToDB(contentId, url);
+            }
+        }
         // ===END===
 
         return c.json({ success: true, ...data });
