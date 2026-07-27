@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "migu-api-enhanced",
+  "name": "migumusic-api-enhanced",
   "main": "src/adapters/cloudflare-workers.ts",
   "dev": {
     "port": 6200,
