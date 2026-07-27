@@ -3,7 +3,7 @@ import dbDriver from "unstorage/drivers/db0";
 import cfKvDriver from "unstorage/drivers/cloudflare-kv-binding";
 import denoKvDriver from "unstorage/drivers/deno-kv";
 
-import { getLibSqlDB, getBunDB } from "./sqlite";
+import { getLibSqlDB, getBunDB } from "./sqlite.js";
 
 export async function createUniversalStorage(runtimeKey: string, runtimeEnv?: any) {
     // Cloudflare Workers 环境：使用 KV

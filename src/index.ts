@@ -6,19 +6,19 @@
 // ============================================================
 // 直接导出 modules, utils 所有函数
 // ============================================================
-export * from './modules';
-export * from './utils';
+export * from './modules/index';
+export * from './utils/index';
 
 // ============================================================
 // 命名空间导出
 // ============================================================
-export * as modules from './modules';
-export * as MiguUtils from './utils';
+export * as modules from './modules/index';
+export * as MiguUtils from './utils/index';
 
 // ============================================================
 // 工厂函数
 // ============================================================
-import * as api from './modules';
+import * as api from './modules/index';
 
 /**
  * 创建一个咪咕 API 客户端实例

@@ -1,6 +1,6 @@
 // URL database存储
 import { env, getRuntimeKey } from 'hono/adapter';
-import { createUniversalStorage } from './storage';
+import { createUniversalStorage } from './storage.js';
 import { gzip, ungzip } from 'pako';
 
 let _storage: Awaited<ReturnType<typeof createUniversalStorage>> | null = null;

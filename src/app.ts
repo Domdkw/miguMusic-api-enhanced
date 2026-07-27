@@ -4,7 +4,7 @@ import { logger } from 'hono/logger';
 import { memCache } from 'hono-mem-cache';
 import { env, getRuntimeKey } from 'hono/adapter';
 import { etag, RETAINED_304_HEADERS } from 'hono/etag';
-import apiRoutes from './routers';
+import apiRoutes from './routers/index';
 
 // 通过 import 引入 package.json，esbuild / tsup 在构建时会将 JSON 内联到产物中
 // 这样在 Node、Cloudflare Workers、Vercel Edge、Deno、EdgeOne 等所有 bundler 平台都能直接读取版本号
