@@ -43,10 +43,7 @@ export default function (app: Hono) {
     });
 
     app.get('/version', async (c) => {
-        const channel = c.req.query('channel') ?? '0146921';
-        const version = c.req.query('version') ?? '8.4.0';
-        const ua = c.req.query('ua') ?? 'Android_migu';
-        const data = await getVersion(channel, version, ua);
+        const data = await getVersion();
         return c.json({ success: true, ...data });
     });
 

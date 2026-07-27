@@ -1,6 +1,6 @@
 # 其他接口
 
-## 评论接口
+## 获取评论
 
 **接口地址**: `/comment`  
 **请求方法**: `GET`
@@ -29,13 +29,8 @@
 
 ### 参数说明
 
-| 参数名 | 类型 | 必填 | 说明 | 示例 |
-| ------- | ------ | ------ | ------ | ------ |
-| channel | string | 否 | 渠道 ID |  |
-| ua | string | 否 | UA | 2 |
-| version | number | 否 | 版本号 |  |
+无
 
-!> 提醒：建议全都不传入，使用推荐参数，除非你知道做的是正确的
 ### 请求示例
 
 ```
@@ -51,6 +46,8 @@
     "message": "Migu API Enhanced",
     "version": "版本号",
     "status": "running",
-    "runtime": "Node.js/bun/workerd/<others>"
+    "runtime": "Node.js/bun/workerd/<others>",
+    "dbEnabled": "数据库启用状态",
+    "allowedOrigins": "允许的cors",
 }
 ```
