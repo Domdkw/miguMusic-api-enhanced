@@ -6,38 +6,27 @@
     "port": 6200,
     "ip": "0.0.0.0"
   },
-  "compatibility_date": "2026-06-20"
-  // "compatibility_flags": [
-  //   "nodejs_compat"
-  // ],
-  // 环境变量配置（生产环境建议在 Cloudflare Dashboard 中配置）
-  // "vars": {
-  //   "ALLOWED_ORIGINS": "https://your-domain.com"
-  // },
+  "compatibility_date": "2026-06-20",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "alias": {
+    "db0/connectors/bun-sqlite": "./src/stubs/empty.ts"
+  },
+  // 环境变量配置
+  // 生产环境建议在 Cloudflare Dashboard > Workers > Settings > Variables 中配置
+  // 敏感信息（如 API 密钥）请使用 Secrets（wrangler secret put <NAME>）
+  "vars": {
+    "ALLOWED_ORIGINS": "*",
+    "USE_DATABASE": "true",
+    "AUTO_STORE_URL": "false"
+  },
+  // KV namespace 配置（生产环境需要替换为实际的 id）
+  // 创建命令: wrangler kv:namespace create URL_KV
   // "kv_namespaces": [
   //   {
-  //     "binding": "MY_KV_NAMESPACE",
+  //     "binding": "URL_KV",
   //     "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   //   }
-  // ],
-  // "r2_buckets": [
-  //   {
-  //     "binding": "MY_BUCKET",
-  //     "bucket_name": "my-bucket"
-  //   }
-  // ],
-  // "d1_databases": [
-  //   {
-  //     "binding": "MY_DB",
-  //     "database_name": "my-database",
-  //     "database_id": ""
-  //   }
-  // ],
-  // "ai": {
-  //   "binding": "AI"
-  // },
-  // "observability": {
-  //   "enabled": true,
-  //   "head_sampling_rate": 1
-  // }
+  // ]
 }

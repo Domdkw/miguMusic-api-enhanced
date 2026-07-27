@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import crypto from 'node:crypto';
 
 export function hexToBase64Url(hex: string): string {
     const buffer = Buffer.from(hex, 'hex');

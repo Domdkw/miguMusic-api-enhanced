@@ -9,7 +9,7 @@ import apiRoutes from './routers';
 // 通过 import 引入 package.json，esbuild / tsup 在构建时会将 JSON 内联到产物中
 // 这样在 Node、Cloudflare Workers、Vercel Edge、Deno、EdgeOne 等所有 bundler 平台都能直接读取版本号
 // 需要 tsconfig 启用 "resolveJsonModule": true
-import pkg from '../package.json';
+import pkg from '../package.json' with { type: "json" };
 
 const CACHE_SECONDS = 300; // 5分钟缓存
 

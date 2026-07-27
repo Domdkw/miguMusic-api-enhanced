@@ -5,7 +5,8 @@ let _libSqlDB: ReturnType<typeof createDatabase> | null = null;
 
 export async function getBunDB() {
     if (!_bunDB) {
-        const bunSqlite = await import("db0/connectors/bun-sqlite");
+        // 使用虚拟导入路径，通过 wrangler alias 配置避免打包时解析
+        const bunSqlite = await import("db0/connectors/bun-sqlite" /* @vi-alias */);
         _bunDB = createDatabase(
             bunSqlite.default({
                 cwd: "./sql",

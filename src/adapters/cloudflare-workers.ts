@@ -4,4 +4,9 @@
  */
 import app from '../app';
 
+// Cloudflare Workers 绑定类型声明
+type Bindings = {
+    URL_KV: KVNamespace;
+};
+
 export default app;
