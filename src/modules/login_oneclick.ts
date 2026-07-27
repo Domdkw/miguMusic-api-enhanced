@@ -6,7 +6,7 @@
 
 
 import axios from 'axios';
-import crypto from 'node:crypto'
+import crypto from 'crypto'
 import { URLParams } from '../utils/URLParams';
 import { getDeviceId } from '../utils/deviceID';
 

@@ -17,8 +17,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "types": [
-      "@cloudflare/workers-types",
-      "@types/node"
+      "@cloudflare/workers-types"
     ]
   }
 }
