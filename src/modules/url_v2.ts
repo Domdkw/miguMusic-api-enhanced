@@ -3,15 +3,20 @@ import { getDeviceId } from '../utils/deviceID'
 
 export const getUrlV2 = async (contentId: string, copyrightId: string, toneFlag: string = 'PQ', pacmtoken: string = '') => {
     const deviceId = getDeviceId();
+    const timestamp = Date.now();
 
     const headers = {
         "channel": "014X031",
         "subchannel": "014X031",
         "pacmtoken": pacmtoken,
         "deviceId": deviceId,
+        "ua": "Android_migu",
+        "version": "6.8.8",
+        "activityId": "MUSIC-WWW",
+        "birth": "h5page",
+        "signature": "1",
+        "timestamp": timestamp.toString(),
         "referer": "https://music.migu.cn/",
-        "location-data": "30.6698676660,104.1229614820",
-        "location-info": "",
     };
 
     const res = await axios.get(
