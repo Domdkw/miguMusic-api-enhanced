@@ -35,6 +35,11 @@ const compressString = {
 
 export async function saveUrlToDB(contentId: string, url: string) {
     if (!url || !contentId) return;
+
+    // 检查存储是否可用
+    const storage = await getStorage();
+    if (!storage) return;
+
     url = url.trim();
     // 确保URL使用https协议
     if (url.startsWith('http://')) {
@@ -54,13 +59,17 @@ export async function saveUrlToDB(contentId: string, url: string) {
     // 压缩URL
     const compressedUrl = await compressString.zip(url);
 
-    const storage = await getStorage();
     const result = await storage.setItemRaw(contentId, compressedUrl);
     return result;
 }
 
 export async function getUrlFromDB(contentId: string) {
+    // 检查存储是否可用
     const storage = await getStorage();
+    if (!storage) {
+        return { success: false, url: '', error: '数据库未启用' };
+    }
+
     const compressedUrl = await storage.getItemRaw(contentId);
 
     // 检查压缩数据是否存在

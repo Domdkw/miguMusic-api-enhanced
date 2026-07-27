@@ -1,0 +1,8 @@
+{
+  "name": "migu-api-enhanced",
+  "version": "2.10.1",
+  "tasks": {
+    "dev": "deno run --allow-net --allow-read --allow-env src/adapters/deno.ts",
+    "start": "deno run --allow-net --allow-read --allow-env src/adapters/deno.ts"
+  }
+}

@@ -15,13 +15,9 @@ export async function createUniversalStorage(runtimeKey: string, runtimeEnv?: an
         });
     }
 
-    // Deno 环境：使用 Deno KV
+    // Deno 环境：不使用数据库
     if (runtimeKey === 'deno') {
-        return createStorage({
-            driver: denoKvDriver({
-                path: './url_kv.sqlite',
-            }),
-        });
+        return null;
     }
 
     // Bun 环境：使用内置 SQLite
