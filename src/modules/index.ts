@@ -83,3 +83,4 @@ export { getConcertInfo } from './concert_info';
 export { getConcertUrl } from './concert_url';
 export { getConcertDetail } from './concert_detail';
 export { getConcertComment } from './concert_comment';
+export { matchPlaylist } from './playlist_match';

@@ -75,3 +75,24 @@
 ```
 
 ---
+
+## 匹配外部歌单
+
+**接口地址**: `/playlist/match`
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| url | string | 是 | 歌单 URL | https://t1.kugou.com/7LAal80G3V2 |
+
+?> 内部已处理encodeURIComponent，官方服务器与此代理叠加可能导致响应时间过长。
+
+### 请求示例
+
+```
+/playlist/match?url=https://t1.kugou.com/7LAal80G3V2
+```
+
+---

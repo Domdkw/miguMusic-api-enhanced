@@ -3,6 +3,7 @@ import { getPlaylistInfo } from '../modules/playlist_info';
 import { getPlaylistSong } from '../modules/playlist_song';
 import { getPlaylistSquarePage } from '../modules/playlist_square_page';
 import { getRadioSong } from '../modules/radio_song';
+import { matchPlaylist } from '../modules/playlist_match';
 
 export default function (app: Hono) {
     app.get('/playlist/info', async (c) => {
@@ -28,6 +29,12 @@ export default function (app: Hono) {
         const radioId = c.req.query('radioId') ?? '';
         const page = c.req.query('page') ?? 1;
         const data = await getRadioSong(radioId, Number(page));
+        return c.json({ success: true, ...data });
+    });
+
+    app.get('/playlist/match', async (c) => {
+        const url = c.req.query('url') ?? '';
+        const data = await matchPlaylist(url);
         return c.json({ success: true, ...data });
     });
 }
