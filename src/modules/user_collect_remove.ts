@@ -1,19 +1,15 @@
-import axios from 'axios';
-import { getSetCookieValueFromObject } from '../utils/setCookie';
+import { ckfetch } from '../utils/h5fetch';
 
 /**
- * 添加用户收藏
+ * 删除用户收藏
  * @param pacmtoken 用户pacmtoken
  * @param playlistId 播放列表id
+ * @returns 删除结果和新的pacmtoken
  */
 export const removeUserCollect = async (pacmtoken: string, playlistId: string) => {
-    const res = await axios.get(`https://app.c.nf.migu.cn/pc/v1.0/user/del_collection.do?oPType=03&resourceType=2021&resourceId=${playlistId}`
-        ,{
-            headers: {
-                'cookie': `pacmtoken=${pacmtoken}`,
-            }
-        }
-    );
-    const newPacmToken = getSetCookieValueFromObject(res.headers, 'pacmtoken');
-    return { data: res.data, newPacmToken };
+    const { data, cookies } = await ckfetch(`https://app.c.nf.migu.cn/pc/v1.0/user/del_collection.do?oPType=03&resourceType=2021&resourceId=${playlistId}`, {
+        cookie: { pacmtoken },
+    });
+
+    return { data, newPacmToken: cookies.pacmtoken || '' };
 };

@@ -1,13 +1,14 @@
-import axios from 'axios';
-import { getSetCookieValueFromObject } from '../utils/setCookie';
+import { ckfetch } from '../utils/h5fetch';
 
+/**
+ * 获取用户主页信息
+ * @param pacmtoken 用户token
+ * @returns 用户主页信息和新的pacmtoken
+ */
 export const getUserHomePage = async (pacmtoken: string) => {
-    const res = await axios.get('https://app.c.nf.migu.cn/pc/user/home-page/v2.0', {
-        headers: {
-            "Cookie": `pacmtoken=${pacmtoken}`,
-        }
+    const { data, cookies } = await ckfetch('https://app.c.nf.migu.cn/pc/user/home-page/v2.0', {
+        cookie: { pacmtoken },
     });
 
-    const newPacmToken = getSetCookieValueFromObject(res.headers, 'pacmtoken');
-    return { data: res.data, newPacmToken };
+    return { data, newPacmToken: cookies.pacmtoken || '' };
 };

@@ -1,19 +1,15 @@
-import axios from 'axios';
-import { getSetCookieValueFromObject } from '../utils/setCookie';
+import { ckfetch } from '../utils/h5fetch';
 
 /**
  * 删除播放列表
  * @param pacmtoken 用户token
  * @param playlistId 播放列表id
- * @returns 
+ * @returns 删除结果和新的pacmtoken
  */
 export const removeUserMyList = async (pacmtoken: string, playlistId: string) => {
-    const res = await axios.get(`https://app.c.nf.migu.cn/pc/v1.0/user/deleteMusicList.do?channel=23&id=${playlistId}`, {
-        headers: {
-            "Cookie": `pacmtoken=${pacmtoken}`,
-        }
+    const { data, cookies } = await ckfetch(`https://app.c.nf.migu.cn/pc/v1.0/user/deleteMusicList.do?channel=23&id=${playlistId}`, {
+        cookie: { pacmtoken },
     });
 
-    const newPacmToken = getSetCookieValueFromObject(res.headers, 'pacmtoken');
-    return { data: res.data, newPacmToken };
+    return { data, newPacmToken: cookies.pacmtoken || '' };
 };

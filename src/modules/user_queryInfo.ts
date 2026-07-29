@@ -1,15 +1,18 @@
-import axios from 'axios';
-import { getSetCookieValueFromObject } from '../utils/setCookie';
+import { ckfetch } from '../utils/h5fetch';
 
+/**
+ * 查询用户信息
+ * @param pacmtoken 用户token
+ * @returns 用户信息和新的pacmtoken
+ */
 export const queryUserInfo = async (pacmtoken: string) => {
-    const res = await axios.get('https://app.c.nf.migu.cn/pc/user/h5/queryUserInfo/v1.0', {
+    const { data, cookies } = await ckfetch('https://app.c.nf.migu.cn/pc/user/h5/queryUserInfo/v1.0', {
+        cookie: { pacmtoken },
         headers: {
-            "Cookie": `pacmtoken=${pacmtoken}`,
             "channel": "014X031",
             "Referer": "https://music.migu.cn/"
         }
     });
 
-    const newPacmToken = getSetCookieValueFromObject(res.headers, 'pacmtoken');
-    return { data: res.data, newPacmToken };
+    return { data, newPacmToken: cookies.pacmtoken || '' };
 };

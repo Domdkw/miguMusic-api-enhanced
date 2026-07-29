@@ -1,12 +1,11 @@
-import axios from 'axios';
-import { getSetCookieValueFromObject } from '../utils/setCookie';
+import { ckfetch } from '../utils/h5fetch';
 
 /**
  * 删除播放列表中的歌曲
  * @param pacmtoken 用户token
  * @param playlistId 播放列表id
  * @param contentId 单个歌曲id
- * @returns 
+ * @returns 删除结果和新的pacmtoken
  */
 export const removeSongFromMyList = async (pacmtoken: string, playlistId: string, contentId: string) => {
     const body = {
@@ -15,13 +14,14 @@ export const removeSongFromMyList = async (pacmtoken: string, playlistId: string
         "contentId": contentId,
         "id": playlistId
     };
-    const res = await axios.post(`https://app.c.nf.migu.cn/pc/user/h5-import-musiclist/v1.0`
-        ,body,{
+    const { data, cookies } = await ckfetch(`https://app.c.nf.migu.cn/pc/user/h5-import-musiclist/v1.0`, {
+        method: 'POST',
+        cookie: { pacmtoken },
+        body: JSON.stringify(body),
         headers: {
-            "Cookie": `pacmtoken=${pacmtoken}`,
+            'Content-Type': 'application/json'
         }
     });
 
-    const newPacmToken = getSetCookieValueFromObject(res.headers, 'pacmtoken');
-    return { data: res.data, newPacmToken };
+    return { data, newPacmToken: cookies.pacmtoken || '' };
 };
