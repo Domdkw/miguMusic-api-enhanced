@@ -2,15 +2,6 @@
 
 基于 Hono 框架的咪咕音乐 API 服务，支持多平台部署。受[https://github.com/jsososo/MiguMusicApi](https://github.com/jsososo/MiguMusicApi)项目启发。
 
-## 技术栈
-
-![Hono](https://img.shields.io/badge/Hono-4.x-E36002?logo=hono&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-18+-339933?logo=node.js&logoColor=white)
-![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?logo=cloudflare&logoColor=white)
-![Deno](https://img.shields.io/badge/Deno-000000?logo=deno&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)
-
 ## API 接口
 
 - **搜索** - 歌曲、歌手、专辑、MV、歌词、短视频、彩铃、演唱会、票务、热门搜索、搜索建议
@@ -25,14 +16,6 @@
 - **登录认证** - 手机号登录、短信登录、一键登录
 
 更新于 [API 文档](https://domdkw.github.io/miguMusic-api-enhanced/)
-
-## 特性
-
-- 基于 Hono 框架，轻量高性能
-- TypeScript 编写，类型安全
-- 多平台支持：Node.js、Cloudflare Workers、Deno、Vercel
-- 内置缓存机制
-- 完整的音乐 API 接口
 
 ## 项目结构
 
