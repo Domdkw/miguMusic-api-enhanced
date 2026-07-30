@@ -2,6 +2,7 @@ import type { Hono } from 'hono';
 import { getNinanSong } from '../modules/ninan_song';
 import { getNinanByDate } from '../modules/ninan_date';
 import { getNinanSignInfo } from '../modules/ninan_signInfo';
+import { signNinan } from '../modules/ninan_sign';
 
 export default function (app: Hono) {
     app.get('/ninan/song', async (c) => {
@@ -18,6 +19,12 @@ export default function (app: Hono) {
     app.get('/ninan/sign/info', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
         const {data, newPacmToken} = await getNinanSignInfo(pacmtoken);
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/ninan/sign', async (c) => {
+        const pacmtoken = c.req.query('pacmtoken') ?? '';
+        const {data, newPacmToken} = await signNinan(pacmtoken);
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 }

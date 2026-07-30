@@ -85,3 +85,4 @@ export { getConcertDetail } from './concert_detail';
 export { getConcertComment } from './concert_comment';
 export { matchPlaylist } from './playlist_match';
 export { getNinanSignInfo } from './ninan_signInfo';
+export { signNinan } from './ninan_sign';
