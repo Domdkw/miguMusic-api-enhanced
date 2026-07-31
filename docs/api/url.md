@@ -9,12 +9,14 @@
 ## 播放重定向
 
 **接口地址**: `/url/redirect`  
-**请求方法**: 直接放入`<audio>`标签中
+**请求方法**: 直接放入`<audio>`标签中，301重定向到播放地址
 
 原文：大象已无形 https://www.cnblogs.com/mmm/p/migu_music_api.html
 
 ### 参数说明
 
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
 | contentId | string | 是 | Content ID | 600929000003297424 |
 | toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
 
