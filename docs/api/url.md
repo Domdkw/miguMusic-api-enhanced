@@ -6,12 +6,23 @@
 
 ?> contentId 和 copyrightId 是歌曲的唯一标识，可以二选一。都传 > contentId > copyrightId
 
+## 播放重定向
+
+**接口地址**: `/url/redirect`  
+**请求方法**: 直接放入`<audio>`标签中
+原文：大象已无形 https://www.cnblogs.com/mmm/p/migu_music_api.html
+
+### 参数说明
+
+| contentId | string | 是 | Content ID | 600929000003297424 |
+| toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
+
+---
+
 ## 播放地址 v1
 
 **接口地址**: `/url/v1`  
 **请求方法**: `GET`
-
-未加密
 
 ### 参数说明
 

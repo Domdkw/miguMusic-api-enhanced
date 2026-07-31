@@ -1,8 +1,14 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { getSetCookieValueFromObject } from './setCookie';
 
+type H5FetchInit = RequestInit & {
+    maxRedirects?: number;
+    cookie?: Record<string, string>;
+    params?: Record<string, string>;
+};
+
 // 内部请求函数
-const _fetch = async (url: string, init?: RequestInit) => {
+export const _fetch = async (url: string, init?: H5FetchInit & AxiosRequestConfig) => {
     const method = (init?.method || 'GET').toUpperCase();
     const headersRaw = init?.headers;
     let headers: Record<string, string> = {};
@@ -25,6 +31,8 @@ const _fetch = async (url: string, init?: RequestInit) => {
         url,
         method,
         headers,
+        params: init?.params,
+        maxRedirects: init?.maxRedirects,
         data: init?.body,
     };
 
@@ -36,7 +44,7 @@ const _fetch = async (url: string, init?: RequestInit) => {
 };
 
 // fetch API 兼容层,只返回 body
-export const h5fetch = async (url: string, init?: RequestInit): Promise<any> => {
+export const h5fetch = async (url: string, init?: RequestInit & AxiosRequestConfig):  Promise<any> => {
     const response = await _fetch(url, init);
     return response.data;
 };
@@ -44,7 +52,7 @@ export const h5fetch = async (url: string, init?: RequestInit): Promise<any> => 
 // 带 Cookie 处理的请求函数,自动设置并提取 cookie
 export const ckfetch = async (
     url: string,
-    init?: RequestInit & { cookie?: Record<string, string> }
+    init?: H5FetchInit & AxiosRequestConfig
 ): Promise<{ data: any; cookies: Record<string, string> }> => {
     const cookieKeys = init?.cookie ? Object.keys(init.cookie) : [];
 
