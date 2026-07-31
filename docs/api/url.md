@@ -10,6 +10,7 @@
 
 **接口地址**: `/url/redirect`  
 **请求方法**: 直接放入`<audio>`标签中
+
 原文：大象已无形 https://www.cnblogs.com/mmm/p/migu_music_api.html
 
 ### 参数说明
