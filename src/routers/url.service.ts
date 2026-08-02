@@ -3,6 +3,7 @@ import { getUrlV1 } from '../modules/url_v1';
 import { getUrlV2 } from '../modules/url_v2';
 import { getUrlH5V24 } from '../modules/url_h5v2.4';
 import { getRedirectUrl } from '../modules/url_redirect';
+import { getUrlMiniApp } from '../modules/url_miniapp';
 
 import { saveUrlToDB, getUrlFromDB } from '../middleware/urlSaver';
 import { env } from 'hono/adapter';
@@ -16,6 +17,15 @@ export default function (app: Hono) {
         const url = await getRedirectUrl(contentId, toneFlag);
         c.header('Location', url);
         return url==='' ? c.json({success:false,error:'重定向失败'}, 400) : c.body(null, 301);
+    });
+
+    app.get('/url/miniapp', async (c) => {
+        const contentId = c.req.query('contentId') || '';
+        const copyrightId = c.req.query('copyrightId') || '';
+        const toneFlag = c.req.query('toneFlag') || 'PQ';
+        const albumId = c.req.query('albumId') || '';
+        const data = await getUrlMiniApp(contentId, copyrightId, toneFlag, albumId);
+        return c.json({ success: true, ...data });
     });
 
     app.get('/url/v1', async (c) => {

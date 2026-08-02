@@ -1,0 +1,64 @@
+import axios from 'axios';
+
+export const getUrlMiniApp = async (contentId: string, copyrightId: string, toneFlag: string = 'PQ', albumId: string = '') => {
+    const headers = {
+        "xweb_xhr": "1",
+        "subchannel": "0140210",
+        "location-data": "30.6698676660,104.1229614820",
+        "channel": "0140210",
+        "birth": "h5page",
+        "ua": "Android_migu"
+    }
+    const res = await axios.get(
+        `https://c.musicapp.migu.cn/strategy/listen-url/miniapp/v2.4`
+        ,{
+            params: {
+                contentId: contentId,
+                copyrightId: copyrightId || '',
+                resourceType: 2,
+                netType: '01',
+                toneFlag: toneFlag || 'PQ',
+                albumId: albumId || '',
+            },
+            headers: headers,
+            responseType: 'arraybuffer'
+        }
+    );
+
+    return await decryptData(res.data);
+};
+
+const SECURE = ["Jk8qzuePiJ1qE3mDYhLQ3T73DtDoAhLP"];
+
+function strToUtf8Bytes(e: string) {
+    return new TextEncoder().encode(e)
+}
+function utf8Bytes2str(bytes: Uint8Array): string {
+    const result: string[] = []
+    for (const byte of bytes) {
+        if (byte < 16) {
+            result.push(String.fromCharCode(byte))
+        } else {
+            result.push('%')
+            result.push(byte.toString(16))
+        }
+    }
+    return decodeURIComponent(result.join(''))
+}
+function decode(e: Uint8Array, t: string) {
+    if (0 == t.length)return null;
+    var n = e.length;
+    if (n < 4)return null;
+    if (171 != e[0] || 205 != e[1])return null;
+    if (1 != e[2])return null;
+    for (var r = e[3], o = strToUtf8Bytes(t), a = o.length, i = new Uint8Array(n - 4), s = 0, c = 4; c < n; c++,
+    s++)i[s] = e[c] + r - o[s % a];
+    return i
+}
+
+const decryptData = (ab: ArrayBuffer) => {
+    const r = decode(new Uint8Array(ab), SECURE[0]);
+    const d = utf8Bytes2str(r as Uint8Array);
+    return JSON.parse(d);
+}
+
