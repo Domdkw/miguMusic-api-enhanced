@@ -25,31 +25,17 @@ const SECURE = ["Jk8qzuePiJ1qE3mDYhLQ3T73DtDoAhLP"];
 function strToUtf8Bytes(e: string) {
     return new TextEncoder().encode(e)
 }
-function utf8Bytes2str(e: Uint8Array) {
-    var t = []
-        , n = !0
-        , r = !1
-        , o = undefined;
-    try {
-		//@ts-ignore
-        for (var a, i = e[Symbol.iterator](); !(n = (a = i.next()).done); n = !0) {
-            var s = a.value;
-            s < 16 ? t.push(String.fromCharCode(s)) : (t.push("%"),
-            t.push(s.toString(16)))
-        }
-    } catch (e) {
-        r = !0,
-        o = e
-    } finally {
-        try {
-			//@ts-ignore
-            !n && i.return && i.return()
-        } finally {
-            if (r)
-                throw o
+function utf8Bytes2str(bytes: Uint8Array): string {
+    const result: string[] = []
+    for (const byte of bytes) {
+        if (byte < 16) {
+            result.push(String.fromCharCode(byte))
+        } else {
+            result.push('%')
+            result.push(byte.toString(16))
         }
     }
-    return decodeURIComponent(t.join(""))
+    return decodeURIComponent(result.join(''))
 }
 function decode(e: Uint8Array, t: string) {
     if (0 == t.length)
