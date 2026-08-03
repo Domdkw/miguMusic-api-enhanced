@@ -11,8 +11,8 @@ import { getMvBySong } from '../modules/mv_song';
 
 export default function (app: Hono) {
     app.get('/mv/info', async (c) => {
-        const mvContentId = c.req.query('mvContentId') ?? '';
-        const data = await getMvInfo(mvContentId);
+        const mvContentIds = c.req.query('mvContentIds') ?? '';
+        const data = await getMvInfo(mvContentIds);
         return c.json({ success: true, ...data });
     });
 

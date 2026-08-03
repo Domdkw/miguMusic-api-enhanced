@@ -13,36 +13,12 @@
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
-| mvContentId | string | 是 | MV Content ID | 600906000000476885 |
+| mvContentIds | string | 是 | MV Content ID (逗号分隔) | 600906000000476885,600906000000438741 |
 
 ### 请求示例
 
 ```
-/mv/info?mvContentId=600906000000476885
-```
-
----
-
-## 根据 MV 推荐
-
-**接口地址**: `/mv/recommend`  
-**请求方法**: `GET`
-
-可以从此接口返回的 data[].rateFormats[].url 中提取出mp4播放地址。
-
-返回的MP4 URL为相对路径。
-
-### 参数说明
-
-| 参数名 | 类型 | 必填 | 说明 | 示例 |
-| ------- | ------ | ------ | ------ | ------ |
-| mvContentId | string | 是 | MV Content ID | 600906000000476885 |
-| page | number | 否 | 页码，默认 1 | 1 |
-
-### 请求示例
-
-```
-/mv/recommend?mvContentId=600906000000476885&page=1
+/mv/info?mvContentIds=600906000000476885,600906000000438741
 ```
 
 ---
@@ -69,6 +45,60 @@
 
 ```
 /mv/hls?size=38641875&format=050019&mvContentId=600906000000476885&mvCopyrightId=690273Y0015
+```
+
+---
+
+## 根据 MV 推荐 MV
+
+**接口地址**: `/mv/recommend`  
+**请求方法**: `GET`
+
+可以从此接口返回的 $.data[].rateFormats[].url 中提取出mp4播放地址。需要拼接 `https://freevod.nf.migu.cn` 
+
+返回的MP4 URL为相对路径。
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| mvContentId | string | 是 | 单个 MV Content ID | 600906000000476885 |
+| page | number | 否 | 页码，默认 1 | 1 |
+
+### 请求示例
+
+```
+/mv/recommend?mvContentId=600906000000476885&page=1
+```
+
+---
+
+## 根据 SongId / ConcertId 推荐 MV
+
+### 歌曲推荐 MV
+
+**接口地址**: `/mv/bySong`  
+**请求方法**: `GET`
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| songId | string | 是 | Song ID (搜索/resource获取) | 3871226 |
+
+```
+/mv/bySong?songId=3871226
+```
+
+### 演唱会推荐 MV
+
+**接口地址**: `/mv/concert/recommendMv`  
+**请求方法**: `GET`
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| concertId | string | 是 | Concert ID | 87783043 |
+
+```
+/mv/concert/recommendMv?concertId=87783043
 ```
 
 ---
@@ -119,6 +149,11 @@
 
 **接口地址**: `/mv/concert/detail`  
 **请求方法**: `GET`
+
+移动端演唱会详情
+- `$.data.contentItemList[0].itemList[0]` 此演唱会简略信息
+- `$.data.contentItemList[3].itemList` 精选视频-列表
+- `$.data.contentItemList[6].itemList` 热门演唱会-列表
 
 ### 参数说明
 
