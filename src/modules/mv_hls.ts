@@ -9,7 +9,7 @@ import { h5fetch } from '../utils/h5fetch';
  * @param size mv size (url接口获取)
  * @param format mv format (url接口获取)
  * @param needHttps 是否需要https (默认true)
- * @returns 
+ * @returns JSON
  */
 export const getMvHls = async (
     mvContentId: string, 

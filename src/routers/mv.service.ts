@@ -6,6 +6,8 @@ import { getConcertInfo } from '../modules/concert_info';
 import { getConcertUrl } from '../modules/concert_url';
 import { getConcertDetail } from '../modules/concert_detail';
 import { getConcertComment } from '../modules/concert_comment';
+import { getConcertRecommendMv } from '../modules/concert_mv';
+import { getMvBySong } from '../modules/mv_song';
 
 export default function (app: Hono) {
     app.get('/mv/info', async (c) => {
@@ -39,6 +41,12 @@ export default function (app: Hono) {
         return c.json({ success: true, ...data });
     });
 
+    app.get('/mv/bySong', async (c) => {
+        const songId = c.req.query('songId') ?? '';
+        const data = await getMvBySong(songId);
+        return c.json({ success: true, ...data });
+    });
+
     app.get('/mv/concert/info', async (c) => {
         const concertId = c.req.query('concertId') ?? '';
         const data = await getConcertInfo(concertId);
@@ -64,6 +72,12 @@ export default function (app: Hono) {
         const page = c.req.query('page') ?? '1';
         const size = c.req.query('size') ?? '20';
         const data = await getConcertComment(concertId, Number(page), Number(size));
+        return c.json({ success: true, ...data });
+    });
+
+    app.get('/mv/concert/recommendMv', async (c) => {
+        const concertId = c.req.query('concertId') ?? '';
+        const data = await getConcertRecommendMv(concertId);
         return c.json({ success: true, ...data });
     });
 }

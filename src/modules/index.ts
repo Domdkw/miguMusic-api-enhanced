@@ -87,3 +87,5 @@ export { matchPlaylist } from './playlist_match';
 export { getNinanSignInfo } from './ninan_signInfo';
 export { signNinan } from './ninan_sign';
 export { getRedirectUrl } from './url_redirect';
+export { getConcertRecommendMv } from './concert_mv';
+export { getMvBySong } from './mv_song';
