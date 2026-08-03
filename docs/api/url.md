@@ -6,6 +6,45 @@
 
 ?> contentId 和 copyrightId 是歌曲的唯一标识，可以二选一。都传 > contentId > copyrightId
 
+<details>
+<summary>获取歌曲的任意质量的播放地址</summary>
+
+例如获取的PQ: https://freetyst.nf.migu.cn/public/product9th/product46/2024/09/1213/2024年09月11日23点35分内容准入华纳9首515217/标清高清/MP3_128_16_Stero/6005753G176132921.mp3
+
+更改 `标清高清/MP3_128_16_Stero/id.mp3`
+
+- **PQ** 标清高清/MP3_128_16_Stero/id.mp3
+- **HQ** 标清高清/MP3_320_16_Stero/id.mp3
+- **SQ** 歌曲下载/flac/id.flac
+- **ZQ24** 歌曲下载/flac_24bit/id.flac
+- **ZQ32** 歌曲下载/wav_32bit/id.wav
+- **3D** 歌曲下载/wav_3d/id.wav
+
+音质信息获取：搜索/resourceinfo
+
+<details>
+<summary>示例代码</summary>
+
+```javascript
+function upgradeUrl(url, quality){ // PQ地址，encodeURIComponent和split('?')[0]后
+  const pqPart = '%E6%A0%87%E6%B8%85%E9%AB%98%E6%B8%85/MP3_128_16_Stero';
+  switch (quality) {
+    case 'HQ':
+      return url.replace('MP3_128_16_Stero', 'MP3_320_16_Stero')
+    case 'SQ':
+      return url.replace(pqPart, '%E6%AD%8C%E6%9B%B2%E4%B8%8B%E8%BD%BD/flac').replace('.mp3', '.flac');
+    case 'ZQ':
+    case 'ZQ24':
+      return url.replace(pqPart, '%E6%AD%8C%E6%9B%B2%E4%B8%8B%E8%BD%BD/flac_24bit').replace('.mp3', '.flac');
+    case 'PQ':
+    default:
+      return url
+  }
+}
+```
+</details>
+</details>
+
 ## 播放重定向
 
 **接口地址**: `/url/redirect`  
