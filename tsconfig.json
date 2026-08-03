@@ -17,7 +17,14 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "types": [
-      "@cloudflare/workers-types"
+      "@cloudflare/workers-types",
+      "node"
     ]
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/adapters/**",
+    "functions/**"
+  ]
 }
