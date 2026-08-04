@@ -133,7 +133,7 @@ export default function (app: Hono) {
     app.get('/user/isFollow', async (c) => {
         const {data, newPacmToken} = await isFollowAuthor(
             c.req.query('pacmtoken') ?? '',
-            c.req.query('authorId') ?? '',
+            c.req.query('authorIdss') ?? '',
             c.req.query('authorType') ?? 'singer'
         );
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });

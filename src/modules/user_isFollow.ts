@@ -3,12 +3,12 @@ import { ckfetch } from '../utils/h5fetch';
 /**
  * 是否关注作者
  * @param pacmtoken 用户token
- * @param authorId 作者id列表，逗号分隔
+ * @param authorIds 作者id列表，逗号分隔
  * @param authorType 作者类型 (singer)
  * @returns 是否关注结果和新的pacmtoken
  */
-export const isFollowAuthor = async (pacmtoken: string, authorId: string, authorType:string = 'singer') => {
-    const authorList = authorId.split(',');
+export const isFollowAuthor = async (pacmtoken: string, authorIds: string, authorType:string = 'singer') => {
+    const authorList = authorIds.split(',');
     if(authorList.length === 0 || authorType === '' || authorList.length > 100){
         return { success: false, data: {error: '作者id列表不能为空，且最多100个'}, newPacmToken: '' };
     }
