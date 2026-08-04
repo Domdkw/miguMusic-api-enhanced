@@ -286,3 +286,25 @@
 ```
 
 ***
+
+## 是否关注
+
+**接口地址**: `/user/isFollow`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 是 | 登录凭证 |  |
+| authorId | number | 是 | 关注用户 ID | 1142567742 |
+| authorType | string | 否 | 关注用户类型 (默认`singer`) | singer |
+
+### 请求示例
+
+```
+/user/isFollow?pacmtoken&authorId=1142567742&authorType=singer
+```
+
+---
+

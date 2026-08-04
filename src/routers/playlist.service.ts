@@ -4,6 +4,7 @@ import { getPlaylistSong } from '../modules/playlist_song';
 import { getPlaylistSquarePage } from '../modules/playlist_square_page';
 import { getRadioSong } from '../modules/radio_song';
 import { matchPlaylist } from '../modules/playlist_match';
+import { getVipPlaylist } from '../modules/playlist_vip';
 
 export default function (app: Hono) {
     app.get('/playlist/info', async (c) => {
@@ -35,6 +36,12 @@ export default function (app: Hono) {
     app.get('/playlist/match', async (c) => {
         const url = c.req.query('url') ?? '';
         const data = await matchPlaylist(url);
+        return c.json({ success: true, ...data });
+    });
+
+    app.get('/playlist/vip', async (c) => {
+        const size = c.req.query('size') ?? 20;
+        const data = await getVipPlaylist(Number(size));
         return c.json({ success: true, ...data });
     });
 }
