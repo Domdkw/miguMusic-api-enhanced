@@ -52,7 +52,9 @@ export const h5fetch = async (url: string, init?: RequestInit & AxiosRequestConf
 // 带 Cookie 处理的请求函数,自动设置并提取 cookie
 export const ckfetch = async (
     url: string,
-    init?: H5FetchInit & AxiosRequestConfig
+    init?: RequestInit & AxiosRequestConfig & {
+        cookie?: Record<string, string>;
+    }
 ): Promise<{ data: any; cookies: Record<string, string> }> => {
     const cookieKeys = init?.cookie ? Object.keys(init.cookie) : [];
 

@@ -91,3 +91,5 @@ export { getConcertRecommendMv } from './concert_mv';
 export { getMvBySong } from './mv_song';
 export { isFollowAuthor } from './user_isFollow';
 export { getVipPlaylist } from './playlist_vip';
+export { getUserHeader } from './user_header';
+export { getUserSongPage } from './user_songPage';

@@ -15,6 +15,8 @@ import { removeUserMyList } from '../modules/user_myList_remove';
 import { addSongToMyList } from '../modules/user_myList_add_song';
 import { removeSongFromMyList } from '../modules/user_myList_remove_song';
 import { isFollowAuthor } from '../modules/user_isFollow';
+import { getUserHeader } from '../modules/user_header';
+import { getUserSongPage } from '../modules/user_songPage';
 
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
@@ -130,7 +132,7 @@ export default function (app: Hono) {
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 
-    app.get('/user/isFollow', async (c) => {
+    app.get('/user/follow/isFollow', async (c) => {
         const {data, newPacmToken} = await isFollowAuthor(
             c.req.query('pacmtoken') ?? '',
             c.req.query('authorIdss') ?? '',
@@ -138,4 +140,15 @@ export default function (app: Hono) {
         );
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
+
+    app.get('/user/profile', async (c) => 
+        c.json({ success: true, ...(await getUserHeader(c.req.query('userId') ?? ''))})
+    );
+
+    app.get('/user/songPage', async (c) => 
+        c.json({ success: true, ...(await getUserSongPage(
+            c.req.query('userId') ?? '',
+            c.req.query('videoUserId') ?? ''
+        ))})
+    );
 }

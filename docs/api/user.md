@@ -289,7 +289,7 @@
 
 ## 是否关注作者
 
-**接口地址**: `/user/isFollow`  
+**接口地址**: `/user/follow/isFollow`  
 **请求方法**: `GET`
 
 ### 参数说明
@@ -304,6 +304,47 @@
 
 ```
 /user/isFollow?pacmtoken&authorId=1142567742&authorType=singer
+```
+
+---
+
+## 用户简介
+
+**接口地址**: `/user/profile`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| userId | string | 是 | 用户 ID | 15671224593300417251392 |
+
+### 请求示例
+
+```
+/user/profile?userId=15671224593300417251392
+```
+
+---
+
+## 用户主页-歌曲
+
+**接口地址**: `/user/songPage`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| userId | string | 是 | 用户 ID | 15671224593300417251392 |
+| videoUserId | string | 是 | 视频用户 ID | 123085012 |
+
+?> `userId`/`videoUserId`可选，都传 = userId > videoUserId
+
+### 请求示例
+
+```
+/user/songPage?userId=15671224593300417251392&videoUserId=123085012
 ```
 
 ---
