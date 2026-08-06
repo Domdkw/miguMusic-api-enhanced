@@ -93,3 +93,6 @@ export { isFollowAuthor } from './user_isFollow';
 export { getVipPlaylist } from './playlist_vip';
 export { getUserHeader } from './user_header';
 export { getUserSongPage } from './user_songPage';
+export { getPageInfo } from './page_view';
+export { getPageTab } from './page_tab';
+export { getSVideoRecommend } from './svideo_recommend';
