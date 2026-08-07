@@ -96,6 +96,6 @@ export { getUserSongPage } from './user_songPage';
 export { getPageInfo } from './page_view';
 export { getPageTab } from './page_tab';
 export { getSVideoRecommend } from './svideo_recommend';
-export { getSVideoFollowing } from './follow_following_vra';
+export { getFollowingVra } from './follow_following_vra';
 export { getFollowerList } from './follow_follower';
 export { getFollowingList } from './follow_following';

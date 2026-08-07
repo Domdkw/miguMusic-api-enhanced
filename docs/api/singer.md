@@ -3,7 +3,7 @@
 ## 歌手信息
 
 **接口地址**: `/singer/index`  
-**请求方法**: `GET`
+**导出函数**: `getSingerIndex`
 
 ### 参数说明
 
@@ -22,7 +22,7 @@
 ## 歌手歌曲列表
 
 **接口地址**: `/singer/song`  
-**请求方法**: `GET`
+**导出函数**: `getSingerSong`
 
 ### 参数说明
 
@@ -42,7 +42,7 @@
 ## 歌手专辑列表
 
 **接口地址**: `/singer/album`  
-**请求方法**: `GET`
+**导出函数**: `getSingerAlbum`
 
 ### 参数说明
 
@@ -61,7 +61,7 @@
 ## 相似歌手
 
 **接口地址**: `/singer/similar`  
-**请求方法**: `GET`
+**导出函数**: `getSingerSimilar`
 
 ### 参数说明
 

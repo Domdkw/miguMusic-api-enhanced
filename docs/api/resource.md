@@ -7,7 +7,7 @@
 ## 获取歌曲歌词
 
 **接口地址**: `/lyric`  
-**请求方法**: `GET`
+**导出函数**: `getLyric`
 
 ### 参数说明
 
@@ -36,7 +36,7 @@
 ## 资源信息
 
 **接口地址**: `/resourceinfo`  
-**请求方法**: `GET`
+**导出函数**: `getResourceInfo`
 
 ### 参数说明
 
@@ -56,10 +56,32 @@
 
 ---
 
+## 获取评论
+
+**接口地址**: `/comment`  
+**导出函数**: `getComment`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| resourceId | string | 是 | 资源 ID | 600929000001520013 |
+| resourceType | string | 是 | 资源类型 | 2 |
+| hotCommentStart | number | 否 | 热门评论起始位置，默认 0 | 0 |
+| size | number | 否 | 数量，默认 20 | 20 |
+
+### 请求示例
+
+```
+/comment?resourceId=600929000001520013&resourceType=2&hotCommentStart=0&size=20
+```
+
+---
+
 ## 检查歌曲是否可听
 
 **接口地址**: `/can-listen`  
-**请求方法**: `GET`
+**导出函数**: `checkCanListen`
 
 ### 参数说明
 
@@ -78,7 +100,7 @@
 ## 歌曲播放次数
 
 **接口地址**: `/opNum`  
-**请求方法**: `GET`
+**导出函数**: `getOpNum`
 
 ### 参数说明
 
@@ -97,7 +119,7 @@
 ## 票务信息
 
 **接口地址**: `/ticket`  
-**请求方法**: `GET`
+**导出函数**: `getTicketInfo`
 
 ### 参数说明
 

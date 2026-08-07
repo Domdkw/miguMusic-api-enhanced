@@ -3,7 +3,7 @@
 ## 推荐歌曲
 
 **接口地址**: `/recommend/song`  
-**请求方法**: `GET`
+**导出函数**: `getSceneRecommend`
 
 ### 参数说明
 
@@ -23,7 +23,7 @@
 ## 推荐播放列表
 
 **接口地址**: `/recommend/playlist`  
-**请求方法**: `GET`
+**导出函数**: `getRecommendPlaylist`
 
 ### 参数说明
 
@@ -40,7 +40,7 @@
 ## 相似歌曲
 
 **接口地址**: `/recommend/similarSong`  
-**请求方法**: `GET`
+**导出函数**: `getSimilarSongRecommend`
 
 ### 参数说明
 
@@ -59,7 +59,7 @@
 ## 主页电台
 
 **接口地址**: `/recommend/radio`  
-**请求方法**: `GET`
+**导出函数**: `getRadioRecommend`
 
 ### 参数说明
 
@@ -80,7 +80,7 @@
 ## 所有电台
 
 **接口地址**: `/recommend/radio/all`  
-**请求方法**: `GET`
+**导出函数**: `getRadioRecommendAll`
 
 ### 参数说明
 

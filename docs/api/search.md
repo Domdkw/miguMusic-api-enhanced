@@ -6,7 +6,7 @@ typeOrder : 类型排序，默认 0
 ## 搜索歌曲
 
 **接口地址**: `/search`  
-**请求方法**: `GET`
+**导出函数**: `searchSong`
 
 ### 参数说明
 
@@ -27,41 +27,25 @@ typeOrder : 类型排序，默认 0
 ## 热门搜索
 
 **接口地址**: `/search/hot`  
-**请求方法**: `GET`
-
-### 参数说明
+**导出函数**: `getSearchHot`
 
 无需参数
-
-### 请求示例
-
-```
-/search/hot
-```
 
 ---
 
 ## 默认搜索文本
 
 **接口地址**: `/search/default`  
-**请求方法**: `GET`
+**导出函数**: `getSearchDefault`
 
-### 参数说明
-
-无
-
-### 请求示例
-
-```
-/search/default
-```
+无参数
 
 ---
 
 ## 搜索歌手
 
 **接口地址**: `/search/singer`  
-**请求方法**: `GET`
+**导出函数**: `searchSinger`
 
 ### 参数说明
 
@@ -80,7 +64,7 @@ typeOrder : 类型排序，默认 0
 ## 搜索专辑
 
 **接口地址**: `/search/album`  
-**请求方法**: `GET`
+**导出函数**: `searchAlbum`
 
 ### 参数说明
 
@@ -101,7 +85,7 @@ typeOrder : 类型排序，默认 0
 ## 搜索 MV
 
 **接口地址**: `/search/video`  
-**请求方法**: `GET`
+**导出函数**: `searchMv`
 
 [MV接口](mv.md#mv-详情)
 
@@ -124,7 +108,7 @@ typeOrder : 类型排序，默认 0
 ## 搜索歌词
 
 **接口地址**: `/search/lrc`  
-**请求方法**: `GET`
+**导出函数**: `searchLrc`
 
 ### 参数说明
 
@@ -150,7 +134,7 @@ typeOrder : 类型排序，默认 0
 ## 搜索彩铃
 
 **接口地址**: `/search/rbt`  
-**请求方法**: `GET`
+**导出函数**: `searchRbt`
 
 [彩铃接口](svideo.md#视频彩铃url)
 
@@ -172,7 +156,7 @@ typeOrder : 类型排序，默认 0
 ## 搜索演唱会
 
 **接口地址**: `/search/concert`  
-**请求方法**: `GET`
+**导出函数**: `searchConcert`
 
 [演唱会接口](mv.md#演唱会-简略信息)
 
@@ -195,7 +179,7 @@ typeOrder : 类型排序，默认 0
 ## 搜索票务
 
 **接口地址**: `/search/ticket`  
-**请求方法**: `GET`
+**导出函数**: `searchTicket`
 
 [所有票务](resource.md#票务信息)
 
@@ -218,7 +202,7 @@ typeOrder : 类型排序，默认 0
 ## 歌手标签
 
 **接口地址**: `/search/singerTab`  
-**请求方法**: `GET`
+**导出函数**: `getSearchSingerTab`
 
 ### 参数说明
 
@@ -235,7 +219,7 @@ typeOrder : 类型排序，默认 0
 ## 歌手列表
 
 **接口地址**: `/search/singerTab/list`  
-**请求方法**: `GET`
+**导出函数**: `getSearchSingerTabList`
 
 ### 参数说明
 

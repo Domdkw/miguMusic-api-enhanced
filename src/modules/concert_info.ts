@@ -1,7 +1,7 @@
 import { h5fetch } from '../utils/h5fetch';
 
 /**
- * 演唱会详细信息
+ * 演唱会简略信息
  * 
  * 返回 $.data.liveId 直播id 等等
  * @param concertId 单个演唱会id

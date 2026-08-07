@@ -18,37 +18,19 @@
 - **SQ** 歌曲下载/flac/id.flac
 - **ZQ24** 歌曲下载/flac_24bit/id.flac
 - **ZQ32** 歌曲下载/wav_32bit/id.wav
-- **3D** 歌曲下载/wav_3d/id.wav
+- **Z3D** 歌曲下载/wav_3d/id.wav
 
 音质信息获取：搜索/resourceinfo
 
-<details>
-<summary>示例代码</summary>
+导出utils： `/src/utils/quality.ts`
 
-```javascript
-function upgradeUrl(url, quality){ // PQ地址，encodeURIComponent和split('?')[0]后
-  const pqPart = '%E6%A0%87%E6%B8%85%E9%AB%98%E6%B8%85/MP3_128_16_Stero';
-  switch (quality) {
-    case 'HQ':
-      return url.replace('MP3_128_16_Stero', 'MP3_320_16_Stero')
-    case 'SQ':
-      return url.replace(pqPart, '%E6%AD%8C%E6%9B%B2%E4%B8%8B%E8%BD%BD/flac').replace('.mp3', '.flac');
-    case 'ZQ':
-    case 'ZQ24':
-      return url.replace(pqPart, '%E6%AD%8C%E6%9B%B2%E4%B8%8B%E8%BD%BD/flac_24bit').replace('.mp3', '.flac');
-    case 'PQ':
-    default:
-      return url
-  }
-}
-```
-</details>
 </details>
 
 ## 播放重定向
 
 **接口地址**: `/url/redirect`  
 **请求方法**: 直接放入`<audio>`标签中，301重定向到播放地址
+**导出函数**: `getRedirectUrl`
 
 原文：大象已无形 https://www.cnblogs.com/mmm/p/migu_music_api.html
 
@@ -64,7 +46,7 @@ function upgradeUrl(url, quality){ // PQ地址，encodeURIComponent和split('?')
 ## 播放地址 v1
 
 **接口地址**: `/url/v1`  
-**请求方法**: `GET`
+**导出函数**: `getUrlV1`
 
 ### 参数说明
 
@@ -86,7 +68,7 @@ function upgradeUrl(url, quality){ // PQ地址，encodeURIComponent和split('?')
 ## 播放地址 v2
 
 **接口地址**: `/url/v2`  
-**请求方法**: `GET`
+**导出函数**: `getUrlV2`
 
 ### 参数说明
 
@@ -109,7 +91,7 @@ function upgradeUrl(url, quality){ // PQ地址，encodeURIComponent和split('?')
 ## 播放地址 h5v2.4
 
 **接口地址**: `/url/h5v2.4`  
-**请求方法**: `GET`
+**导出函数**: `getUrlH5V24`
 
 ### 参数说明
 
@@ -130,6 +112,7 @@ function upgradeUrl(url, quality){ // PQ地址，encodeURIComponent和split('?')
 
 **接口地址**: `/url/db`  
 **请求方法**: `GET`
+**导出函数**: 无
 
 ### 参数说明
 

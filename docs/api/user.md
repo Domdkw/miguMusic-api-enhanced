@@ -9,7 +9,7 @@
 ## 用户徽章
 
 **接口地址**: `/user/badge`\
-**请求方法**: `GET`
+**导出函数**: `getUserBadge`
 
 ### 参数说明
 
@@ -28,7 +28,7 @@
 ## 用户信息
 
 **接口地址**: `/user/info`\
-**请求方法**: `GET`
+**导出函数**: `queryUserInfo`
 
 ### 参数说明
 
@@ -49,7 +49,7 @@
 ?> 用户主页接口返回数据中包含：我喜欢，私人歌单 等等
 
 **接口地址**: `/user/homePage`\
-**请求方法**: `GET`
+**导出函数**: `getUserHomePage`
 
 ### 参数说明
 
@@ -68,7 +68,7 @@
 ## 我喜欢-添加
 
 **接口地址**: `/user/like`\
-**请求方法**: `GET`
+**导出函数**: `likeSong`
 
 ### 参数说明
 
@@ -88,7 +88,7 @@
 ## 我喜欢-移除
 
 **接口地址**: `/user/dislike`\
-**请求方法**: `GET`
+**导出函数**: `dislikeSong`
 
 ### 参数说明
 
@@ -110,7 +110,7 @@
 ## 今日推荐
 
 **接口地址**: `/user/recommend/today`\
-**请求方法**: `GET`
+**导出函数**: `getTodayRecommend`
 
 ### 参数说明
 
@@ -129,7 +129,7 @@
 ## 收藏-列表
 
 **接口地址**: `/user/collect/list`\
-**请求方法**: `GET`
+**导出函数**: `getUserCollectList`
 
 ### 参数说明
 
@@ -150,7 +150,7 @@
 ## 收藏-添加
 
 **接口地址**: `/user/collect/add`\
-**请求方法**: `GET`
+**导出函数**: `addUserCollect`
 
 ### 参数说明
 
@@ -171,7 +171,7 @@
 ## 收藏-移除
 
 **接口地址**: `/user/collect/remove`\
-**请求方法**: `GET`
+**导出函数**: `removeUserCollect`
 
 ### 参数说明
 
@@ -191,7 +191,7 @@
 ## 自建歌单-列表
 
 **接口地址**: `/user/myList`\
-**请求方法**: `GET`
+**导出函数**: `getUserMyList`
 
 ### 参数说明
 
@@ -225,6 +225,7 @@
 ### 添加新歌单
 
 **接口地址**: `/user/myList/add`
+**导出函数**: `addUserMyList`
 
 需要 ： pacmtoken, title
 
@@ -235,6 +236,7 @@
 ### 移除旧歌单
 
 **接口地址**: `/user/myList/remove`
+**导出函数**: `removeUserMyList`
 
 需要 ： pacmtoken, playlistId
 
@@ -245,6 +247,7 @@
 ### 编辑歌单
 
 **接口地址**: `/user/myList/edit`
+**导出函数**: `editUserMyList`
 
 需要 ： pacmtoken, playlistId, title
 
@@ -260,6 +263,9 @@
 
 ### 添加歌曲到歌单
 
+**接口地址**: `/user/myList/song/add`
+**导出函数**: `addSongToMyList`
+
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
 | pacmtoken | string | 是 | 登录凭证 |  |
@@ -271,6 +277,9 @@
 ```
 
 ### 从歌单移除歌曲
+
+**接口地址**: `/user/myList/song/remove`
+**导出函数**: `removeSongFromMyList`
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
@@ -290,7 +299,7 @@
 ## 是否关注作者
 
 **接口地址**: `/user/follow/isFollow`  
-**请求方法**: `GET`
+**导出函数**: `isFollowAuthor`
 
 ### 参数说明
 
@@ -311,7 +320,7 @@
 ## 用户简介
 
 **接口地址**: `/user/profile`  
-**请求方法**: `GET`
+**导出函数**: `getUserHeader`
 
 ### 参数说明
 
@@ -330,7 +339,7 @@
 ## 用户主页-歌曲
 
 **接口地址**: `/user/songPage`  
-**请求方法**: `GET`
+**导出函数**: `getUserSongPage`
 
 ### 参数说明
 
@@ -352,7 +361,7 @@
 ## 粉丝列表-音乐
 
 **接口地址**: `/user/follow/follower/music`  
-**请求方法**: `GET`
+**导出函数**: `getFollowerList`
 
 ### 参数说明
 
@@ -373,7 +382,7 @@
 ## 粉丝列表-视彩号
 
 **接口地址**: `/user/follow/follower/vrbt`  
-**请求方法**: `GET`
+**导出函数**: `getFollowerList`
 
 ### 参数说明
 
@@ -395,7 +404,7 @@
 ## 关注列表
 
 **接口地址**: `/user/follow/following`  
-**请求方法**: `GET`
+**导出函数**: `getFollowingList`
 
 ### 参数说明
 
@@ -417,7 +426,7 @@
 ## 关注的视彩号
 
 **接口地址**: `/user/follow/following/vra`  
-**请求方法**: `GET`
+**导出函数**: `getFollowingVra`
 
 ### 参数说明
 

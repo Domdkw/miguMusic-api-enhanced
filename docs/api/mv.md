@@ -3,7 +3,7 @@
 ## MV 详情
 
 **接口地址**: `/mv/info`  
-**请求方法**: `GET`
+**导出函数**: `getMvInfo`
 
 可以从此接口返回的 resource[].rateFormats[].url 中提取出mp4播放地址。
 
@@ -26,7 +26,7 @@
 ## MV HLS 播放地址
 
 **接口地址**: `/mv/hls`  
-**请求方法**: `GET`
+**导出函数**: `getMvHls`
 
 ### 参数说明
 
@@ -52,11 +52,9 @@
 ## 根据 MV 推荐 MV
 
 **接口地址**: `/mv/recommend`  
-**请求方法**: `GET`
+**导出函数**: `getMVRecommend`
 
-可以从此接口返回的 $.data[].rateFormats[].url 中提取出mp4播放地址。需要拼接 `https://freevod.nf.migu.cn` 
-
-返回的MP4 URL为相对路径。
+?> 返回的MP4 URL为相对路径。可以从此接口返回的 $.data[].rateFormats[].url 中提取出mp4播放地址。需要拼接 `https://freevod.nf.migu.cn` 
 
 ### 参数说明
 
@@ -78,7 +76,7 @@
 ### 歌曲推荐 MV
 
 **接口地址**: `/mv/bySong`  
-**请求方法**: `GET`
+**导出函数**: `getMvBySong`
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
@@ -91,7 +89,7 @@
 ### 演唱会推荐 MV
 
 **接口地址**: `/mv/concert/recommendMv`  
-**请求方法**: `GET`
+**导出函数**: `getConcertRecommendMv`
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
@@ -106,7 +104,7 @@
 ## 演唱会-简略信息
 
 **接口地址**: `/mv/concert/info`  
-**请求方法**: `GET`
+**导出函数**: `getConcertInfo`
 
 ### 参数说明
 
@@ -125,7 +123,7 @@
 ## 演唱会-url
 
 **接口地址**: `/mv/concert/url`  
-**请求方法**: `GET`
+**导出函数**: `getConcertUrl`
 
 ### 参数说明
 
@@ -148,7 +146,7 @@
 ## 演唱会-详细拓展
 
 **接口地址**: `/mv/concert/detail`  
-**请求方法**: `GET`
+**导出函数**: `getConcertDetail`
 
 移动端演唱会详情
 - `$.data.contentItemList[0].itemList[0]` 此演唱会简略信息
@@ -172,7 +170,7 @@
 ## 演唱会-评论
 
 **接口地址**: `/mv/concert/comment`  
-**请求方法**: `GET`
+**导出函数**: `getConcertComment`
 
 ### 参数说明
 

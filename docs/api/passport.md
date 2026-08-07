@@ -20,7 +20,7 @@
 ## 发送 SIM 登录请求
 
 **接口地址**: `/login/sim/send`  
-**请求方法**: `GET`
+**导出函数**: `loginSim.simSend`
 
 服务端会通过 RSA 公钥加密手机号，再向咪咕通行证发起 SIM 认证请求，返回的 `sessionId` 用于后续轮询登录结果。
 
@@ -54,7 +54,7 @@
 ## 查询 SIM 登录结果
 
 **接口地址**: `/login/sim/query`  
-**请求方法**: `GET`
+**导出函数**: `loginSim.simQuery`
 
 配合 `/login/sim/send` 轮询使用。当返回 `error: waiting` 时表示运营商侧还在确认，请稍后再试；当状态码为 `2000` 时表示登录成功。
 
@@ -153,7 +153,7 @@
 ## 发送验证码
 
 **接口地址**: `/login/phone/msgCode`  
-**请求方法**: `GET`
+**导出函数**: `loginPhone.getMsgCode`
 
 !> 如果一个手机号请求过多，可能会触发图形验证码进一步验证，暂不支持转发图形验证码信息。
 
@@ -174,7 +174,7 @@
 ## 验证验证码（登录）
 
 **接口地址**: `/login/phone/authn`  
-**请求方法**: `GET`
+**导出函数**: `loginPhone.authn`
 
 ### 参数说明
 
@@ -220,7 +220,7 @@
 ## 获取 PACM Token
 
 **接口地址**: `/passport/getPacmToken`  
-**请求方法**: `GET`
+**导出函数**: `getPacmToken`
 
 ### 参数说明
 
@@ -244,7 +244,7 @@
 ## 校验 Token
 
 **接口地址**: `/passport/checkToken`  
-**请求方法**: `GET`
+**导出函数**: `checkToken`
 
 ### 参数说明
 

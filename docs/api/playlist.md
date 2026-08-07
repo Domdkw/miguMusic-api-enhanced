@@ -3,7 +3,7 @@
 ## 播放列表信息
 
 **接口地址**: `/playlist/info`  
-**请求方法**: `GET`
+**导出函数**: `getPlaylistInfo`
 
 ### 参数说明
 
@@ -22,7 +22,7 @@
 ## 播放列表歌曲
 
 **接口地址**: `/playlist/song`  
-**请求方法**: `GET`
+**导出函数**: `getPlaylistSong`
 
 ### 参数说明
 
@@ -43,7 +43,7 @@
 ## 获取歌单广场
 
 **接口地址**: `/playlist/square/page`
-**请求方法**: `GET`
+**导出函数**: `getPlaylistSquarePage`
 无参数
 
 ### 请求示例
@@ -59,7 +59,7 @@
 ## 电台歌曲列表
 
 **接口地址**: `/radio/song`  
-**请求方法**: `GET`
+**导出函数**: `getRadioSong`
 
 ### 参数说明
 
@@ -79,7 +79,7 @@
 ## 匹配外部歌单
 
 **接口地址**: `/playlist/match`
-**请求方法**: `GET`
+**导出函数**: `matchPlaylist`
 
 ### 参数说明
 
@@ -100,7 +100,7 @@
 ## VIP热歌
 
 **接口地址**: `/playlist/vip`  
-**请求方法**: `GET`
+**导出函数**: `getVipPlaylist`
 
 ### 参数说明
 

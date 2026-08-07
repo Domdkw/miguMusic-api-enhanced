@@ -3,7 +3,7 @@
 ## 搜索短视频
 
 **接口地址**: `/svideo/search`  
-**请求方法**: `GET`
+**导出函数**: `searchSVideo`
 
 ### 参数说明
 
@@ -23,7 +23,7 @@
 ## 短视频搜索建议
 
 **接口地址**: `/svideo/search/suggest`  
-**请求方法**: `GET`
+**导出函数**: `getSVideoSearchSuggest`
 
 ### 参数说明
 
@@ -42,7 +42,7 @@
 ## 短视频URL
 
 **接口地址**: `/svideo/url`  
-**请求方法**: `GET`
+**导出函数**: `getSVideoUrl`
 
 ### 参数说明
 
@@ -64,7 +64,7 @@
 ## 短视频推荐
 
 **接口地址**: `/svideo/recommend`  
-**请求方法**: `GET`
+**导出函数**: `getSVideoRecommend`
 
 ### 参数说明
 
@@ -83,7 +83,7 @@
 ## 短视频用户信息
 
 **接口地址**: `/svideo/userInfo`  
-**请求方法**: `GET`
+**导出函数**: `getSVideoUserInfo`
 
 ### 参数说明
 
@@ -106,7 +106,7 @@
 ## 短视频用户作品
 
 **接口地址**: `/svideo/userContent`  
-**请求方法**: `GET`
+**导出函数**: `getSVideoUserContent`
 
 ### 参数说明
 
@@ -145,7 +145,7 @@
 ## 视频彩铃URL
 
 **接口地址**: `/vrbt/url`  
-**请求方法**: `GET`
+**导出函数**: `getVrbtUrl`
 
 ### 参数说明
 
@@ -164,7 +164,7 @@
 ## 视频彩铃播放统计
 
 **接口地址**: `/vrbt/opNum`  
-**请求方法**: `GET`
+**导出函数**: `getVrbtOpNum`
 
 ### 参数说明
 
