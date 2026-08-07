@@ -26,6 +26,11 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Install dependencies
         run: bun install
 
@@ -51,17 +56,18 @@ jobs:
       - name: Build Windows x64
         run: bun build src/adapters/bun.ts --compile --minify --target=bun-windows-x64 --outfile dist-bun/migu-api-server-windows-x64.exe
 
+      - name: Build Node.js
+        run: npm run build:node
+
+      - name: Prepare Node.js file
+        run: cp dist-server/index.js dist-bun/migu-api-server-node.js
+
       - name: Create archives
         run: |
           cd dist-bun
           tar -czvf migu-api-server-linux-x64.tar.gz migu-api-server-linux-x64
           tar -czvf migu-api-server-linux-arm64.tar.gz migu-api-server-linux-arm64
           zip migu-api-server-windows-x64.zip migu-api-server-windows-x64.exe
-
-      - name: Generate checksums
-        run: |
-          cd dist-bun
-          sha256sum *.tar.gz *.zip > checksums.txt
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -70,7 +76,7 @@ jobs:
           path: |
             dist-bun/*.tar.gz
             dist-bun/*.zip
-            dist-bun/checksums.txt
+            dist-bun/migu-api-server-node.js
 
   release:
     needs: build
@@ -103,12 +109,15 @@ jobs:
           body: |
             ## Migu API Enhanced - Bun Executables
             
-            ### Checksums
+            ### 发布文件
             
-            See `checksums.txt` for SHA256 checksums of all files.
+            - Linux x64: `migu-api-server-linux-x64.tar.gz`
+            - Linux ARM64: `migu-api-server-linux-arm64.tar.gz`
+            - Windows x64: `migu-api-server-windows-x64.zip`
+            - Node.js: `migu-api-server-node.js`
           files: |
             dist-bun/*.tar.gz
             dist-bun/*.zip
-            dist-bun/checksums.txt
+            dist-bun/migu-api-server-node.js
           draft: false
           prerelease: false
