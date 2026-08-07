@@ -349,3 +349,88 @@
 
 ---
 
+## 粉丝列表-音乐
+
+**接口地址**: `/user/follow/follower/music`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| userId | string | 是 | 用户 ID | 15671224593300417251392 |
+| page | number | 否 | 页码，默认 1 | 1 |
+| size | number | 否 | 每页数量，默认 20 | 20 |
+
+### 请求示例
+
+```
+/user/follow/follower/music?page=1&size=20&userId=15671224593300417251392
+```
+
+---
+
+## 粉丝列表-视彩号
+
+**接口地址**: `/user/follow/follower/vrbt`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| userId | string | 否 | 用户 ID | 15671224593300417251392 |
+| videoUserId | string | 否 | 视频用户 ID | 123085012 |
+
+都传 > `userId` > `videoUserId`
+
+### 请求示例
+
+```
+/user/follow/follower/vrbt?userId=15671224593300417251392&videoUserId=123085012
+```
+
+---
+
+## 关注列表
+
+**接口地址**: `/user/follow/following`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| userId | string | 是 | 用户 ID | 15671224593300417251392 |
+| type | string | 否 | 关注用户类型 `singer`/`user` (默认`singer`) | singer |
+| page | number | 否 | 页码，默认 1 | 1 |
+| size | number | 否 | 每页数量，默认 20 | 20 |
+
+### 请求示例
+
+```
+/user/follow/following?userId=15671224593300417251392&type=user&page=1&size=20
+```
+
+---
+
+## 关注的视彩号
+
+**接口地址**: `/user/follow/following/vra`  
+**请求方法**: `GET`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| userId | string | 是 | 用户 ID | dab35be9-bc34-43f0-8136-ccc948daed38 |
+| page | number | 否 | 页码，默认 1 | 1 |
+
+### 请求示例
+
+```
+/user/follow/following/vra?page=1&userId=dab35be9-bc34-43f0-8136-ccc948daed38
+```
+
+---
+

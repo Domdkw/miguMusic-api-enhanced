@@ -17,6 +17,9 @@ import { removeSongFromMyList } from '../modules/user_myList_remove_song';
 import { isFollowAuthor } from '../modules/user_isFollow';
 import { getUserHeader } from '../modules/user_header';
 import { getUserSongPage } from '../modules/user_songPage';
+import { getFollowerList } from '../modules/follow_follower';
+import { getFollowingList } from '../modules/follow_following';
+import { getFollowingVra } from '../modules/follow_following_vra';
 
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
@@ -151,4 +154,41 @@ export default function (app: Hono) {
             c.req.query('videoUserId') ?? ''
         ))})
     );
+
+    app.get('/user/follow/following', async (c) => {
+        const data = await getFollowingList(
+            c.req.query('userId') ?? '',
+            c.req.query('type') ?? 'singer',
+            Number(c.req.query('page') ?? 1),
+            Number(c.req.query('size') ?? 20)
+        );
+        return c.json({ success: true, ...data });
+    });
+
+    app.get('/user/follow/following/vra', async (c) => {
+        const data = await getFollowingVra(
+            c.req.query('userId') ?? '',
+            Number(c.req.query('page') ?? 1)
+        );
+        return c.json({ success: true, ...data });
+    });
+
+    app.get('/user/follow/follower/music', async (c) => {
+        const data = await getFollowerList({
+            userId: c.req.query('userId') ?? '',
+            type: 'music',
+            page: Number(c.req.query('page') ?? 1),
+            size: Number(c.req.query('size') ?? 20)
+        });
+        return c.json({ success: true, ...data });
+    });
+
+    app.get('/user/follow/follower/vrbt', async (c) => {
+        const data = await getFollowerList({
+            userId: c.req.query('userId') ?? '',
+            type: 'vrbt',
+            videoUserId: c.req.query('videoUserId') ?? ''
+        });
+        return c.json({ success: true, ...data });
+    });
 }
