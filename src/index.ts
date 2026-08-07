@@ -20,12 +20,17 @@ export * as MiguUtils from './utils/index';
 // ============================================================
 import * as api from './modules/index';
 
+// 强制展开内部所有属性
+type ExpandedApi<T> = {
+    [P in keyof T]: T[P];
+}
+
 /**
  * 创建一个咪咕 API 客户端实例
  * 返回对象包含所有 API 方法（直接复用 modules 函数）
  * @returns 包含所有 API 方法的对象
  */
-export function createClient(): typeof api {
+export function createClient(): ExpandedApi<typeof api> {
     return api;
 }
 

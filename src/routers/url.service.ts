@@ -14,8 +14,7 @@ export default function (app: Hono) {
         if (!contentId) return c.json({success:false,error:'contentId 参数不能为空'}, 400);
         const toneFlag = c.req.query('toneFlag') || 'PQ';
         const url = await getRedirectUrl(contentId, toneFlag);
-        c.header('Location', url);
-        return url==='' ? c.json({success:false,error:'重定向失败'}, 400) : c.body(null, 301);
+        return url==='' ? c.json({success:false,error:'重定向失败'}, 400) : c.redirect(url, 301);
     });
 
     app.get('/url/v1', async (c) => {

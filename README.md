@@ -1,5 +1,6 @@
 # migu-api-enhanced
 
+[![npm version](https://img.shields.io/npm/v/migu-api-enhanced.svg?logo=npm)](https://www.npmjs.com/package/migu-api-enhanced)
 基于 Hono 框架的咪咕音乐 API 服务，支持多平台部署。受[https://github.com/jsososo/MiguMusicApi](https://github.com/jsososo/MiguMusicApi)项目启发。
 
 ## API 接口
@@ -39,7 +40,7 @@
 ### 安装依赖
 
 ```bash
-pnpm install
+pnpm install --registry=https://registry.npmmirror.com
 ```
 
 ### 本地开发
@@ -66,9 +67,6 @@ pnpm run build
 
 # 类型检查（SDK/NPM 包）
 pnpm run typecheck
-
-# 构建 EdgeOne 边缘函数
-pnpm run build:edgeone
 ```
 
 ### 部署
@@ -100,8 +98,11 @@ pnpm add migu-api-enhanced
 # 或
 npm install migu-api-enhanced
 ```
->[!NOTE]
-> 建议使用最新版本。后续会更新接口。请加上```@latest```获取最新版本。(npm i migu-api-enhanced@latest)
+
+虽然咪咕音乐的api不支持跨域，但是，你仍然可以使用此包导出的工具函数，并且推荐使用命名导入来减小体积
+
+`getDeviceId`/`getQuality`/`changeQuality`
+
 
 ### 方式一：命名导入
 
