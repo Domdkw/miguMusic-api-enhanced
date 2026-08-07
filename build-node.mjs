@@ -14,12 +14,16 @@ await esbuild.build({
   banner: {
     js: `import { createRequire } from 'module'; const require = createRequire(import.meta.url);`,
   },
+  alias: {
+    "db0/connectors/bun-sqlite": "./src/stubs/empty.ts"
+  },
   external: [
     '@hono/node-server',
     'hono',
+    'axios',
     'hono-mem-cache',
   ],
-  minify: false,
+  minify: true,
   sourcemap: true,
 });
 
