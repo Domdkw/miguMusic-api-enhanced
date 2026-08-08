@@ -17,7 +17,7 @@ importers:
         version: 4.20260702.1
       '@hono/node-server':
         specifier: ^2.0.10
-        version: 2.0.10(hono@4.12.31)
+        version: 2.0.10(hono@4.12.34)
       '@libsql/client':
         specifier: ^0.17.4
         version: 0.17.4
@@ -35,10 +35,10 @@ importers:
         version: 0.28.1
       hono:
         specifier: ^4.12.31
-        version: 4.12.31
+        version: 4.12.34
       hono-mem-cache:
         specifier: ^0.4.0
-        version: 0.4.0(hono@4.12.31)
+        version: 0.4.0(hono@4.12.34)
       pako:
         specifier: ^3.0.1
         version: 3.0.1
@@ -1057,8 +1057,8 @@ packages:
     peerDependencies:
       hono: ^4.0.0
 
-  hono@4.12.31:
-    resolution: {integrity: sha512-zJIHFrl6bq3RDd2YusFNCDlM8qUprxKswyi/OPzPyzKDdyBXDqWx8bZlZ7R+saTdSTatUmb3O7K4SspGPaEOQg==}
+  hono@4.12.34:
+    resolution: {integrity: sha512-GqXJqY/xJkJmuloTrnV1ZEXG3fqte+VjkUqoRNZXcrUidiUOP4fMSIHHY4tsqZBK++kVyWmt/AAfSUuy57/eSA==}
     engines: {node: '>=16.9.0'}
 
   https-proxy-agent@5.0.1:
@@ -1595,9 +1595,9 @@ snapshots:
   '@esbuild/win32-x64@0.28.1':
     optional: true
 
-  '@hono/node-server@2.0.10(hono@4.12.31)':
+  '@hono/node-server@2.0.10(hono@4.12.34)':
     dependencies:
-      hono: 4.12.31
+      hono: 4.12.34
 
   '@img/colour@1.1.0': {}
 
@@ -2117,12 +2117,12 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  hono-mem-cache@0.4.0(hono@4.12.31):
+  hono-mem-cache@0.4.0(hono@4.12.34):
     dependencies:
-      hono: 4.12.31
+      hono: 4.12.34
       lru-cache: 11.5.2
 
-  hono@4.12.31: {}
+  hono@4.12.34: {}
 
   https-proxy-agent@5.0.1:
     dependencies:
