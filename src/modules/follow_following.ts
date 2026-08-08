@@ -9,8 +9,8 @@ import { h5fetch } from '../utils/h5fetch';
  * @returns 关注列表
  */
 export const getFollowingList = async (userId: string, type: string, page: number = 1, size: number = 20) => {
-    if (!userId) return {success: false,data:{error:'userId is required'}};
-    if (type!=='user'&&type!=='singer') return {success: false,data:{error:'type is invalid'}};
+    if (!userId) return {success: false,error:'userId is required'};
+    if (type!=='user'&&type!=='singer') return {success: false,error:'type is invalid'};
 
     return await h5fetch(`https://app.c.nf.migu.cn/MIGUM2.0/v1.0/user/followingSingers.do`
         ,{params: {

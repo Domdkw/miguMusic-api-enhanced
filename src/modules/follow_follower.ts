@@ -40,7 +40,7 @@ export const getFollowerList = async (params: FollowerListParams) => {
     if (params.type === 'vrbt') {
         if (!params.userId && !params.videoUserId) return {
             success: false,
-            data:{error:'userId or videoUserId is required'},
+            error:'userId or videoUserId is required',
         };
         return await h5fetch(`https://app.c.nf.migu.cn/user/i/social/fans-list/v1.0`
             ,{params: {
