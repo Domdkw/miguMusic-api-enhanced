@@ -443,3 +443,43 @@
 
 ---
 
+## 添加关注
+
+**接口地址**: `/user/follow/add`  
+**导出函数**: `addFollower`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 是 | 登录凭证 |  |
+| singerId | string | 是 | 关注用户 ID | 1000000747 |
+
+### 请求示例
+
+```
+/user/follow/add?pacmtoken=xxx&singerId=1000000747
+```
+
+---
+
+## 移除关注
+
+**接口地址**: `/user/follow/remove`  
+**导出函数**: `removeFollower`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 是 | 登录凭证 |  |
+| singerId | string | 是 | 关注用户 ID | 1000000747 |
+
+### 请求示例
+
+```
+/user/follow/remove?pacmtoken=xxx&singerId=1000000747
+```
+
+---
+

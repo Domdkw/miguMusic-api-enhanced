@@ -20,6 +20,8 @@ import { getUserSongPage } from '../modules/user_songPage';
 import { getFollowerList } from '../modules/follow_follower';
 import { getFollowingList } from '../modules/follow_following';
 import { getFollowingVra } from '../modules/follow_following_vra';
+import { addFollower } from '../modules/follow_add';
+import { removeFollower } from '../modules/follow_remove';
 
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
@@ -190,5 +192,19 @@ export default function (app: Hono) {
             videoUserId: c.req.query('videoUserId') ?? ''
         });
         return c.json({ success: true, ...data });
+    });
+
+    app.get('/user/follow/add', async (c) => {
+        const pacmtoken = c.req.query('pacmtoken') ?? '';
+        const singerId = c.req.query('singerId') ?? '';
+        const {data, newPacmToken} = await addFollower(pacmtoken, singerId);
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/follow/remove', async (c) => {
+        const pacmtoken = c.req.query('pacmtoken') ?? '';
+        const singerId = c.req.query('singerId') ?? '';
+        const {data, newPacmToken} = await removeFollower(pacmtoken, singerId);
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 }

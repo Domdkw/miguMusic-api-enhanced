@@ -99,3 +99,5 @@ export { getSVideoRecommend } from './svideo_recommend';
 export { getFollowingVra } from './follow_following_vra';
 export { getFollowerList } from './follow_follower';
 export { getFollowingList } from './follow_following';
+export { addFollower } from './follow_add';
+export { removeFollower } from './follow_remove';
