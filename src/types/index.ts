@@ -1,5 +1,2 @@
-/**
- * 类型定义文件
- * 统一管理项目中的类型定义
- */
-
+export * from './user';
+export * from './follow';

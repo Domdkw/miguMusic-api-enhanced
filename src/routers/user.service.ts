@@ -67,16 +67,35 @@ export default function (app: Hono) {
 
     app.get('/user/collect/add', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
-        const playlistId = c.req.query('playlistId') ?? '';
-        const title = c.req.query('title') ?? '';
-        const {data, newPacmToken} = await addUserCollect(pacmtoken, playlistId, title);
+        const type = c.req.query('type') ?? '';
+
+        let params: Parameters<typeof addUserCollect>[1];
+        if (type === 'playlist') {
+            params={type:'playlist',playlistId:c.req.query('playlistId')??'',title:c.req.query('title')??''};
+        } else if (type === 'comment') {
+            params={type:'comment',userId:c.req.query('userId')??'',commentId:c.req.query('commentId')??''};
+        } else {
+            return c.json({ success: false, error: '未知type类型，需为playlist或comment' });
+        }
+
+        const {data, newPacmToken} = await addUserCollect(pacmtoken, params);
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 
     app.get('/user/collect/remove', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
-        const playlistId = c.req.query('playlistId') ?? '';
-        const {data, newPacmToken} = await removeUserCollect(pacmtoken, playlistId);
+        const type = c.req.query('type') ?? '';
+
+        let params: Parameters<typeof removeUserCollect>[1];
+        if (type === 'playlist') {
+            params={type:'playlist',playlistId:c.req.query('playlistId')??''};
+        } else if (type === 'comment') {
+            params={type:'comment',userId:c.req.query('userId')??'',commentId:c.req.query('commentId')??''};
+        } else {
+            return c.json({ success: false, error: '未知type类型，需为playlist或comment' });
+        }
+
+        const {data, newPacmToken} = await removeUserCollect(pacmtoken, params);
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
     

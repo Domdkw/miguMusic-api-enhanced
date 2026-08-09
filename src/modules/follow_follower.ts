@@ -1,22 +1,5 @@
 import { h5fetch } from '../utils/h5fetch';
-
-type MusicParams = {
-    type: 'music';
-    userId: string;
-    page?: number;
-    size?: number;
-}
-type VrbtParams = {
-    type: 'vrbt';
-    userId?: string;
-    videoUserId: string;
-} | {
-    type: 'vrbt';
-    userId: string;
-    videoUserId?: string;
-}
-
-export type FollowerListParams = MusicParams | VrbtParams;
+import type { Follower } from '../types/follow';
 
 /**
  * 获取粉丝列表
@@ -29,12 +12,12 @@ export type FollowerListParams = MusicParams | VrbtParams;
  * @param params.size 每页数量
  * @returns 粉丝列表
  */
-export const getFollowerList = async (params: FollowerListParams) => {
+export const getFollowerList = async (params: Follower.params) => {
     if (params.type === 'music') return await h5fetch(`https://app.c.nf.migu.cn/MIGUM2.0/v1.0/user/follower.do`
         ,{params: {
-                pageNo: params.page || 1,
-                pageSize: params.size || 20,
-                userId: params.userId,
+            pageNo: params.page || 1,
+            pageSize: params.size || 20,
+            userId: params.userId,
         }}
     );
     if (params.type === 'vrbt') {
@@ -44,8 +27,8 @@ export const getFollowerList = async (params: FollowerListParams) => {
         };
         return await h5fetch(`https://app.c.nf.migu.cn/user/i/social/fans-list/v1.0`
             ,{params: {
-                    userId: params.userId,
-                    videoUserId: params.videoUserId,
+                userId: params.userId,
+                videoUserId: params.videoUserId,
             }}
         );
     }

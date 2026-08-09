@@ -152,19 +152,24 @@
 **接口地址**: `/user/collect/add`\
 **导出函数**: `addUserCollect`
 
-### 参数说明
+### 基础参数
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
 | pacmtoken | string | 是 | 登录凭证 |  |
+| type | string | 是 | 收藏类型 | playlist |
+
+?> 收藏类型可选值：playlist, comment
+
+#### 歌单参数 （type = playlist）
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
 | playlistId | number | 是 | 歌单 ID | 234040856 |
 | title | string | 是 | 歌单标题 | 抖音DJ热曲：开车提神不犯困 |
 
-### 请求示例
-
-```
-/user/collect/add?pacmtoken=xxx&playlistId=234040856&title=抖音DJ热曲：开车提神不犯困
-```
+#### 评论参数 （type = comment）
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| commentId | string | 是 | 评论 ID | 131702123 |
+| userId | string | 是 | 用户 ID | dab35be9-bc34-43f0-8136-ccc948daed38 |
 
 ***
 
@@ -178,13 +183,21 @@
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
 | pacmtoken | string | 是 | 登录凭证 |  |
+| type | string | 是 | 收藏类型 | playlist |
+
+?> 收藏类型可选值：playlist, comment
+
+#### 歌单参数 （type = playlist）
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
 | playlistId | number | 是 | 歌单 ID | 234040856 |
 
-### 请求示例
+不需要`title`参数
 
-```
-/user/collect/remove?pacmtoken=xxx&playlistId=234040856
-```
+#### 评论参数 （type = comment）
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| commentId | string | 是 | 评论 ID | 97803798 |
+| userId | string | 是 | 用户 ID | 15541009228230164353379 |
+
 
 ***
 
