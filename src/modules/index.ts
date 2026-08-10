@@ -104,3 +104,4 @@ export { removeFollower } from './follow_remove';
 export { logout } from './passport_logout';
 export { shareVideo } from './share_video';
 export { shareCommon } from './share_common';
+export { getUserAudioBook } from './user_audioBook';
