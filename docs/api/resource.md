@@ -2,7 +2,7 @@
 
 ## 资源类型
 
-2002-歌手，2003-专辑，2-歌曲，2016-电台，2021-歌单，3002-评论
+2002-歌手，2003-专辑，2-歌曲，2016-电台，2021-歌单，3002-评论，6000-短视频，D-MV，M-视频彩铃
 
 ## 获取歌曲歌词
 
@@ -133,3 +133,43 @@
 ```
 /ticket?page=1&pageCount=10
 ```
+
+## 分享链接
+
+### 歌曲 / 专辑 / 歌手 / 歌单
+
+**导出函数**: `shareCommon`
+
+**基础参数：**
+
+| 参数名 | 类型 | 必填 | 说明 
+| ------- | ------ | ------ | ------ |
+| contentId | string | 是 | 歌曲contentId / albumId / artistId / playlistId |
+| contentName | string | 是 | 歌曲名称 / 专辑名称 / 歌手名称 / 播放列表名称 |
+| targetUserName | string | 否 | 当前 歌单作者/歌手 名称 |
+
+**额外参数：**
+
+| 类型 | 接口 | 额外参数 |
+| ------ | ------ | ------ |
+| 歌曲 | `/share/song` | copyrightId |
+| 专辑 | `/share/album` |  |
+| 歌手 | `/share/singer` |  |
+| 歌单 | `/share/playlist` |  |
+
+### 短视频 / MV
+
+**导出函数**: `shareVideo`
+
+| 类型 | 接口 |
+| ------ | ------ |
+| MV | `/share/mv` |
+| 短视频 | `/share/svideo` |
+
+**基础参数：**
+
+| 参数名 | 类型 | 必填 | 说明 
+| ------- | ------ | ------ | ------ |
+| contentId | string | 是 | 短视频id / MVid |
+| userId | string | 是 | 视频用户ID |
+

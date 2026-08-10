@@ -4,3 +4,4 @@ export { getPublicKey } from './publicKey';
 export { RSAKey } from './rsalib';
 export { URLParams } from './URLParams';
 export * from './quality';
+export { getResourceId } from './resourceType';

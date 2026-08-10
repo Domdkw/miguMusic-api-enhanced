@@ -3,6 +3,7 @@ import { getPacmToken } from '../modules/passport_pacmToken';
 import { checkToken } from '../modules/passport_checkToken';
 import { loginSim } from '../modules/login_sim';
 import { loginPhone } from '../modules/login_phone';
+import { logout } from '../modules/passport_logout';
 
 export default function (app: Hono) {
     app.get('/passport/getPacmToken', async (c) => {
@@ -24,6 +25,11 @@ export default function (app: Hono) {
             return c.json({ success: false, error: data });
         }
         return c.json({ success: true, ...data });
+    });
+
+    app.get('/passport/logout', async (c) => {
+        const data = await logout(c.req.query('pacmtoken') ?? '');
+        return c.json({ success: true, ...data, pacmtoken: '' });
     });
 
     app.get('/login/sim/send', async(c) => {

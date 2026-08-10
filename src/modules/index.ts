@@ -101,3 +101,6 @@ export { getFollowerList } from './follow_follower';
 export { getFollowingList } from './follow_following';
 export { addFollower } from './follow_add';
 export { removeFollower } from './follow_remove';
+export { logout } from './passport_logout';
+export { shareVideo } from './share_video';
+export { shareCommon } from './share_common';

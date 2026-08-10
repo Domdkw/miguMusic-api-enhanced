@@ -217,6 +217,21 @@
 
 ---
 
+## 退出登录
+
+**接口地址**: `/passport/logout`  
+**导出函数**: `logout`
+
+退出登录后，以前的 pacmtoken 不可用（登录超时）
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 是 | PACM Token | - |
+
+---
+
 ## 获取 PACM Token
 
 **接口地址**: `/passport/getPacmToken`  

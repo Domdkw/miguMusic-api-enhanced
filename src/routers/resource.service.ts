@@ -1,4 +1,5 @@
 import type { Hono } from 'hono';
+import { getResourceId } from '../utils/resourceType';
 import { checkCanListen } from '../modules/can-listen';
 import { getComment } from '../modules/comment';
 import { getOpNum } from '../modules/opNum';
@@ -6,6 +7,8 @@ import { getVersion } from '../modules/version';
 import { getResourceInfo } from '../modules/resourceinfo';
 import { getTicketInfo } from '../modules/ticket';
 import { getLyric } from '../modules/lyric';
+import { shareVideo } from '../modules/share_video';
+import { shareCommon } from '../modules/share_common';
 
 
 export default function (app: Hono) {
@@ -66,5 +69,32 @@ export default function (app: Hono) {
         const contentId = c.req.query('contentId') ?? '';
         const data = await getLyric(contentId);
         return c.json(data); // 不用套success,内部已处理,更详细
+    });
+
+    app.get('/share/:resourceName', async (c) => {
+        const resourceName = c.req.param('resourceName') ?? '';
+        const supportedResourceTypes = ['song','album','singer','playlist','svideo','mv'];
+        if (!supportedResourceTypes.includes(resourceName)) return c.json({success:false,error:'resourceType is not supported'},400);
+        
+        const resourceType = getResourceId(resourceName);
+        const contentId = c.req.query('contentId') ?? '';
+        // 视频分享
+        if(resourceType==='D' || resourceType==='6000'){
+            return c.json({success:true,...(await shareVideo(
+                resourceType,
+                contentId,
+                c.req.query('userId') ?? '',
+            ))});
+        }
+        // 通用分享
+        const contentName = c.req.query('contentName') ?? '';
+        if(!contentName) return c.json({success:false,error:'contentName is required'},400);
+        return c.json({success:true,...(await shareCommon(
+            resourceType,
+            contentId,
+            contentName,
+            c.req.query('targetUserName') ?? '',
+            c.req.query('copyrightId') ?? '',
+        ))});
     });
 }

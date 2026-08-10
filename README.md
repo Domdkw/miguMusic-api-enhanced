@@ -99,9 +99,9 @@ pnpm add migu-api-enhanced
 npm install migu-api-enhanced
 ```
 
-虽然咪咕音乐的api不支持跨域，但是，你仍然可以使用此包导出的工具函数，并且推荐使用命名导入来减小体积
+虽然前端不支持跨域，但是，你仍然可以使用此包的工具函数。推荐使用命名导入来减小体积
 
-`getDeviceId`/`getQuality`/`changeQuality`
+`getDeviceId`/`getQuality`/`changeQuality`/`getResourceId`
 
 
 ### 方式一：命名导入
