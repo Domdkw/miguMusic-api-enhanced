@@ -79,7 +79,7 @@ app.use(
 );
 
 // 健康检查
-app.get('/', c => {
+app.get('/api/status', c => {
     const USE_DATABASE = env<{ USE_DATABASE: string }>(c).USE_DATABASE === 'true';
     const ALLOWED_ORIGINS = env<{ ALLOWED_ORIGINS: string }>(c).ALLOWED_ORIGINS || '';
 

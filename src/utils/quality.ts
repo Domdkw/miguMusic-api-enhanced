@@ -39,8 +39,12 @@ export function getQuality(url: string): Quality | '' {
     return tone;
 }
 
-export function changeQuality(url: string, quality: string, originalQuality?: string) {
+export function changeQuality(url: string, quality: string, originalQuality?: string, splitQuery: boolean = true) {
     const originalTone = isQuality(originalQuality) ? originalQuality : getQuality(url);
+
+    if (splitQuery) {
+        url = url.split('?')[0];
+    }
 
     if (!isQuality(quality) || !isQuality(originalTone)) {
         return url;

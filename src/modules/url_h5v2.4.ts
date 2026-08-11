@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { changeQuality } from '../utils/quality';
 
 export const getUrlH5V24 = async (contentId: string, copyrightId: string, toneFlag: string = 'PQ') => {
     const headers = {
@@ -10,14 +11,19 @@ export const getUrlH5V24 = async (contentId: string, copyrightId: string, toneFl
     }
 
     const res = await axios.get(
-        `https://c.musicapp.migu.cn/strategy/listen-url/h5/v2.4?contentId=${contentId}&copyrightId=${copyrightId}&resourceType=2&netType=01&toneFlag=${toneFlag}&scene=&lowerQualityContentId=${contentId}`,
+        `https://c.musicapp.migu.cn/strategy/listen-url/h5/v2.4?contentId=${contentId}&copyrightId=${copyrightId}&resourceType=2&netType=01&toneFlag=PQ&scene=&lowerQualityContentId=${contentId}`,
         {
             headers: headers,
             responseType: 'arraybuffer'
         }
     );
 
-    return await decryptData(res.data);
+    const data = await decryptData(res.data);
+    if (data?.data?.url === '') {
+        return { success: false, error: 'URL 为空' };
+    }
+    data.data.url = changeQuality(data.data.url || '', toneFlag, 'PQ', true);
+    return data;
 };
 
 const SECURE = ["Jk8qzuePiJ1qE3mDYhLQ3T73DtDoAhLP"];

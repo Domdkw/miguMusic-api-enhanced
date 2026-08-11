@@ -2,8 +2,8 @@ import { h5fetch } from '../utils/h5fetch';
 
 /**
  * 分享视频
- * @param resourceType 资源类型 6000:短视频 D:MV
- * @param contentId 视频id / MVid
+ * @param resourceType 资源类型 6000:短视频 D:MV M:视频彩铃
+ * @param contentId 短视频id / MVid / vrbtId
  * @param userId 视频用户id （可选）
  * @returns 分享信息 (url)
  */

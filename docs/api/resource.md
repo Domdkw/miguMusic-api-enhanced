@@ -169,12 +169,13 @@
 | ------ | ------ |
 | MV | `/share/mv` |
 | 短视频 | `/share/svideo` |
+| 视频彩铃 | `/share/vrbt` |
 
 **基础参数：**
 
 | 参数名 | 类型 | 必填 | 说明 
 | ------- | ------ | ------ | ------ |
-| contentId | string | 是 | 短视频id / MVid |
+| contentId | string | 是 | 短视频id / MVid / vrbtId |
 | userId | string | 是 | 视频用户ID |
 
 ---
