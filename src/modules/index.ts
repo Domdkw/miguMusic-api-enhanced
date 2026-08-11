@@ -105,3 +105,7 @@ export { logout } from './passport_logout';
 export { shareVideo } from './share_video';
 export { shareCommon } from './share_common';
 export { getUserAudioBook } from './user_audioBook';
+export { getListenRank } from './user_listenRank';
+export { getCloudUrl } from './cloud_url';
+export { getDLUrlV1 } from './url_dl_v1';
+export { getUrlM2 } from './url_m2';

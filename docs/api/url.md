@@ -6,6 +6,8 @@
 
 ?> contentId 和 copyrightId 是歌曲的唯一标识，可以二选一。都传 > contentId > copyrightId
 
+?> 请记住，每个接口都有它的使用价值🧐😏，不会放没什么用的上去。例如没有放上去的没用接口(mini2.4)
+
 <details>
 <summary>获取歌曲的任意质量的播放地址</summary>
 
@@ -40,6 +42,39 @@
 | ------- | ------ | ------ | ------ | ------ |
 | contentId | string | 是 | Content ID | 600929000003297424 |
 | toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
+
+---
+
+## 播放地址 m2
+
+**接口地址**: `/url/m2`  
+**导出函数**: `getUrlM2`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| contentId | string | 是 | Content ID | 600902000006889466 (爱在西元前) |
+| toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
+| copyrightId | string | 否 | Copyright ID | 60054701898 |
+| songId | string | 否 | 歌曲 ID | 2498 |
+| albumId | string | 否 | 专辑 ID | 7948 |
+
+---
+
+## 播放地址 dlv1
+
+**接口地址**: `/url/dlv1`  
+**导出函数**: `getDLUrlV1`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| songId | string | 是 | 歌曲 ID | 3853 (恭喜发财) |
+| toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
+
+?> 建议使用listen接口，dl接口限制较多
 
 ---
 
@@ -134,4 +169,21 @@
   "url": "https://.mp3"
 }
 ```
+
 ---
+
+## 咪咕云盘播放地址
+
+**接口地址**: `/user/cloud/url`  
+**导出函数**: `getCloudUrl`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 是 | 登录凭证 |  |
+| contentId | string | 是 | 内容 ID | - |
+| toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
+
+---
+

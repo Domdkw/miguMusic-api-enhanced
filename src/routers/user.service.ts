@@ -23,6 +23,8 @@ import { getFollowingVra } from '../modules/follow_following_vra';
 import { addFollower } from '../modules/follow_add';
 import { removeFollower } from '../modules/follow_remove';
 import { getUserAudioBook } from '../modules/user_audioBook';
+import { getListenRank } from '../modules/user_listenRank';
+import { getCloudUrl } from '../modules/cloud_url';
 
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
@@ -221,6 +223,22 @@ export default function (app: Hono) {
             c.req.query('pacmtoken') ?? '',
             Number(c.req.query('recentListenNum') ?? 10),
             Number(c.req.query('recommendNum') ?? 5)
+        );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/listenRank', async (c) => {
+        const pacmtoken = c.req.query('pacmtoken') ?? '';
+        const type = c.req.query('type') ?? 'week';
+        const {data, newPacmToken} = await getListenRank(pacmtoken, type);
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/cloud/url', async (c) => {
+        const {data, newPacmToken} = await getCloudUrl(
+            c.req.query('pacmtoken') ?? '',
+            c.req.query('contentId') || '',
+            c.req.query('toneFlag') || 'PQ',
         );
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
