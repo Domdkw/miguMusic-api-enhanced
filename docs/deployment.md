@@ -27,12 +27,16 @@ USE_DATABASE=true
 | 变量名 | 说明 | 默认值 | 示例  |
 | ---- | ---- | ---- | ---- |
 | `ALLOWED_ORIGINS` | CORS 允许的源，多个源用逗号分隔。支持 `*` 通配符 | `*`（允许所有） | `http://localhost:3000,https://example.com` |
-| `USE_DATABASE` | 是否启用数据库存储 URL 功能 | `true` | `true` 或 `false` |
+| `USE_DATABASE` | 是否启用数据库存储 URL 功能 | `false` | `true` 或 `false` |
+| `HOME_REDIRECT_URL` | 首页重定向地址 | `https://domdkw.github.io/miguMusic-api-enhanced/` | - |
+| `AUTO_STORE_URL` | 自动存储 h5v2.4 URL接口返回值 到数据库 | `false` | - |
+
+?> `AUTO_STORE_URL` / `USE_DATABASE` 需要设置 === `true` 才生效。
 
 ### CORS 配置规则
 
 - 有 `.env` 文件，并且设置 `ALLOWED_ORIGINS`为空：拒绝所有跨域请求
-- 无 `.env` 文件，允许所有（开发环境推荐）
+- 无 `.env` 文件，允许所有cors请求
 - 设置为 `*`：允许所有跨域请求
 - 设置为具体的域名列表：仅允许列表中的源访问
 - 多个源用逗号分隔，不支持空格

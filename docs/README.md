@@ -21,27 +21,12 @@
 
 ## 快速链接
 
+?> 默认配置下，需要在此项目的所有接口前添加`/api`前缀。例如：`/api/version`
+
 - [安装指南](installation.md)
 - [部署指南](deployment.md)
 - [NPM 包使用](npm-package.md)
 - [API 接口文档](api/search.md)
-
-## 项目结构
-
-```
-migu-api-enhanced/
-├── src/
-│   ├── adapters/      # 平台适配器
-│   ├── modules/       # API 模块（NPM 包导出）
-│   ├── routers/       # API 路由
-│   ├── types/         # 类型定义
-│   ├── utils/         # 工具函数
-│   ├── app.ts         # 应用入口
-│   └── index.ts       # NPM 包入口
-├── functions/         # EdgeOne 边缘函数
-├── docs/              # 文档目录
-└── package.json
-```
 
 ## 许可证
 

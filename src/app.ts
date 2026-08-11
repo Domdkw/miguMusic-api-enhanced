@@ -78,6 +78,15 @@ app.use(
     })
 );
 
+// 首页重定向
+// 当未配置 HOME_REDIRECT_URL 时，默认重定向到项目文档地址
+app.get('/', c => {
+    return c.redirect(
+        env<{ HOME_REDIRECT_URL: string }>(c).HOME_REDIRECT_URL || 'https://domdkw.github.io/miguMusic-api-enhanced/'
+        ,301
+    );
+});
+
 // 健康检查
 app.get('/api/status', c => {
     const USE_DATABASE = env<{ USE_DATABASE: string }>(c).USE_DATABASE === 'true';
