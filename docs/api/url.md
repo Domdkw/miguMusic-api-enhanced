@@ -8,6 +8,8 @@
 
 ?> 请记住，每个接口都有它的使用价值🧐😏，不会放没什么用的上去。例如没有放上去的没用接口(mini2.4)
 
+?> 接口后端默认走PQ，传入其他的会自动转换，转换后`url`，转换前`oriUrl`。
+
 <details>
 <summary>获取歌曲的任意质量的播放地址</summary>
 
@@ -20,7 +22,8 @@
 - **SQ** 歌曲下载/flac/id.flac
 - **ZQ24** 歌曲下载/flac_24bit/id.flac
 - **ZQ32** 歌曲下载/wav_32bit/id.wav
-- **Z3D** 歌曲下载/wav_3d/id.wav
+- **Z3D** 歌曲下载/wav_3d/id.wav (流媒体，浏览器无法直接播放，仅下载)
+- **3D60** 歌曲下载/wav_3d_60s/id.wav (自定义，60秒片段(h5)，网页可播放)
 
 音质信息获取：搜索/resourceinfo
 
@@ -114,6 +117,8 @@
 | toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
 
 ?> 在有cookie:pacmtoken(是VIP用户)的情况下，可以播放 VIP 歌曲。使用范围：c.migu.cn微信歌曲分享，music.migu.cn PC版网页播放歌曲
+
+?> 此接口未配置音质转换，老老实实登录吧 [狗头]
 
 ### 请求示例
 

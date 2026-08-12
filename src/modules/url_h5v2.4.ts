@@ -22,6 +22,7 @@ export const getUrlH5V24 = async (contentId: string, copyrightId: string, toneFl
     if (data?.data?.url === '') {
         return { success: false, error: 'URL 为空' };
     }
+    data.data.oriUrl = data.data.url || '';
     data.data.url = changeQuality(data.data.url || '', toneFlag, 'PQ', true);
     return data;
 };

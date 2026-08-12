@@ -40,7 +40,8 @@ export default function (app: Hono) {
         const contentId = c.req.query('contentId') || '';
         const copyrightId = c.req.query('copyrightId') || '';
         const resourceType = c.req.query('resourceType') || '2';
-        const data = await getUrlV1(contentId, copyrightId, resourceType);
+        const toneFlag = c.req.query('toneFlag') || 'PQ';
+        const data = await getUrlV1(contentId, copyrightId, toneFlag, resourceType);
         return c.json({ success: true, ...data });
     });
 
@@ -91,7 +92,7 @@ export default function (app: Hono) {
 
         // 统一返回结构: { success: boolean, data?: { url: string }, error?: string }
         if (!success) {
-            const data = await getUrlV1(contentId, '', '2');
+            const data = await getUrlV1(contentId, '', 'PQ', '2');
             return c.json({ success: true, ...data, hit: false });
         }
         return c.json({ success: true, data: { url }, hit: true });

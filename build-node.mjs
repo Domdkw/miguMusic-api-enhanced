@@ -17,12 +17,6 @@ await esbuild.build({
   alias: {
     "db0/connectors/bun-sqlite": "./src/stubs/empty.ts"
   },
-  external: [
-    '@hono/node-server',
-    'hono',
-    'axios',
-    'hono-mem-cache',
-  ],
   minify: true,
   sourcemap: true,
 });

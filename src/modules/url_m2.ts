@@ -23,7 +23,18 @@ export const getUrlM2 = async (contentId: string, toneFlag: string = 'PQ', copyr
     if (data?.data?.url === '') {
         return { success: false, error: 'URL 为空' };
     }
+    data.data.oriUrl = data.data.url || '';
     data.data.url = changeQuality(data.data.url || '', toneFlag, 'PQ', true);
-    // 不额外处理原版Z3D，已无法解析
+
+    // 额外处理原版Z3D，使用Android端解析
+    if(data?.data?.songItem?.z3dCode) {
+        const a = 'ftp://218.200.160.122:21/',b = 'https://freetyst.nf.migu.cn/';
+        const z3dCode = data.data.songItem.z3dCode;
+        z3dCode.url = encodeURI(z3dCode?.url?.replace(a,b) || '');
+        z3dCode.iosUrl = encodeURI(z3dCode?.iosUrl?.replace(a,b) || '');
+        z3dCode.androidUrl = encodeURI(z3dCode?.androidUrl?.replace(a,b) || '');
+        z3dCode.h5Url = encodeURI(z3dCode?.h5Url?.replace(a,b) || '');
+        data.data.songItem.z3dCode = z3dCode;
+    }
     return data;
 };

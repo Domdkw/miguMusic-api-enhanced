@@ -1,5 +1,5 @@
 export const qualityList = [
-    'PQ','HQ','SQ','ZQ24','ZQ32','Z3D'
+    'PQ','HQ','SQ','ZQ24','ZQ32','Z3D','3D60'
 ] as const;
 
 export type Quality = (typeof qualityList)[number];
@@ -12,13 +12,14 @@ export const toneUrl = {
     'ZQ24': e('歌曲下载/flac_24bit'),
     'ZQ32': e('歌曲下载/wav_32bit'),
     'Z3D': e('歌曲下载/wav_3d'),
+    '3D60': e('歌曲下载/wav_3d_60s')
 }
 const toneUrlList = Object.entries(toneUrl)
 
 export const toneFormat = {
     'PQ': '.mp3', 'HQ': '.mp3',
     'SQ': '.flac', 'ZQ24': '.flac',
-    'ZQ32': '.wav', 'Z3D': '.wav',
+    'ZQ32': '.wav', 'Z3D': '.wav', '3D60': '.wav'
 }
 
 export function isQuality(quality: string | undefined): quality is Quality {
