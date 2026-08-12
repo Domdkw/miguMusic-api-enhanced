@@ -15,8 +15,7 @@ async function getStorage() {
 
 const zip = {
     '!': 'https://freetyst.nf.migu.cn/public/product9th/product',
-    // 下面这个可能用不上
-    //'?': 'https://freetyst.nf.migu.cn/public/product8th/product',
+    '*': 'https://freetyst.nf.migu.cn/public/product',
 }
 
 // 压缩字符串
