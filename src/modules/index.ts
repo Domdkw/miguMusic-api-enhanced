@@ -109,3 +109,6 @@ export { getListenRank } from './user_listenRank';
 export { getCloudUrl } from './cloud_url';
 export { getDLUrlV1 } from './url_dl_v1';
 export { getUrlM2 } from './url_m2';
+export { emojiAction } from './user_emoji_action';
+export { getEmojiNum } from './user_emoji_num';
+export { getUserHeartthrob } from './user_heartthrob';

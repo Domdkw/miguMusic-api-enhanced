@@ -387,3 +387,49 @@
 
 ---
 
+## 表态数量
+
+**接口地址**: `/user/emoji/num`  
+**导出函数**: `getEmojiNum`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 否 | 登录凭证 |  |
+| contentIds | string | 是 | 歌曲 ID 列表，多个 ID 用逗号分隔 |  |
+
+?> pacmtoken 传入，返回用户是否表态。(isEmoji: boolean)
+
+---
+
+## 表态操作
+
+**接口地址**: `/user/emoji/action`  
+**导出函数**: `emojiAction`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 是 | 登录凭证 |  |
+| contentId | string | 是 | 单个歌曲 ID |  |
+| emojiId | string | 是 | 表情 ID | 69cb7402e2ae772e271b4340 (夯爆了) |
+| action | string | 是 | 表态操作 `add`/`cancel` | add |
+
+---
+
+## 心动模式推荐歌曲
+
+**接口地址**: `/user/heartthrob`  
+**导出函数**: `getUserHeartthrob`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 是 | 登录凭证 |  |
+| songId | string | 是 | 歌曲 ID |  |
+
+---
+

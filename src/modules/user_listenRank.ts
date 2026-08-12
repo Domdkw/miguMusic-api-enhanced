@@ -7,7 +7,7 @@ import { ckfetch } from '../utils/h5fetch';
  * @returns 听歌排行列表，包含新pacmtoken
  */
 export const getListenRank = async (pacmtoken: string, type: string) => {
-    const { data, cookies } = await ckfetch(`https://app.c.nf.migu.cn//MIGUM3.0/bmw/listen-song/ranking/v1.0`, {
+    const { data, cookies } = await ckfetch(`https://app.c.nf.migu.cn/MIGUM3.0/bmw/listen-song/ranking/v1.0`, {
         method: 'POST',
         cookie: { pacmtoken },
         body: JSON.stringify({ "type": type === 'year' ? 2 : 1 }),

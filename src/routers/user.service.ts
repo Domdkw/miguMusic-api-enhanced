@@ -25,6 +25,9 @@ import { removeFollower } from '../modules/follow_remove';
 import { getUserAudioBook } from '../modules/user_audioBook';
 import { getListenRank } from '../modules/user_listenRank';
 import { getCloudUrl } from '../modules/cloud_url';
+import { getEmojiNum } from '../modules/user_emoji_num';
+import { emojiAction } from '../modules/user_emoji_action';
+import { getUserHeartthrob } from '../modules/user_heartthrob';
 
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
@@ -240,6 +243,31 @@ export default function (app: Hono) {
             c.req.query('contentId') || '',
             c.req.query('toneFlag') || 'PQ',
         );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/emoji/num', async (c) => {
+        const {data, newPacmToken} = await getEmojiNum(
+            c.req.query('pacmtoken') ?? '',
+            c.req.query('contentIds') ?? ''
+        );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/emoji/action', async (c) => {
+        const {data, newPacmToken} = await emojiAction(
+            c.req.query('pacmtoken') ?? '',
+            c.req.query('contentId') ?? '',
+            c.req.query('emojiId') ?? '',
+            c.req.query('action') ?? 'add'
+        );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/heartthrob', async (c) => {
+        const pacmtoken = c.req.query('pacmtoken') ?? '';
+        const songId = c.req.query('songId') ?? '';
+        const {data, newPacmToken} = await getUserHeartthrob(pacmtoken, songId);
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 }
