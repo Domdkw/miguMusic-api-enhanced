@@ -28,6 +28,9 @@ import { getCloudUrl } from '../modules/cloud_url';
 import { getEmojiNum } from '../modules/user_emoji_num';
 import { emojiAction } from '../modules/user_emoji_action';
 import { getUserHeartthrob } from '../modules/user_heartthrob';
+import { getInteractionMsg } from '../modules/user_message_interaction';
+import { getNoticeMsg } from '../modules/user_message_notice';
+import { getThumbsMsg } from '../modules/user_message_thumbs';
 
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
@@ -268,6 +271,34 @@ export default function (app: Hono) {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
         const songId = c.req.query('songId') ?? '';
         const {data, newPacmToken} = await getUserHeartthrob(pacmtoken, songId);
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/message/notice', async (c) => {
+        const {data, newPacmToken} = await getNoticeMsg(
+            c.req.query('pacmtoken') ?? '',
+            Number(c.req.query('page') ?? '1'),
+            Number(c.req.query('size') ?? '10')
+        );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/message/thumbs', async (c) => {
+        const {data, newPacmToken} = await getThumbsMsg(
+            c.req.query('pacmtoken') ?? '',
+            Number(c.req.query('page') ?? '1'),
+            Number(c.req.query('size') ?? '10')
+        );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/message/interaction', async (c) => {
+        const {data, newPacmToken} = await getInteractionMsg(
+            c.req.query('pacmtoken') ?? '',
+            c.req.query('type') ?? '',
+            Number(c.req.query('page') ?? '1'),
+            Number(c.req.query('size') ?? '10')
+        );
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 }

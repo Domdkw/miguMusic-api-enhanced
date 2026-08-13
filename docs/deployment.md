@@ -45,6 +45,8 @@ USE_DATABASE=true
 
 适合传统服务器部署，稳定可靠。
 
+请留意 hono 框架在 Node.js 下的兼容性，请查看你的 nodejs 版本是否满足>=18.14.1。[Node.Js 适配器](https://hono.dev/docs/getting-started/nodejs)
+
 ### 部署步骤
 
 1. **克隆项目**

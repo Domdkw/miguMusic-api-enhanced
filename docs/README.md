@@ -12,7 +12,13 @@
 
 灵感来自 [jsososo/MiguMusicApi](https://github.com/jsososo/MiguMusicApi)
 
+## 工作原理
+
+跨站请求伪造（CSRF），伪造请求头，请求转发。
+
 ## 特性
+
+?> 默认配置下，需要在此项目的所有接口前添加`/api`前缀。例如：`/api/url/v1`
 
 - 基于 Hono 框架，轻量高性能
 - 内置缓存机制
@@ -20,8 +26,6 @@
 - 支持作为 NPM 包使用
 
 ## 快速链接
-
-?> 默认配置下，需要在此项目的所有接口前添加`/api`前缀。例如：`/api/version`
 
 - [安装指南](installation.md)
 - [部署指南](deployment.md)

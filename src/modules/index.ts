@@ -112,3 +112,7 @@ export { getUrlM2 } from './url_m2';
 export { emojiAction } from './user_emoji_action';
 export { getEmojiNum } from './user_emoji_num';
 export { getUserHeartthrob } from './user_heartthrob';
+export { deleteCloudMusic } from './cloud_delete';
+export { getInteractionMsg } from './user_message_interaction';
+export { getNoticeMsg } from './user_message_notice';
+export { getThumbsMsg } from './user_message_thumbs';
