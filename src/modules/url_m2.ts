@@ -1,5 +1,5 @@
 // author: Domdkw
-// license: cc-by-nc-sa-4.0
+// license: cc-nc-4.0
 // Date: 2026年8月11日
 
 import { h5fetch } from '../utils/h5fetch';

@@ -1,23 +1,27 @@
+// author: Domdkw
+// license: cc-nc-4.0
+
 export const qualityList = [
-    'PQ','HQ','SQ','ZQ24','ZQ32','Z3D','3D60'
+    'LQ','PQ','HQ','SQ','ZQ24','ZQ32','Z3D','3D60'
 ] as const;
 
 export type Quality = (typeof qualityList)[number];
 
 const e = encodeURI;
 export const toneUrl = {
+    'LQ': e('全曲试听/Mp3_64_22_16'),
     'PQ': e('标清高清/MP3_128_16_Stero'),
     'HQ': e('标清高清/MP3_320_16_Stero'),
     'SQ': e('歌曲下载/flac'),
     'ZQ24': e('歌曲下载/flac_24bit'),
     'ZQ32': e('歌曲下载/wav_32bit'),
     'Z3D': e('歌曲下载/wav_3d'),
-    '3D60': e('歌曲下载/wav_3d_60s')
+    '3D60': e('歌曲下载/wav_3d_60s') //3D 60s 试听
 }
 const toneUrlList = Object.entries(toneUrl)
 
 export const toneFormat = {
-    'PQ': '.mp3', 'HQ': '.mp3',
+    'LQ':'.mp3', 'PQ': '.mp3', 'HQ': '.mp3',
     'SQ': '.flac', 'ZQ24': '.flac',
     'ZQ32': '.wav', 'Z3D': '.wav', '3D60': '.wav'
 }
