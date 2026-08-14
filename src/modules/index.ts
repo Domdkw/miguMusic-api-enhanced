@@ -116,3 +116,4 @@ export { deleteCloudMusic } from './cloud_delete';
 export { getInteractionMsg } from './user_message_interaction';
 export { getNoticeMsg } from './user_message_notice';
 export { getThumbsMsg } from './user_message_thumbs';
+export { getCloudUploadUrl } from './cloud_upload';
