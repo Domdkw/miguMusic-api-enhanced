@@ -31,6 +31,7 @@ import { getUserHeartthrob } from '../modules/user_heartthrob';
 import { getInteractionMsg } from '../modules/user_message_interaction';
 import { getNoticeMsg } from '../modules/user_message_notice';
 import { getThumbsMsg } from '../modules/user_message_thumbs';
+import { deleteComment } from '../modules/comment_delete';
 
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
@@ -298,6 +299,14 @@ export default function (app: Hono) {
             c.req.query('type') ?? '',
             Number(c.req.query('page') ?? '1'),
             Number(c.req.query('size') ?? '10')
+        );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/comment/delete', async (c) => {
+        const {data, newPacmToken} = await deleteComment(
+            c.req.query('pacmtoken') ?? '',
+            c.req.query('resourceId') ?? '',
         );
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });

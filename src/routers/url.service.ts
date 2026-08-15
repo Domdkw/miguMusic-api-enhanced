@@ -14,8 +14,13 @@ export default function (app: Hono) {
     app.get('/url/redirect', async (c) => {
         const contentId = c.req.query('contentId') || '';
         if (!contentId) return c.json({success:false,error:'contentId 参数不能为空'}, 400);
-        const toneFlag = c.req.query('toneFlag') || 'PQ';
-        const url = await getRedirectUrl(contentId, toneFlag);
+        const isVip = c.req.query('isVip') || 'true';
+        const url = await getRedirectUrl(
+            contentId,
+            c.req.query('toneFlag') || 'PQ',
+            c.req.query('copyrightId') || '',
+            !(isVip === 'false' || isVip === '0') // 空为true，0为false
+        );
         return url==='' ? c.json({success:false,error:'重定向失败'}, 400) : c.redirect(url, 301);
     });
 

@@ -10,7 +10,7 @@ import passportService from './passport.service';
 import resourceService from './resource.service';
 import mvService from './mv.service';
 import userService from './user.service';
-import actionService from './action.service';
+import actionService from './activity.service';
 import svideoService from './svideo.service';
 import columnService from './column.service';
 

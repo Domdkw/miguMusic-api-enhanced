@@ -17,6 +17,7 @@
 
 更改 `标清高清/MP3_128_16_Stero/id.mp3`
 
+- **LQ** 全曲试听/Mp3_64_22_16/id.mp3 (歌曲较少，兼容性不佳)
 - **PQ** 标清高清/MP3_128_16_Stero/id.mp3
 - **HQ** 标清高清/MP3_320_16_Stero/id.mp3
 - **SQ** 歌曲下载/flac/id.flac
@@ -43,8 +44,12 @@
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
-| contentId | string | 是 | Content ID | 600929000003297424 |
+| contentId | string | 是 | Content ID | 600929000000900351 |
 | toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
+| copyrightId | string | 可选 | Copyright ID | 6005974GS6W |
+| isVip | boolean | 否 | 是否为会员 | true (默认) |
+
+?> isVip代表为VIP歌曲。当传入isVip等于0或false时，Copyright ID可选。VIP歌曲必填。如果未知可省略或者传true/1。
 
 ---
 
