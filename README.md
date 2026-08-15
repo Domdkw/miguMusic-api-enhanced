@@ -1,7 +1,7 @@
 # migu-api-enhanced
 
-![migu-api-enhanced](https://img.shields.io/npm/v/migu-api-enhanced?style=for-the-badge&logo=npm) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Domdkw/miguMusic-api-enhanced/bun-release.yml?style=for-the-badge&logo=github&link=https%3A%2F%2Fgithub.com%2FDomdkw%2FmiguMusic-api-enhanced%2Factions%2Fworkflows%2Fbun-release.yml)
-基于 Hono 框架的咪咕音乐 API 服务，支持多平台部署。受[https://github.com/jsososo/MiguMusicApi](https://github.com/jsososo/MiguMusicApi)项目启发。
+![migu-api-enhanced](https://img.shields.io/npm/v/migu-api-enhanced?style=for-the-badge&logo=npm&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fmigu-api-enhanced) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Domdkw/miguMusic-api-enhanced/bun-release.yml?style=for-the-badge&logo=github&link=https%3A%2F%2Fgithub.com%2FDomdkw%2FmiguMusic-api-enhanced%2Factions%2Fworkflows%2Fbun-release.yml)
+基于 Hono 框架的咪咕音乐 API 服务，支持多平台部署。受[jsososo/MiguMusicApi](https://github.com/jsososo/MiguMusicApi)和[NeteaseCloudMusicApiEnhanced](https://github.com/NeteaseCloudMusicApiEnhanced/api-enhanced)项目启发。
 
 ## API 接口
 
