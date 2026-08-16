@@ -40,22 +40,6 @@
 
 ---
 
-## 获取歌单广场
-
-**接口地址**: `/playlist/square/page`
-**导出函数**: `getPlaylistSquarePage`
-无参数
-
-### 请求示例
-
-```
-/playlist/square/page
-```
-
-返回的歌单广场数据包含多个 `columnId` 键，可通过 [columnId接口](column.md#栏目信息) 获取。处理较复杂。
-
----
-
 ## 电台歌曲列表
 
 **接口地址**: `/radio/song`  
@@ -113,6 +97,52 @@
 ```
 /playlist/vip?size=9
 ```
+
+---
+
+## 歌单广场-界面
+
+**接口地址**: `/playlist/square/page`
+**导出函数**: `getSquarePage`
+无参数
+
+返回的歌单广场数据包含多个 `columnId` 键，可通过 [columnId接口](column.md#栏目信息) 获取。处理较复杂。
+
+---
+
+## 歌单广场-tab
+
+**接口地址**: `/playlist/square/tag`
+**导出函数**: `getSquareTag`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| needMoreTag | boolean | 否 | 是否需要更多标签，默认 true | true |
+
+---
+
+## 歌单广场-标签获取歌单
+
+**接口地址**: `/playlist/square/listByTag`
+**导出函数**: `getSquareListByTag`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| tagId | string | 是 | 标签 ID | 1003449963 |
+| page | number | 否 | 页码，默认 1 | 1 |
+
+---
+
+## 歌单广场-推荐歌单
+
+**接口地址**: `/playlist/square/recommend`
+**导出函数**: `getSquareRecommend`
+
+无参数
 
 ---
 
