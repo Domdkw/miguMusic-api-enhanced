@@ -32,6 +32,8 @@ import { getInteractionMsg } from '../modules/user_message_interaction';
 import { getNoticeMsg } from '../modules/user_message_notice';
 import { getThumbsMsg } from '../modules/user_message_thumbs';
 import { deleteComment } from '../modules/comment_delete';
+import { getCloudDLUrl } from '../modules/cloud_dl';
+import { getUserPhoneInfo } from '../modules/user_phoneInfo';
 
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
@@ -43,6 +45,11 @@ export default function (app: Hono) {
     app.get('/user/info', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
         const {data, newPacmToken} = await queryUserInfo(pacmtoken);
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/info/phone', async (c) => {
+        const {data, newPacmToken} = await getUserPhoneInfo(c.req.query('pacmtoken') ?? '');
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 
@@ -246,6 +253,15 @@ export default function (app: Hono) {
             c.req.query('pacmtoken') ?? '',
             c.req.query('contentId') || '',
             c.req.query('toneFlag') || 'PQ',
+        );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/cloud/dl', async (c) => {
+        const {data, newPacmToken} = await getCloudDLUrl(
+            c.req.query('pacmtoken') ?? '',
+            c.req.query('contentId') ?? '',
+            c.req.query('toneFlag') ?? 'PQ'
         );
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });

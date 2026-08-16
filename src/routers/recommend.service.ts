@@ -4,6 +4,8 @@ import { getSceneRecommend } from '../modules/recommend_song';
 import { getSimilarSongRecommend } from '../modules/recommend_similarSong';
 import { getRadioRecommend } from '../modules/recommend_radio';
 import { getRadioRecommendAll } from '../modules/recommend_radio_all';
+import { getListenFreelySongs } from '../modules/recommend_listenFreely';
+import { getListenFreelyTab } from '../modules/recommend_listenFreely_tab';
 
 export default function (app: Hono) {
     app.get('/recommend/playlist', async (c) => {
@@ -33,6 +35,19 @@ export default function (app: Hono) {
     app.get('/recommend/radio/all', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
         const {data, newPacmToken} = await getRadioRecommendAll(pacmtoken);
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/recommend/listenFreely/tab', async (c) => {
+        const {data, newPacmToken} = await getListenFreelyTab(c.req.query('pacmtoken') ?? '');
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/recommend/listenFreely', async (c) => {
+        const {data, newPacmToken} = await getListenFreelySongs(
+            c.req.query('pacmtoken') ?? '',
+            c.req.query('modelId') ?? '701000'
+        );
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 }

@@ -197,3 +197,18 @@
 
 ---
 
+## 咪咕云盘下载地址
+
+**接口地址**: `/user/cloud/dl`  
+**导出函数**: `getCloudDLUrl`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| pacmtoken | string | 是 | 登录凭证 |  |
+| contentId | string | 是 | 云盘音乐 contentId | - |
+| toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
+
+---
+

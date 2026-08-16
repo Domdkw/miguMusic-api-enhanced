@@ -118,3 +118,7 @@ export { deleteComment } from './comment_delete';
 export { getSingerLetter } from './singer_letter';
 export { getSingerMv } from './singer_mv';
 export * from './ai-bean';
+export { getCloudDLUrl } from './cloud_dl';
+export { getUserPhoneInfo } from './user_phoneInfo';
+export { getListenFreelyTab } from './recommend_listenFreely_tab';
+export { getListenFreelySongs } from './recommend_listenFreely';
