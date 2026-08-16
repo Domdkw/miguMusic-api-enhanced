@@ -1,5 +1,6 @@
 import type { Hono } from 'hono';
 import { searchSong } from '../modules/search';
+import { searchPlaylist } from '../modules/search_playlist'
 import { searchAlbum } from '../modules/search_album';
 import { searchSinger } from '../modules/search_singer';
 import { searchConcert } from '../modules/search_concert';
@@ -19,6 +20,14 @@ export default function (app: Hono) {
         const text = c.req.query('text') ?? '';
         const page = c.req.query('page') ?? 1;
         const data = await searchSong(text, Number(page));
+        return c.json({ success: true, ...data });
+    });
+
+    app.get('/search/playlist', async (c) => {
+        const text = c.req.query('text') ?? '';
+        const page = c.req.query('page') ?? 1;
+        const typeOrder = c.req.query('typeOrder') ?? 0;
+        const data = await searchPlaylist(text, Number(page), Number(typeOrder));
         return c.json({ success: true, ...data });
     });
 

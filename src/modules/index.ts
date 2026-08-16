@@ -3,6 +3,7 @@
  * 汇总导出所有 API 函数
  */
 export { searchSong } from './search';
+export { searchPlaylist } from './search_playlist'
 export { searchAlbum } from './search_album';
 export { searchSinger } from './search_singer';
 export { searchConcert } from './search_concert';

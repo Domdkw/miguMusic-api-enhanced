@@ -1,7 +1,8 @@
 # 搜索接口
 
 ## 全局
-typeOrder : 类型排序，默认 0
+
+typeOrder : 类型排序，默认 0，0-默认，1-最新，2-最热
 
 ## 搜索歌曲
 
@@ -21,6 +22,21 @@ typeOrder : 类型排序，默认 0
 ```
 /search?text=APT.&page=1&size=20
 ```
+
+---
+
+## 搜索播放列表
+
+**接口地址**: `/search/playlist`  
+**导出函数**: `searchPlaylist`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| text | string | 是 | 搜索关键词 | APT. |
+| page | number | 否 | 页码，默认 1 | 1 |
+| typeOrder | number | 否 | 类型排序，默认 0 | 0 |
 
 ---
 
