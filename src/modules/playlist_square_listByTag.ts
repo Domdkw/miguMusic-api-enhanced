@@ -6,7 +6,7 @@ import { h5fetch } from '../utils/h5fetch';
  */
 export const getSquareListByTag = async (tagId: string, page: number) => {
     const res = await h5fetch(`http://app.c.nf.migu.cn/MIGUM3.0/v1.0/template/musiclistplaza-listbytag?templateVersion=1&tagId=${tagId}&pageNumber=${page}`);
-    res.data = res?.data?.contentItemList?.itemList?.reduce((acc: Record<string, any>[], item: Record<string, any>) => {
+    res.data.contentItemList = res?.data?.contentItemList?.itemList?.reduce((acc: Record<string, any>[], item: Record<string, any>) => {
         if (!item.actionUrl || !item.actionUrl.includes('song-list-info')) {
             return acc;
         }
@@ -14,5 +14,6 @@ export const getSquareListByTag = async (tagId: string, page: number) => {
         acc.push(item);
         return acc;
     }, []) as Record<string, any>[] || [];
+    res.data.hasNext = res?.data?.nextPageUrl !== undefined && res?.data?.nextPageUrl !== '';
     return res;
 };
