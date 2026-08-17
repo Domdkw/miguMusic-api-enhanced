@@ -14,6 +14,6 @@ export const getSquareListByTag = async (tagId: string, page: number) => {
         acc.push(item);
         return acc;
     }, []) as Record<string, any>[] || [];
-    res.data.hasNext = res?.data?.nextPageUrl !== undefined && res?.data?.nextPageUrl !== '';
+    res.data.hasNext = res.data.contentItemList.length < 30 ? false : res?.data?.nextPageUrl !== undefined && res?.data?.nextPageUrl !== '';
     return res;
 };
