@@ -80,7 +80,7 @@ app.use(
 
 // 首页重定向
 // 当未配置 HOME_REDIRECT_URL 时，默认重定向到项目文档地址
-app.get('/', c => {
+app.get('/migu', c => {
     return c.redirect(
         env<{ HOME_REDIRECT_URL: string }>(c).HOME_REDIRECT_URL || 'https://domdkw.github.io/miguMusic-api-enhanced/'
         ,301
@@ -88,7 +88,7 @@ app.get('/', c => {
 });
 
 // 健康检查
-app.get('/api/status', c => {
+app.get('/migu/status', c => {
     const USE_DATABASE = env<{ USE_DATABASE: string }>(c).USE_DATABASE === 'true';
     const ALLOWED_ORIGINS = env<{ ALLOWED_ORIGINS: string }>(c).ALLOWED_ORIGINS || '';
 
@@ -102,7 +102,7 @@ app.get('/api/status', c => {
 });
 
 // API 路由
-app.route('/api', apiRoutes);
+app.route('/migu', apiRoutes);
 
 // 404 处理
 app.notFound(c => {

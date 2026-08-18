@@ -34,6 +34,7 @@ import { getThumbsMsg } from '../modules/user_message_thumbs';
 import { deleteComment } from '../modules/comment_delete';
 import { getCloudDLUrl } from '../modules/cloud_dl';
 import { getUserPhoneInfo } from '../modules/user_phoneInfo';
+import { getUserOrdered } from '../modules/user_ordered';
 
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
@@ -324,6 +325,11 @@ export default function (app: Hono) {
             c.req.query('pacmtoken') ?? '',
             c.req.query('resourceId') ?? '',
         );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/ordered', async (c) => {
+        const {data, newPacmToken} = await getUserOrdered(c.req.query('pacmtoken') ?? '');
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 }

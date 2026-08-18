@@ -1,5 +1,10 @@
 # 活动接口
 
+## 官方活动
+
+**接口地址**: `/activity/release`  
+**导出函数**: `getActivities`
+
 ## 呢喃-歌曲列表
 
 **接口地址**: `/activity/ninan/song`  

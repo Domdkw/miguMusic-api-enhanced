@@ -9,6 +9,7 @@ import { getTicketInfo } from '../modules/ticket';
 import { getLyric } from '../modules/lyric';
 import { shareVideo } from '../modules/share_video';
 import { shareCommon } from '../modules/share_common';
+import { getSongInfo } from '../modules/resourceinfo_song';
 
 
 export default function (app: Hono) {
@@ -57,6 +58,10 @@ export default function (app: Hono) {
         const data = await getResourceInfo(resourceIds, copyrightIds, Number(resourceType));
         return c.json({ success: true, ...data });
     });
+
+    app.get('/songinfo', async c => 
+        c.json({ success: true, ...(await getSongInfo(c.req.query('contentIds') ?? ''))})
+    );
 
     app.get('/ticket', async (c) => {
         const page = c.req.query('page') ?? 1;

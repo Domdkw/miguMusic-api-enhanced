@@ -126,3 +126,6 @@ export { getListenFreelySongs } from './recommend_listenFreely';
 export { getSquareListByTag } from './playlist_square_listByTag';
 export { getSquareRecommend } from './playlist_square_recommend';
 export { getSquareTag } from './playlist_square_tag';
+export { getSongInfo } from './resourceinfo_song';
+export { getActivities } from './activities';
+export { getUserOrdered } from './user_ordered';

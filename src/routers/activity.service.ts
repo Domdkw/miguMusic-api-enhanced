@@ -1,8 +1,13 @@
 import type { Hono } from 'hono';
 import { getNinanSong, getNinanByDate, getNinanSignInfo, signNinan } from '../modules/ninan';
 import { signAiBean, getAiBeanCount, getAiBeanSignStatus, redeemAiBean } from '../modules/ai-bean';
+import { getActivities } from '../modules/activities';
 
 export default function (app: Hono) {
+    app.get('/activity/release', async (c) =>
+        c.json({ success: true, ...(await getActivities()) })
+    );
+
     app.get('/activity/ninan/song', async (c) =>
         c.json({ success: true, ...(await getNinanSong()) })
     );
