@@ -129,3 +129,6 @@ export { getSquareTag } from './playlist_square_tag';
 export { getSongInfo } from './resourceinfo_song';
 export { getActivities } from './activities';
 export { getUserOrdered } from './user_ordered';
+export { getDAlbumInfo } from './dalbum_info';
+export { getDAlbumSong } from './dalbum_song';
+export { getDAlbumPay } from './dalbum_pay';

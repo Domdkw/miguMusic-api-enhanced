@@ -78,7 +78,7 @@ export default function (app: Hono) {
 
     app.get('/share/:resourceName', async (c) => {
         const resourceName = c.req.param('resourceName') ?? '';
-        const supportedResourceTypes = ['song','album','singer','playlist','svideo','mv','vrbt'];
+        const supportedResourceTypes = ['song','album','dalbum','singer','playlist','svideo','mv','vrbt'];
         if (!supportedResourceTypes.includes(resourceName)) return c.json({success:false,error:'resourceType is not supported'},400);
         
         const resourceType = getResourceId(resourceName);
