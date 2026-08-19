@@ -8,7 +8,7 @@ import { getSingerMv } from '../modules/singer_mv';
 
 export default function (app: Hono) {
     app.get('/singer/album', async (c) =>
-        c.json({ success: true, ...(await getSingerAlbum(c.req.query('singerId') ?? ''))})
+        c.json({ success: true, ...(await getSingerAlbum(c.req.query('singerId') ?? '', Number(c.req.query('page') ?? 1)))})
     );
 
     app.get('/singer/index', async (c) => 
