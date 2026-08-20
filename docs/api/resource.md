@@ -11,16 +11,20 @@
 **接口地址**: `/lyric`  
 **导出函数**: `getLyric`
 
+MRC 解密：`decryptMrc`
+mrc返回标准LRC逐字歌词格式
+
 ### 参数说明
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
 | contentId | string | 是 | 单个Content ID | 600929000001520013 |
+| type | string | 否 | 歌词类型，逗号分隔，默认lrc | lrc,trc,mrc |
 
 ### 请求示例
 
 ```
-/lyric?contentId=600929000001520013
+/lyric?contentId=600929000001520013&type=mrc
 ```
 
 ### 响应示例

@@ -72,7 +72,9 @@ export default function (app: Hono) {
 
     app.get('/lyric', async (c) => {
         const contentId = c.req.query('contentId') ?? '';
-        const data = await getLyric(contentId);
+        const type = c.req.query('type') ?? 'lrc';
+        if(!type) return c.json({success:false,error:'type is required'},400);
+        const data = await getLyric(contentId,type);
         return c.json(data); // 不用套success,内部已处理,更详细
     });
 
