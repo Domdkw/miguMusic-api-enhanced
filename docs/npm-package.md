@@ -39,6 +39,8 @@ const urlInfo = await getUrlV2('contentId', 'copyrightId', 2);
 console.log(urlInfo);
 ```
 
+<details>
+<summary>createClient工厂函数 版本 <= 2.27.1</summary>
 ### 方式二：createClient 工厂函数
 
 使用工厂函数创建客户端实例：
@@ -61,7 +63,6 @@ const singer = await migu.getSingerIndex('singerId');
 console.log(singer);
 ```
 
-
 ### 类型导入
 
 ```typescript
@@ -69,6 +70,8 @@ import type { MiguClient } from 'migu-api-enhanced';
 
 const client: MiguClient = createClient();
 ```
+
+</details>
 
 ### 类型检查
 
