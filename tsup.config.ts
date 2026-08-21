@@ -24,4 +24,18 @@ export default defineConfig({
         './modules/index',   // 让根入口引用子目录的 modules
         './utils/index',     // 让根入口引用子目录的 utils
     ],
+    esbuildPlugins: [
+        {
+            name: 'external-utils',
+            setup(build) {
+                // 拦截 modules 中对 utils 的导入，保持为外部引用
+                build.onResolve({ filter: /^\.\.\/utils\// }, (args) => {
+                    return {
+                        path: args.path,
+                        external: true,
+                    };
+                });
+            },
+        },
+    ],
 });
