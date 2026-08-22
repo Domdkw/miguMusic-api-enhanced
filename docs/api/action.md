@@ -1,5 +1,7 @@
 # 活动接口
 
+npm包导出：`@migu-api-enhanced/activity` 目录下
+
 ## 官方活动
 
 **接口地址**: `/activity/release`  

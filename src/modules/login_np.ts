@@ -2,16 +2,8 @@
 // origin: https://passport.migu.cn/
 // author: Domdkw
 
-// ====================================
-
-
 import axios from 'axios';
-import { RSAKey } from '../utils/rsalib'
-import { getPublicKey } from '../utils/publicKey'
 import { URLParams } from '../utils/URLParams';
-
-
-//main
 
 function randomString(): string {
   const random = Array.from({ length: 32 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
@@ -26,7 +18,12 @@ export const loginNP = {
      * @returns 登录成功后的 pacmtoken
      */
     async authn(username: string, password: string): Promise<object | { error: string }> {
-        var $ = {
+        const { RSAKey } = await import('../utils/rsalib');
+        const { getPublicKey } = await import('../utils/publicKey');
+        
+        /// import
+
+        const $ = {
             "isAsync": true,
             "enpassword": "",
             "captcha": "",

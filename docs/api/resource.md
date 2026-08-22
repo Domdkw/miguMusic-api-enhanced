@@ -6,20 +6,17 @@
 
 **导出函数:** `getResourceId`
 
-## 获取歌曲歌词
+## 获取lrc/trc歌词 (逐行)
 
 **接口地址**: `/lyric`  
 **导出函数**: `getLyric`
-
-MRC 解密：`decryptMrc`
-mrc返回标准LRC逐字歌词格式
 
 ### 参数说明
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
 | contentId | string | 是 | 单个Content ID | 600929000001520013 |
-| type | string | 否 | 歌词类型，逗号分隔，默认lrc | lrc,trc,mrc |
+| type | string | 否 | 歌词类型，逗号分隔，默认lrc | lrc,trc |
 
 ### 请求示例
 
@@ -31,11 +28,34 @@ mrc返回标准LRC逐字歌词格式
 
 ```json
 {
-  "lrc": "[00:01.00]APT. - ROSÉ/Bruno Mars",
   "success": true,
-  "lrcUrl": "https://d.musicapp.migu.cn/xx/xxx"
+  "lrc": "[00:01.00]APT. - ROSÉ/Bruno Mars",
+  "trc": "...",
+  "lrcUrl": "https://d.musicapp.migu.cn/xx/xxx",
+  "trcUrl": "https://d.musicapp.migu.cn/xx/xxx"
 }
 ```
+
+---
+
+## 获取mrc歌词 (逐字)
+
+**接口地址**: `/mrc`  
+**导出函数**: `getMrc`
+
+npm包导出：`@migu-api-enhanced/mrc` 目录下\
+MRC 解密：`decryptMrc`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| contentId | string | 是 | 单个Content ID | 600929000001520013 |
+| type | string | 否 | mrc类型，standard(默认), mg, raw | standard |
+
+standard：标准LRC逐字歌词格式\
+mg：咪咕原版逐字歌词格式\
+raw：原始MRC歌词密文
 
 ---
 

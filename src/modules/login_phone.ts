@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { RSAKey } from '../utils/rsalib'
-import { getPublicKey } from '../utils/publicKey'
 import { URLParams } from '../utils/URLParams'
 
 
@@ -13,7 +11,10 @@ function randomString(){
 export const loginPhone = {
     //获取验证码
     async getMsgCode(phone: string){
-        var $ = {
+        const { RSAKey } = await import('../utils/rsalib');
+        const { getPublicKey } = await import('../utils/publicKey');
+
+        const $ = {
             "isAsync": true,
             "msisdn": "",
             "captcha": "",
@@ -60,7 +61,10 @@ export const loginPhone = {
 
     //登陆
     async authn(phone: string, msgCode: string){
-        var $ = {
+        const { RSAKey } = await import('../utils/rsalib');
+        const { getPublicKey } = await import('../utils/publicKey');
+
+        const $ = {
             "isAsync": true,
             "msisdn": "",
             "dynamicPassword": "",

@@ -4,8 +4,6 @@
 //author: Domdkw 2026.7.9
 
 import axios from 'axios';
-import { RSAKey } from '../utils/rsalib'
-import { getPublicKey } from '../utils/publicKey'
 import { URLParams } from '../utils/URLParams';
 
 //main
@@ -18,9 +16,10 @@ function randomString(): string {
 
 export const loginSim = {
     async simSend(phone: string){
-        var $;
+        const { RSAKey } = await import('../utils/rsalib');
+        const { getPublicKey } = await import('../utils/publicKey');
 
-        $ = {
+        const $ = {
             "isAsync": true,
             "sim":"1",
             "encMsisdn": "",

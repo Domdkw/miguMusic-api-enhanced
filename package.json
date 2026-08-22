@@ -1,28 +1,38 @@
 {
   "name": "migu-api-enhanced",
-  "version": "2.27.1",
+  "version": "2.27.2",
   "license": "MIT",
   "author": "Domdkw",
   "description": "咪咕音乐 API 增强 SDK（多平台部署 + NPM 包）",
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
-    },
-    "./modules": {
-      "types": "./dist/modules/index.d.ts",
-      "import": "./dist/modules/index.js",
-      "require": "./dist/modules/index.cjs"
     },
     "./utils": {
       "types": "./dist/utils/index.d.ts",
-      "import": "./dist/utils/index.js",
+      "import": "./dist/utils/index.mjs",
       "require": "./dist/utils/index.cjs"
+    },
+    "./mrc": {
+      "types": "./dist/mrc/index.d.ts",
+      "import": "./dist/mrc/index.mjs",
+      "require": "./dist/mrc/index.cjs"
+    },
+    "./login": {
+      "types": "./dist/login/index.d.ts",
+      "import": "./dist/login/index.mjs",
+      "require": "./dist/login/index.cjs"
+    },
+    "./activity": {
+      "types": "./dist/activity/index.d.ts",
+      "import": "./dist/activity/index.mjs",
+      "require": "./dist/activity/index.cjs"
     }
   },
   "files": [

@@ -10,6 +10,7 @@ import { getLyric } from '../modules/lyric';
 import { shareVideo } from '../modules/share_video';
 import { shareCommon } from '../modules/share_common';
 import { getSongInfo } from '../modules/resourceinfo_song';
+import { getMrc } from '../modules/mrc';
 
 
 export default function (app: Hono) {
@@ -76,6 +77,14 @@ export default function (app: Hono) {
         if(!type) return c.json({success:false,error:'type is required'},400);
         const data = await getLyric(contentId,type);
         return c.json(data); // 不用套success,内部已处理,更详细
+    });
+
+    app.get('/mrc', async (c) => {
+        const contentId = c.req.query('contentId') ?? '';
+        const type = c.req.query('type') ?? 'standard';
+        if(!type) return c.json({success:false,error:'type is required'},400);
+        const data = await getMrc(contentId,type);
+        return c.json(data);
     });
 
     app.get('/share/:resourceName', async (c) => {

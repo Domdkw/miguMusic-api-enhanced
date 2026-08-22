@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { formatMrc, decryptMrc } from '../utils/decryptMrc';
 
-/**获取歌词（自建）
+/** 获取逐行歌词（自建）
  * @param contentId 单个歌曲ID，
  * @param type 歌词类型，逗号分隔，默认lrc
  * @returns 歌词文本
@@ -23,7 +22,7 @@ export const getLyric = async (contentId: string, type:string = 'lrc') => {
     };
     if(data.length === 0 ) return {error:'data.length = 0 !', success: false, data};
 
-    let lrc, lrcUrl, mrc, mrcUrl, trc, trcUrl;
+    let lrc, lrcUrl, trc, trcUrl;
 
     //lrc
     if(types.includes('lrc')){
@@ -45,23 +44,10 @@ export const getLyric = async (contentId: string, type:string = 'lrc') => {
             }
         }
     }
-    //mrc
-    if(types.includes('mrc')){
-        mrcUrl = data.mrcUrl || '';
-        if(mrcUrl !== '') {
-            const mrcRes = await axios.get(mrcUrl);
-            if(mrcRes.status === 200){
-                mrc = formatMrc(decryptMrc(mrcRes.data || ''));
-            }
-        }
-    }
-
     return {
         success: true,
         lrc,
         lrcUrl,
-        mrc,
-        mrcUrl,
         trc,
         trcUrl,
     };

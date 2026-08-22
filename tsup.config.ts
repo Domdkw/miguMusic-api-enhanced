@@ -6,36 +6,39 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
     entry: {
-        'index': 'src/index.ts',
-        'modules/index': 'src/modules/index.ts',
-        'utils/index': 'src/utils/index.ts',
+        'index': 'src/exports/index.ts',
+        'login/index': 'src/exports/login.ts',
+        'utils/index': 'src/exports/utils.ts',
+        'activity/index': 'src/exports/activity.ts',
+
+        'mrc/index': 'src/modules/mrc.ts',
     },
     format: ['esm', 'cjs'],
+    outExtension({ format }) {
+        if (format === 'esm') return { js: '.mjs' };
+        return { js: '.cjs' };
+    },
     dts: true,
-    splitting: false,        // 关闭代码分割，避免生成根级别 chunk 文件
+    splitting: true,        // 开启代码分割，生成根级别 chunk 文件
     sourcemap: true,
     clean: true,
     target: 'es2022',
     shims: false,            // Node 18+ 自带 fetch/Blob/TextEncoder，无需 shim
     minify: false,
-    skipNodeModulesBundle: true, // 保持 import 路径清晰，不内联 hono 等无关依赖
+    skipNodeModulesBundle: false, // 保持 import 路径清晰，不内联 hono 等无关依赖
     bundle: true,
-    external: [
-        './modules/index',   // 让根入口引用子目录的 modules
-        './utils/index',     // 让根入口引用子目录的 utils
-    ],
-    esbuildPlugins: [
-        {
-            name: 'external-utils',
-            setup(build) {
-                // 拦截 modules 中对 utils 的导入，保持为外部引用
-                build.onResolve({ filter: /^\.\.\/utils\// }, (args) => {
-                    return {
-                        path: args.path,
-                        external: true,
-                    };
-                });
-            },
-        },
-    ],
+    //esbuildPlugins: [
+    //    {
+    //        name: 'external-utils',
+    //        setup(build) {
+    //            // 拦截 modules 中对 utils 的导入，保持为外部引用
+    //            build.onResolve({ filter: /^\.\.\/utils\// }, (args) => {
+    //                return {
+    //                    path: args.path,
+    //                    external: true,
+    //                };
+    //            });
+    //        },
+    //    },
+    //],
 });

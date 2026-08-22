@@ -90,8 +90,10 @@ pnpm run start:bun
 
 ## 作为 NPM 包使用
 
-本仓库的 `src/modules/` 同时被打包为可独立发布的 NPM 包 `migu-api-enhanced`，
+本仓库的 `src/export/` 同时被打包为可独立发布的 NPM 包 `migu-api-enhanced`，
 支持 ESM + CJS 双格式，并附带 TypeScript 类型声明。
+
+示例代码：https://github.com/Domdkw/MusicFree-migu/blob/master/plugins/index.ts >0.2.4
 
 ### 安装
 
@@ -101,21 +103,24 @@ pnpm add migu-api-enhanced
 npm install migu-api-enhanced
 ```
 
-虽然前端不支持跨域，但是，你仍然可以使用此包的工具函数。推荐使用命名导入来减小体积
+虽然前端不支持跨域，但是你仍然可以使用此包的工具函数。推荐使用命名导入来减小体积
 
-`getDeviceId`/`getQuality`/`changeQuality`/`getResourceId`/`decryptMrc`
-
+**@migu-api-enhanced/utils** `getDeviceId`/`getQuality`/`changeQuality`/`getResourceId`/`decryptMrc`
 
 ### 方式一：命名导入
 
 ```ts
 import { getAlbumInfo, getUrlV2 } from 'migu-api-enhanced';
+import { changeQuality } from '@migu-api-enhanced/utils';
+import { getMrc } from '@migu-api-enhanced/mrc';
+import { loginNP } from '@migu-api-enhanced/login';
+import { signNinan } from '@migu-api-enhanced/activity';
 const album = await getAlbumInfo('1123');
 // or
 import * as migu from 'migu-api-enhanced';
 const album = await migu.getAlbumInfo('1123');
 ```
-### 方式二：`createClient` 工厂函数
+### 方式二：`createClient` 工厂函数 <2.27.1
 ```ts
 import { createClient } from 'migu-api-enhanced';
 
