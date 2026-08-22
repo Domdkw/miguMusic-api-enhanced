@@ -7,16 +7,16 @@ import { getUserCollectList } from '../modules/user_collect_list';
 import { getUserMyList } from '../modules/user_myList';
 import { addUserCollect } from '../modules/user_collect_add';
 import { removeUserCollect } from '../modules/user_collect_remove';
-import { likeSong } from '../modules/user_like';
+import { likeSong } from '../modules/user_like_add';
 import { dislikeSong } from '../modules/user_dislike';
 import { editUserMyList } from '../modules/user_myList_edit';
 import { addUserMyList } from '../modules/user_myList_add';
 import { removeUserMyList } from '../modules/user_myList_remove';
-import { addSongToMyList } from '../modules/user_myList_add_song';
-import { removeSongFromMyList } from '../modules/user_myList_remove_song';
+import { addSongToMyList } from '../modules/user_myList_song_add';
+import { removeSongFromMyList } from '../modules/user_myList_song_remove';
 import { isFollowAuthor } from '../modules/user_isFollow';
-import { getUserHeader } from '../modules/user_header';
-import { getUserSongPage } from '../modules/user_songPage';
+import { getUserHeader } from '../modules/user_page_header';
+import { getUserSongPage } from '../modules/user_page_song';
 import { getFollowerList } from '../modules/follow_follower';
 import { getFollowingList } from '../modules/follow_following';
 import { getFollowingVra } from '../modules/follow_following_vra';
@@ -35,6 +35,7 @@ import { deleteComment } from '../modules/comment_delete';
 import { getCloudDLUrl } from '../modules/cloud_dl';
 import { getUserPhoneInfo } from '../modules/user_phoneInfo';
 import { getUserOrdered } from '../modules/user_ordered';
+import { getUserLikeList } from '../modules/user_like_list';
 
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
@@ -103,15 +104,26 @@ export default function (app: Hono) {
         );
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
+
+    app.get('/user/like/list', async (c) => {
+        const {data, newPacmToken} = await getUserLikeList(
+            c.req.query('playlistId') ?? '',
+            Number(c.req.query('page') ?? 1),
+            Number(c.req.query('size') ?? 20),
+            c.req.query('pacmtoken') ?? '',
+            c.req.query('userId') ?? ''
+        );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
     
-    app.get('/user/like', async (c) => {
+    app.get('/user/like/add', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
         const contentIds = c.req.query('contentIds') ?? '';
         const {data, newPacmToken} = await likeSong(pacmtoken, contentIds);
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });
 
-    app.get('/user/dislike', async (c) => {
+    app.get('/user/like/remove', async (c) => {
         const pacmtoken = c.req.query('pacmtoken') ?? '';
         const contentId = c.req.query('contentId') ?? '';
         const {data, newPacmToken} = await dislikeSong(pacmtoken, contentId);

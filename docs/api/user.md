@@ -47,9 +47,28 @@
 
 ***
 
+## 我喜欢-列表
+
+**接口地址**: `/user/like/list`\
+**导出函数**: `getUserLikeList`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| playlistId | string | 是 | 歌单ID |  |
+| page | number | 否 | 页码，默认 1 | 1 |
+| size | number | 否 | 每页数量，默认 20 | 20 |
+| userId | string | 是 | 用户ID |  |
+| pacmtoken | string | 是 | 登录凭证 |  |
+
+?> 用户已登录，使用PACMtoken。未登录，查询他人使用userId。两个参数二选一
+
+***
+
 ## 我喜欢-添加
 
-**接口地址**: `/user/like`\
+**接口地址**: `/user/like/add`\
 **导出函数**: `likeSong`
 
 ### 参数说明
@@ -63,7 +82,7 @@
 
 ## 我喜欢-移除
 
-**接口地址**: `/user/dislike`\
+**接口地址**: `/user/like/remove`\
 **导出函数**: `dislikeSong`
 
 ### 参数说明
