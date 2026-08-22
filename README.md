@@ -21,13 +21,14 @@
 - **活动** - 官方活动、呢喃（歌曲列表、日期歌曲、签到、签到记录）、AI豆（签到、数量、签到状态、兑换）
 
 更新于 [API 文档](https://domdkw.github.io/miguMusic-api-enhanced/)
+测试站点：https://mmae.jsdm.qzz.io/
 
 如果release发布不及时，可以Fork本仓库后去Action手动触发构建，或者自行构建
 
 ## 待办清单
 
 - [ ] 实现 ce 请求头
-- [ ] js重构的 signVersion:V005 的签名!（祈求大佬帮助，联系我😭）
+- [ ] js重构的 signVersion:V005 的签名!
 - [ ] 咪咕云盘 列表
 - [ ] url v2.4 v3.x
 - [x] 下载 v2 接口 (已实现v1)
