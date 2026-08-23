@@ -93,8 +93,7 @@
     "tsup": "^8.5.1",
     "tsx": "^4.19.2",
     "typescript": "^5.9.3",
-    "unstorage": "^1.17.5",
-    "wrangler": "^4.112.0"
+    "unstorage": "^1.17.5"
   },
   "dependencies": {
     "axios": "^1.18.0"

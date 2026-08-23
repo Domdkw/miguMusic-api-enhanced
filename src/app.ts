@@ -4,6 +4,7 @@ import { logger } from 'hono/logger';
 import { memCache } from 'hono-mem-cache';
 import { env, getRuntimeKey } from 'hono/adapter';
 import { etag, RETAINED_304_HEADERS } from 'hono/etag';
+import { methodNotAllowed } from 'hono/method-not-allowed';
 import apiRoutes from './routers/index';
 
 // 通过 import 引入 package.json，esbuild / tsup 在构建时会将 JSON 内联到产物中
@@ -64,6 +65,14 @@ app.use('*', (c, next) => {
     c.header('Cache-Control', `private, no-cache`); //必走304
     return next();
 });
+// method
+app.use(
+    methodNotAllowed({app, onMethodNotAllowed:(c, methods) =>
+        c.json({ error: 'Method Not Allowed' }, 405, {
+            Allow: methods.join(', '),
+        })
+    })
+)
 
 /**
  * 配置内存缓存中间件
