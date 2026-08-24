@@ -4,7 +4,7 @@ import { getSetCookieValueFromObject } from './setCookie';
 type H5FetchInit = RequestInit & {
     maxRedirects?: number;
     cookie?: Record<string, string>;
-    params?: Record<string, string>;
+    params?: Record<string, string | number | boolean | undefined>;
 };
 
 // 内部请求函数
@@ -44,7 +44,7 @@ export const _fetch = async (url: string, init?: H5FetchInit & AxiosRequestConfi
 };
 
 // fetch API 兼容层,只返回 body
-export const h5fetch = async (url: string, init?: RequestInit & AxiosRequestConfig):  Promise<any> => {
+export const h5fetch = async (url: string, init?: H5FetchInit & AxiosRequestConfig):  Promise<any> => {
     const response = await _fetch(url, init);
     return response.data;
 };

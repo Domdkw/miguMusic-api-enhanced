@@ -4,8 +4,10 @@ import { getNewSongList } from '../modules/column_newSong';
 import { getNewCDList } from '../modules/column_newCD';
 import { getRankIndex } from '../modules/rank_index';
 import { getRankInfo } from '../modules/rank_info';
-import { getPageInfo } from '../modules/page_view';
+import { getPageInfo } from '../modules/page_info';
 import { getPageTab } from '../modules/page_tab';
+import { getPageScroll } from '../modules/page_scroll';
+import { getPageDataSource } from '../modules/page_dataSource';
 
 
 export default function (app: Hono) {
@@ -42,11 +44,26 @@ export default function (app: Hono) {
         return c.json({ success: true, ...data });
     });
 
-    app.get('/page/view', async (c) => {
+    app.get('/page/info', async (c) => {
         const data = await getPageInfo(
-            c.req.query('pageId') ?? '',
-            c.req.query('sceneId') ?? ''
+            c.req.query('id') ?? '',
+            c.req.query('type') ?? ''
         );
+        return c.json({ success: true, ...data });
+    });
+
+    app.get('/page/scroll', async (c) => {
+        const data = await getPageScroll(
+            c.req.query('dataId') ?? '',
+            Number(c.req.query('page') ?? 1),
+            Number(c.req.query('size') ?? 20),
+            c.req.query('styleCode') ?? ''
+        );
+        return c.json({ success: true, ...data });
+    });
+
+    app.post('/page/dataSource', async (c) => {
+        const data = await getPageDataSource(await c.req.json());
         return c.json({ success: true, ...data });
     });
 }

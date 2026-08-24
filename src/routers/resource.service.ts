@@ -17,13 +17,16 @@ export default function (app: Hono) {
     app.get('/can-listen', async (c) => {
         try {
             const contentIds = c.req.query('contentIds') ?? '';
-            const data = await checkCanListen(contentIds);
-            return c.json({ success: true, ...data });
+            return c.json({success:true,...(await checkCanListen(contentIds))});
         } catch (e) {
-            return c.json({
-                success: false,
-                error: e instanceof Error ? e.message : String(e)
-            }, 500);
+            return c.json({success: false,error: e instanceof Error?e.message:String(e)},500);
+        }
+    }).post('/can-listen', async (c) => {
+        try {
+            const body = await c.req.json();
+            return c.json({success: true,...(await checkCanListen(body.contentIds))});
+        } catch (e) {
+            return c.json({success: false,error: e instanceof Error?e.message:String(e)},500);
         }
     });
 

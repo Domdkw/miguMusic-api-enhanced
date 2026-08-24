@@ -5,9 +5,7 @@
 **接口地址**: `/rank/index`  
 **导出函数**: `getRankIndex`
 
-### 参数说明
-
-无需参数
+无参数
 
 ### 请求示例
 
@@ -54,23 +52,62 @@
 
 ## 获取界面
 
-**接口地址**: `/page/view`  
+**接口地址**: `/page/info`  
 **导出函数**: `getPageInfo`
 
 ### 参数说明
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
-| sceneId | string | 是 | 视频彩铃 ID | 88418111 |
-| pageId | string | 是 | 页面 ID | 69df566b1dec4544e9c1ca00 |
-
-?> 参数二选一，不能同时传。
+| id | string | 是 | 页面 ID (原来的 sceneId 或 pageId) | 88418111 |
+| type | string | 是 | 页面id类型 | sceneId / pageId |
 
 ### 请求示例
 
 ```
-/page/view?sceneId=88418111
+/page/info?id=88418111&type=sceneId
 ```
+
+---
+
+## 获取数据源
+
+**接口地址**: `/page/dataSource`  
+**导出函数**: `getPageDataSource`
+**请求方法：POST**
+
+### 参数说明
+
+请求体： （建议传入原pageinfo中的值）
+```json
+[
+  {
+    "dataId": "a36991bbdcce434cbe03bd052f348027", //$.data.containers[1].components[0].dataSource.id
+    "styleCode": "com_s_column_title_style_v1"
+  },
+  {
+    "dataId": "68ed86c54e4f49d0a8b8d963805ced7d", //$.data.containers[2].components[0].dataSource.id
+    "limit": 9, //$.data.containers[2].components[0].dataSource.showNum
+    "styleCode": "com_s_column_title_style_v1" //$.data.containers[2].components[0].styleCode
+  }
+]
+```
+
+---
+
+## 获取滚动数据
+
+**接口地址**: `/page/scroll`  
+**导出函数**: `getPageScroll`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| dataId | string | 是 | 数据源 ID | d402eafbdca64bd1978ab980f98d8fc8 |
+| page | number | 否 | 页码 | 1 |
+| size | number | 否 | 每页数量 | 20 |
+| styleCode | string | 否 | 样式代码 | com_s_column_title_style_v1  |
 
 ---
 
