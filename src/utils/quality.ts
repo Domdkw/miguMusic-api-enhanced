@@ -1,12 +1,6 @@
 // author: Domdkw
 // license: cc-nc-4.0
 
-export const qualityList = [
-    'LQ','PQ','HQ','SQ','ZQ24','ZQ32','Z3D','3D60'
-] as const;
-
-export type Quality = (typeof qualityList)[number];
-
 const e = encodeURI;
 export const toneUrl = {
     'LQ': e('全曲试听/Mp3_64_22_16'),
@@ -15,15 +9,20 @@ export const toneUrl = {
     'SQ': e('歌曲下载/flac'),
     'ZQ24': e('歌曲下载/flac_24bit'),
     'ZQ32': e('歌曲下载/wav_32bit'),
-    'Z3D': e('歌曲下载/wav_3d'),
+    'Z3D': e('歌曲下载/wav_3d'), //android 3D
+    'I3D': e('歌曲下载/alac_3d'), //ios 3D
     '3D60': e('歌曲下载/wav_3d_60s') //3D 60s 试听
 }
 const toneUrlList = Object.entries(toneUrl)
 
+export const qualityList = Object.keys(toneUrl) as (keyof typeof toneUrl)[];
+
+export type Quality = (typeof qualityList)[number];
+
 export const toneFormat = {
     'LQ':'.mp3', 'PQ': '.mp3', 'HQ': '.mp3',
     'SQ': '.flac', 'ZQ24': '.flac',
-    'ZQ32': '.wav', 'Z3D': '.wav', '3D60': '.wav'
+    'ZQ32': '.wav', 'Z3D': '.wav', 'I3D': '.m4a', '3D60': '.wav'
 }
 
 export function isQuality(quality: string | undefined): quality is Quality {

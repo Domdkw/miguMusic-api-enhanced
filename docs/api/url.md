@@ -22,9 +22,10 @@
 - **HQ** 标清高清/MP3_320_16_Stero/id.mp3
 - **SQ** 歌曲下载/flac/id.flac
 - **ZQ24** 歌曲下载/flac_24bit/id.flac
-- **ZQ32** 歌曲下载/wav_32bit/id.wav
-- **Z3D** 歌曲下载/wav_3d/id.wav (流媒体，浏览器无法直接播放，仅下载)
-- **3D60** 歌曲下载/wav_3d_60s/id.wav (自定义，60秒片段(h5)，网页可播放)
+- **ZQ32** 歌曲下载/wav_32bit/id.wav (加密)
+- **Z3D** 歌曲下载/wav_3d/id.wav (加密流媒体，浏览器无法直接播放，仅下载) working...
+- **I3D** 歌曲下载/alac_3d/id.m4a (加密流媒体) working...
+- **3D60** 歌曲下载/wav_3d_60s/id.wav (60秒片段(h5)，网页可播放)
 
 音质信息获取：搜索/resourceinfo
 
@@ -49,7 +50,7 @@
 | copyrightId | string | 可选 | Copyright ID | 6005974GS6W |
 | isVip | boolean | 否 | 是否为会员 | true (默认) |
 
-?> isVip代表为VIP歌曲。当传入isVip等于0或false时，Copyright ID可选。VIP歌曲必填。如果未知可省略或者传true/1。
+?> isVip代表为VIP歌曲。当传入isVip等于0或false时，Copyright ID为可选。如果是VIP歌曲则必填。如果未知则可省略或者传true/1。
 
 ---
 
