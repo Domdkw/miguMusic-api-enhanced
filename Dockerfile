@@ -11,8 +11,8 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 # 设置镜像源
 ENV NPM_CONFIG_REGISTRY=https://registry.npmmirror.com
 
-# 复制依赖描述文件
-COPY package.json pnpm-lock.yaml ./
+# 复制依赖描述文件与 pnpm 配置
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
 # 安装所有依赖（包含 devDependencies，构建需要）
 RUN pnpm install --frozen-lockfile
