@@ -9,7 +9,7 @@ WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # 设置镜像源
-RUN pnpm config set registry https://registry.npmmirror.com
+ENV NPM_CONFIG_REGISTRY=https://registry.npmmirror.com
 
 # 复制依赖描述文件
 COPY package.json pnpm-lock.yaml ./
@@ -34,7 +34,7 @@ WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # 设置镜像源
-RUN pnpm config set registry https://registry.npmmirror.com
+ENV NPM_CONFIG_REGISTRY=https://registry.npmmirror.com
 
 # 复制依赖描述文件
 COPY package.json pnpm-lock.yaml ./
