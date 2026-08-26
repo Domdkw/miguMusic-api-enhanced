@@ -1,0 +1,19 @@
+services:
+  migu-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: migu-api-enhanced
+    restart: unless-stopped
+    ports:
+      - "6200:6200"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:6200/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
