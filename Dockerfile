@@ -1,41 +1,40 @@
 # ============================================
-# 阶段 1: 构建
+# 基础阶段
 # ============================================
-FROM node:22-alpine AS builder
-
-WORKDIR /app
-
+FROM node:22-alpine AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 # 安装 pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
+RUN corepack enable
 # 设置镜像源
 ENV NPM_CONFIG_REGISTRY=https://registry.npmmirror.com
+WORKDIR /app
 
-# 复制依赖描述文件
-COPY package.json pnpm-lock.yaml ./
+# ============================================
+# 阶段 1: 安装生产依赖
+# ============================================
+FROM base AS prod-deps
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
-# 安装所有依赖（包含 devDependencies，构建需要）
-RUN pnpm install --frozen-lockfile
-
-# 复制源码
+# ============================================
+# 阶段 2: 安装全部依赖并构建
+# ============================================
+FROM base AS build
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 COPY . .
-
 # 构建 Node.js 服务端产物（输出到 dist-server/index.js）
 RUN node build-node.mjs
 
-# 生成生产部署目录（仅包含生产依赖）
-RUN pnpm deploy --prod /app/deploy
-
 # ============================================
-# 阶段 2: 运行
+# 阶段 3: 运行
 # ============================================
-FROM node:22-alpine AS runner
-
-WORKDIR /app
-
-# 从构建阶段复制生产部署目录
-COPY --from=builder /app/deploy .
-COPY --from=builder /app/dist-server ./dist-server
+FROM base
+# 从生产依赖阶段复制 node_modules
+COPY --from=prod-deps /app/node_modules /app/node_modules
+# 从构建阶段复制产物
+COPY --from=build /app/dist-server /app/dist-server
 
 # 暴露服务端口
 EXPOSE 6200

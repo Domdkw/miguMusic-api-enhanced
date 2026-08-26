@@ -61,12 +61,6 @@
   "engines": {
     "node": ">=18"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "workerd"
-    ]
-  },
   "scripts": {
     "dev": "npx tsx --env-file=.env src/adapters/node.ts --watch",
     "dev:cf": "wrangler dev",
