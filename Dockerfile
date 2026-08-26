@@ -1,7 +1,7 @@
 # ============================================
 # 阶段 1: 构建
 # ============================================
-FROM node:18-alpine AS builder
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 
@@ -29,7 +29,7 @@ RUN pnpm deploy --prod /app/deploy
 # ============================================
 # 阶段 2: 运行
 # ============================================
-FROM node:18-alpine AS runner
+FROM node:22-alpine AS runner
 
 WORKDIR /app
 
