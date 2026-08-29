@@ -6,7 +6,7 @@
 
 
 import axios from 'axios';
-import { getDeviceId } from '../utils/deviceID';
+import { getDeviceId } from '../utils/device';
 
 /**
  * 生成InternetSign签名

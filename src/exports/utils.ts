@@ -1,5 +1,5 @@
 //export { ua, randomUA } from './ua';
-export { getDeviceId } from '../utils/deviceID';
+export { getDeviceId } from '../utils/device';
 export { getPublicKey } from '../utils/publicKey';
 export { RSAKey } from '../utils/rsalib';
 export { URLParams } from '../utils/URLParams';

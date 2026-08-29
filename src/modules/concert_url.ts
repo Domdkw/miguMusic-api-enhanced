@@ -9,7 +9,7 @@ import { h5fetch } from '../utils/h5fetch';
  * @returns 
  */
 export const getConcertUrl = async (concertId: string, liveId: string, rateLevel: number = 1) => {
-    return await h5fetch(`http://c.musicapp.migu.cn/MIGUM2.0/v2.1/danmaku/liveServerHosts.do?concertId=${concertId}&liveId=${liveId}&liveType=1&rateLevel=${rateLevel}`
+    return await h5fetch(`https://c.musicapp.migu.cn/MIGUM2.0/v2.1/danmaku/liveServerHosts.do?concertId=${concertId}&liveId=${liveId}&liveType=1&rateLevel=${rateLevel}`
         ,{
             headers: {
                 "channel": "0146921"//android client

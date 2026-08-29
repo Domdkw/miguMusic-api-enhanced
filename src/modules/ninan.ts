@@ -20,7 +20,7 @@ export const getNinanByDate = async (date: string) => await h5fetch(`https://c.m
  * @returns 签到结果和新的 pacmtoken
  */
 export const signNinan = async (pacmtoken: string) => {
-    const { data, cookies } = await ckfetch('http://c.musicapp.migu.cn/MIGUM2.0/v2.0/user/sign-reward',{
+    const { data, cookies } = await ckfetch('https://c.musicapp.migu.cn/MIGUM2.0/v2.0/user/sign-reward',{
         cookie: { pacmtoken },headers: {
         "location-data": "30.6698676660,104.1229614820",
         "channel": "0146921",
@@ -34,7 +34,7 @@ export const signNinan = async (pacmtoken: string) => {
  * @returns 签到信息和新的 pacmtoken
  */
 export const getNinanSignInfo = async (pacmtoken: string) => {
-    const { data, cookies } = await ckfetch('http://u.musicapp.migu.cn/MIGUM3.0/user/sign-center/v1.0',{
+    const { data, cookies } = await ckfetch('https://u.musicapp.migu.cn/MIGUM3.0/user/sign-center/v1.0',{
         cookie: { pacmtoken },headers: {
         'channel': '014021I'
     }});

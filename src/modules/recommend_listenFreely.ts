@@ -9,7 +9,7 @@ import { ckfetch } from '../utils/h5fetch';
 export const getListenFreelySongs = async (pacmtoken: string, modelId: string = '701000') => {
     // 原版未处理登录状态，这里添加处理
     if(!pacmtoken) return {data:{success: false,code: "290001",info: "请先登录"},newPacmToken:undefined};
-    const { data, cookies } = await ckfetch(`http://app.c.nf.migu.cn/resource-dataloader/recommend/listen-freely/v2.0?modelId=${modelId}`, {
+    const { data, cookies } = await ckfetch(`https://app.c.nf.migu.cn/resource-dataloader/recommend/listen-freely/v2.0?modelId=${modelId}`, {
         cookie: { pacmtoken }
     });
     return { data, newPacmToken: cookies.pacmtoken || '' };

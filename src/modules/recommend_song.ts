@@ -1,5 +1,5 @@
 import { h5fetch } from '../utils/h5fetch';
-import { getDeviceId } from '../utils/deviceID'
+import { getDeviceId } from '../utils/device'
 
 export const getSceneRecommend = async (scene: string = 'TODAY_RECOMMEND', size: number = 10) => {
     let params = '';

@@ -8,5 +8,5 @@ import { h5fetch } from '../utils/h5fetch';
  * @returns 
  */
 export const getConcertComment = async (concertId: string, page: number = 1, size: number = 20) => {
-    return await h5fetch(`http://b.musicapp.migu.cn/MIGUM2.0/v1.0/danmaku/danmakuHisListPage.do?page=${page}&pageSize=${size}&resourceId=${concertId}`);
+    return await h5fetch(`https://b.musicapp.migu.cn/MIGUM2.0/v1.0/danmaku/danmakuHisListPage.do?page=${page}&pageSize=${size}&resourceId=${concertId}`);
 };

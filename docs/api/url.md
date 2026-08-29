@@ -10,67 +10,6 @@
 
 ?> 接口后端默认走PQ，传入其他的会自动转换，转换后`url`，转换前`oriUrl`。
 
-<details>
-<summary>获取歌曲的任意质量的播放地址</summary>
-
-例如获取的PQ: https://freetyst.nf.migu.cn/public/product9th/product46/2024/09/1213/2024年09月11日23点35分内容准入华纳9首515217/标清高清/MP3_128_16_Stero/6005753G176132921.mp3
-
-更改 `标清高清/MP3_128_16_Stero/id.mp3`
-
-- **LQ** 全曲试听/Mp3_64_22_16/id.mp3 (歌曲较少，兼容性不佳)
-- **PQ** 标清高清/MP3_128_16_Stero/id.mp3
-- **HQ** 标清高清/MP3_320_16_Stero/id.mp3
-- **SQ** 歌曲下载/flac/id.flac
-- **ZQ24** 歌曲下载/flac_24bit/id.flac
-- **ZQ32** 歌曲下载/wav_32bit/id.wav (加密)
-- **Z3D** 歌曲下载/wav_3d/id.wav (加密流媒体，浏览器无法直接播放，仅下载) working...
-- **I3D** 歌曲下载/alac_3d/id.m4a (加密流媒体) working...
-- **3D60** 歌曲下载/wav_3d_60s/id.wav (60秒片段(h5)，网页可播放)
-
-音质信息获取：搜索/resourceinfo
-
-导出utils： `/src/utils/quality.ts`
-
-</details>
-
-## 播放重定向
-
-**接口地址**: `/url/redirect`  
-**请求方法**: 直接放入`<audio>`标签中，301重定向到播放地址
-**导出函数**: `getRedirectUrl`
-
-原文：大象已无形 https://www.cnblogs.com/mmm/p/migu_music_api.html
-
-### 参数说明
-
-| 参数名 | 类型 | 必填 | 说明 | 示例 |
-| ------- | ------ | ------ | ------ | ------ |
-| contentId | string | 是 | Content ID | 600929000000900351 |
-| toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
-| copyrightId | string | 可选 | Copyright ID | 6005974GS6W |
-| isVip | boolean | 否 | 是否为会员 | true (默认) |
-
-?> isVip代表为VIP歌曲。当传入isVip等于0或false时，Copyright ID为可选。如果是VIP歌曲则必填。如果未知则可省略或者传true/1。
-
----
-
-## 播放地址 m2
-
-**接口地址**: `/url/m2`  
-**导出函数**: `getUrlM2`
-
-### 参数说明
-
-| 参数名 | 类型 | 必填 | 说明 | 示例 |
-| ------- | ------ | ------ | ------ | ------ |
-| contentId | string | 是 | Content ID | 600902000006889466 (爱在西元前) |
-| toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
-| copyrightId | string | 否 | Copyright ID | 60054701898 |
-| songId | string | 否 | 歌曲 ID | 2498 |
-| albumId | string | 否 | 专辑 ID | 7948 |
-
----
-
 ## 播放地址 dlv1
 
 **接口地址**: `/url/dlv1`  

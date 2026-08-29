@@ -1,5 +1,5 @@
 import { h5fetch } from '../utils/h5fetch';
-import { getDeviceId } from '../utils/deviceID'
+import { getDeviceId } from '../utils/device'
 
 /**
  * 获取电台推荐 （主页电台）

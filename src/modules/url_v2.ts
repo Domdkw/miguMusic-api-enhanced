@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getDeviceId } from '../utils/deviceID'
+import { getDeviceId } from '../utils/device'
 
 export const getUrlV2 = async (contentId: string, copyrightId: string, toneFlag: string = 'PQ', pacmtoken: string = '') => {
     const deviceId = getDeviceId();

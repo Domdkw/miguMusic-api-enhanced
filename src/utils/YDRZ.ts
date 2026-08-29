@@ -1,4 +1,3 @@
-import { randomUA } from "./ua";
 import crypto from 'node:crypto'
 import axios from 'axios';
 
@@ -29,7 +28,9 @@ export function md5(s: string){
         .update(s, 'utf-8')
         .digest('hex');
 }
-
+const randomUA = () => {
+    return "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Mobile/15E148 Safari/604.1";
+}
 const nav = {
     "platform": "iPhone",
     "userAgent": randomUA(),

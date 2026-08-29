@@ -2,8 +2,6 @@ import type { Hono } from 'hono';
 import { getUrlV1 } from '../modules/url_v1';
 import { getUrlV2 } from '../modules/url_v2';
 import { getUrlH5V24 } from '../modules/url_h5v2.4';
-import { getRedirectUrl } from '../modules/url_redirect';
-import { getUrlM2 } from '../modules/url_m2';
 import { getDLUrlV1 } from '../modules/url_dl_v1';
 
 import { saveUrlToDB, getUrlFromDB } from '../middleware/urlSaver';
@@ -11,29 +9,6 @@ import { env } from 'hono/adapter';
 
 
 export default function (app: Hono) {
-    app.get('/url/redirect', async (c) => {
-        const contentId = c.req.query('contentId') || '';
-        if (!contentId) return c.json({success:false,error:'contentId 参数不能为空'}, 400);
-        const isVip = c.req.query('isVip') || 'true';
-        const url = await getRedirectUrl(
-            contentId,
-            c.req.query('toneFlag') || 'PQ',
-            c.req.query('copyrightId') || '',
-            !(isVip === 'false' || isVip === '0') // 空为true，0为false
-        );
-        return url==='' ? c.json({success:false,error:'重定向失败'}, 400) : c.redirect(url, 301);
-    });
-
-    app.get('/url/m2', async (c) => {
-        return c.json({ success: true, ...(await getUrlM2(
-            c.req.query('contentId') || '',
-            c.req.query('toneFlag') || 'PQ',
-            c.req.query('copyrightId') || '',
-            c.req.query('songId') || '',
-            c.req.query('albumId') || '',
-        )) });
-    });
-
     app.get('/url/dlv1', async (c) => {
         return c.json({ success: true, ...(await getDLUrlV1(
             c.req.query('songId') || '',
