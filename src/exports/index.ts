@@ -127,3 +127,4 @@ export { getDAlbumSong } from '../modules/dalbum_song';
 export { getDAlbumPay } from '../modules/dalbum_pay';
 export { getPageScroll } from '../modules/page_scroll';
 export { getPageDataSource } from '../modules/page_dataSource';
+export { getSongInfo as getTvSongInfo } from '../modules/tv/songInfo';

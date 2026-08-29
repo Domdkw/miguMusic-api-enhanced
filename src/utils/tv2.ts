@@ -3,7 +3,7 @@
 // license: cc-by-nc-sa-4.0
 
 import { h5fetch } from "./h5fetch";
-import crypto from "node:crypto";
+import CryptoJS from "crypto-js";
 
 const E_KEY = "9HkocpYLeG1LNi5m"
 function randomMac() {
@@ -16,22 +16,30 @@ function randomIP() {
     return `|192.168.${Math.floor(Math.random() * 10)}.${Math.floor(Math.random() * 256)}`;
 }
 function md5Hex(data: string) {
-    return crypto.createHash('md5').update(data).digest('hex');
+    return CryptoJS.MD5(data).toString(CryptoJS.enc.Hex);
 }
-function desEncrypt(data: string, key: Buffer): Buffer {
-    const cipher = crypto.createCipheriv('des-ede3', key, Buffer.alloc(0));
-    return Buffer.concat([cipher.update(data, 'utf8'), cipher.final()]);
+function desEncrypt(data: string, key: CryptoJS.lib.WordArray): CryptoJS.lib.CipherParams {
+    return CryptoJS.TripleDES.encrypt(CryptoJS.enc.Utf8.parse(data), key, {
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7,
+    });
 }
-//DESede/ECB/PKCS5Padding解密（3DES）
-function desDecrypt(data: Buffer, key: Buffer): string {
-    const decipher = crypto.createDecipheriv('des-ede3', key, Buffer.alloc(0));
-    return decipher.update(data) + decipher.final('utf8');
+function desDecrypt(data: string, key: CryptoJS.lib.WordArray): string {
+    const decrypted = CryptoJS.TripleDES.decrypt(
+        CryptoJS.lib.CipherParams.create({ ciphertext: CryptoJS.enc.Base64.parse(data) }),
+        key,
+        {
+            mode: CryptoJS.mode.ECB,
+            padding: CryptoJS.pad.Pkcs7,
+        }
+    );
+    return decrypted.toString(CryptoJS.enc.Utf8);
 }
 function createSalt() {
     return Array.from({ length: 6 }, () => Math.floor(Math.random()*10)).join('');
 }
-function createKey(data: string): Buffer {
-    return Buffer.from(md5Hex(data + E_KEY), 'utf-8').subarray(0, 24);
+function createKey(data: string): CryptoJS.lib.WordArray {
+    return CryptoJS.enc.Utf8.parse(md5Hex(data + E_KEY).slice(0, 24));
 }
 interface TokenForm {
     token?: string;
@@ -46,8 +54,7 @@ function createToken(map: TokenForm) {
 }
 function getAuthParams(data: string, service: string, version?: string) {
     const salt = createSalt()
-    ,encryptedBytes = desEncrypt(data, createKey(salt))
-    ,encryptData = encryptedBytes.toString('base64')
+    ,encryptData = desEncrypt(data, createKey(salt)).ciphertext.toString(CryptoJS.enc.Base64)
     ,form: TokenForm = {
         salt,
         "data": encryptData,
@@ -59,7 +66,7 @@ function getAuthParams(data: string, service: string, version?: string) {
     return form;
 }
 function decryptData(rawData: string, salt: string) {
-    return desDecrypt(Buffer.from(rawData, 'base64'), createKey(salt));
+    return desDecrypt(rawData, createKey(salt));
 }
 
 export async function postTv(data: Object, service: string, version?: string) {
