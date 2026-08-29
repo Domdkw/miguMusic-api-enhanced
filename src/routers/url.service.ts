@@ -5,6 +5,8 @@ import { getUrlH5V24 } from '../modules/url_h5v2.4';
 import { getRedirectUrl } from '../modules/url_redirect';
 import { getUrlM2 } from '../modules/url_m2';
 import { getDLUrlV1 } from '../modules/url_dl_v1';
+//test
+import { getSongInfo } from '../modules/tv/songInfo';
 
 import { saveUrlToDB, getUrlFromDB } from '../middleware/urlSaver';
 import { env } from 'hono/adapter';
@@ -101,5 +103,12 @@ export default function (app: Hono) {
             return c.json({ success: true, ...data, hit: false });
         }
         return c.json({ success: true, data: { url }, hit: true });
+    });
+    //test
+    app.get('/tv/songInfo', async (c) => {
+        const contentId = c.req.query('contentId') || '';
+        const songId = c.req.query('songId') || '';
+        const toneFlag = c.req.query('toneFlag') || 'PQ';
+        return c.json(await getSongInfo(contentId, songId, toneFlag));
     });
 }
