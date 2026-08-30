@@ -20,7 +20,7 @@ export const getLyric = async (contentId: string, type:string = 'lrc') => {
         status: res.status,
         error: res.data.info || res.data,
     };
-    if(data.length === 0 ) return {error:'data.length = 0 !', success: false, data};
+    if(res.data.resource.length === 0 ) return {error:'can not find resource!', success: false, data};
 
     let lrc, lrcUrl, trc, trcUrl;
 

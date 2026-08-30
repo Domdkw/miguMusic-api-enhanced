@@ -24,7 +24,7 @@ export const getMrc = async (contentId: string, type:string = 'standard') => {
         status: res.status,
         error: res.data.info || res.data,
     };
-    if(data.length === 0 ) return {error:'data.length = 0 !', success: false, data};
+    if(res.data.resource.length === 0 ) return {error:'can not find resource!', success: false};
 
     //mrc
     let mrc = '';
