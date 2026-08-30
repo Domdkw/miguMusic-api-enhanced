@@ -19,8 +19,6 @@ export async function getSongInfo(contentId: string, songId: string, toneFlag?: 
             break;
         }
     }
-    if(!oriUrl)
-        return res;
     res.data.url = encodeURI(tvQuality.changeQuality(oriUrl, toneFlag || 'PQ', true)||'');
     res.data.songItem = res.data.musicSongListVo;
     delete res.data.musicSongListVo;
