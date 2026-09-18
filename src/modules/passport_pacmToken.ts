@@ -9,7 +9,7 @@ import { ckfetch } from '../utils/h5fetch';
  * @returns pacmtoken 和响应体
  */
 export const getPacmToken = async (
-    token: string = '', 
+    token: string, 
     type: string = '2', 
     sourceId: string = '220029',
     activityId: string = 'MUSIC-WWW'

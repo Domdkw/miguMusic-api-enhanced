@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { getSetCookieValueFromObject } from './setCookie';
 
 type H5FetchInit = RequestInit & {
     maxRedirects?: number;
@@ -56,8 +55,6 @@ export const ckfetch = async (
         cookie?: Record<string, string>;
     }
 ): Promise<{ data: any; cookies: Record<string, string> }> => {
-    const cookieKeys = init?.cookie ? Object.keys(init.cookie) : [];
-
     const cookieHeader = init?.cookie
         ? Object.entries(init.cookie).map(([k, v]) => `${k}=${v}`).join('; ')
         : '';
@@ -81,10 +78,17 @@ export const ckfetch = async (
     const response = await _fetch(url, { ...init, headers: newHeaders });
 
     const cookies: Record<string, string> = {};
-    for (const key of cookieKeys) {
-        const value = getSetCookieValueFromObject(response.headers, key);
-        if (value) {
-            cookies[key] = value;
+    const setCookieRaw = response.headers['set-cookie'] as string | string[] | undefined;
+    if (setCookieRaw) {
+        const setCookies = Array.isArray(setCookieRaw) ? setCookieRaw : [setCookieRaw];
+        for (const item of setCookies.flatMap(c => c.split(',').map(s => s.trim()))) {
+            const [pair] = item.split(';');
+            const eqIndex = pair.indexOf('=');
+            if (eqIndex > 0) {
+                const key = pair.slice(0, eqIndex).trim();
+                const value = pair.slice(eqIndex + 1).trim();
+                if (value) cookies[key] = value;
+            }
         }
     }
 
