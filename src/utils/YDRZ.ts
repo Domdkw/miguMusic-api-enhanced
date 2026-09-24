@@ -1,4 +1,4 @@
-import crypto from 'node:crypto'
+import CryptoJS from 'crypto-js';
 import axios from 'axios';
 
 export type LoginOneClickData = {
@@ -24,9 +24,7 @@ export type LoginOneClickData = {
 export type GetTokenInfoInput = Pick<LoginOneClickData, 'version' | 'appId' | 'openType' | 'expandParams' | 'isTest' | 'sign' | 'getNetworkType' | 'getMsisdnMask'>;
 
 export function md5(s: string){
-    return  crypto.createHash('md5')
-        .update(s, 'utf-8')
-        .digest('hex');
+    return CryptoJS.MD5(s).toString(CryptoJS.enc.Hex);
 }
 const randomUA = () => {
     return "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Mobile/15E148 Safari/604.1";

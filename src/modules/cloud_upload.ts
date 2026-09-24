@@ -3,7 +3,7 @@
 // no proxy (for safety)
 
 import { ckfetch } from '../utils/h5fetch';
-import crypto from 'node:crypto';
+import CryptoJS from 'crypto-js';
 
 /**
  * 上传到云盘
@@ -16,17 +16,24 @@ function getExt (file: File) {
     if (index <= 0)  return '';
     return file.name.substring(index + 1).toLowerCase();
 };
+function toWordArray(bytes: Uint8Array) {
+    const words: number[] = [];
+    for (let i = 0; i < bytes.length; i++) {
+        words[i >>> 2] = (words[i >>> 2] || 0) | (bytes[i] << (24 - (i % 4) * 8));
+    }
+    return CryptoJS.lib.WordArray.create(words, bytes.length);
+}
 async function getHash (file: File) {
-    const hash = crypto.createHash('md5');
+    const hash = CryptoJS.algo.MD5.create();
     const reader = file.stream().getReader();
     while (true) {
         const { done, value } = await reader.read();
         if (done) {
             break;
         }
-        hash.update(value);
+        hash.update(toWordArray(value));
     }
-    return hash.digest('hex');
+    return hash.finalize().toString(CryptoJS.enc.Hex);
 };
 export const getCloudUploadUrl = async (pacmtoken: string, file: File) => {
     const ext = getExt(file);
