@@ -9,8 +9,9 @@ import { getTicketInfo } from '../modules/ticket';
 import { getLyric } from '../modules/lyric';
 import { shareVideo } from '../modules/share_video';
 import { shareCommon } from '../modules/share_common';
-import { getSongInfo } from '../modules/resourceinfo_song';
+import { getSongInfoByContentIds, getSongInfoBySongIds } from '../modules/song_info';
 import { getMrc } from '../modules/mrc';
+import { getSongIds } from '../modules/song_ids';
 
 
 export default function (app: Hono) {
@@ -63,8 +64,16 @@ export default function (app: Hono) {
         return c.json({ success: true, ...data });
     });
 
-    app.get('/songinfo', async c => 
-        c.json({ success: true, ...(await getSongInfo(c.req.query('contentIds') ?? ''))})
+    app.get('/songinfo/contentId', async c => 
+        c.json({ success: true, ...(await getSongInfoByContentIds(c.req.query('contentIds') ?? ''))})
+    );
+
+    app.get('/songinfo/songId', async c => 
+        c.json({ success: true, ...(await getSongInfoBySongIds(c.req.query('songIds') ?? ''))})
+    );
+
+    app.get('/songinfo/songId/simple', async c => 
+        c.json({ success: true, ...(await getSongIds(c.req.query('songId') ?? ''))})
     );
 
     app.get('/ticket', async (c) => {

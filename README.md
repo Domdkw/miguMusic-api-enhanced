@@ -112,10 +112,10 @@ npm install migu-api-enhanced
 
 ```ts
 import { getAlbumInfo, getUrlV2 } from 'migu-api-enhanced';
-import { changeQuality } from '@migu-api-enhanced/utils';
-import { getMrc } from '@migu-api-enhanced/mrc';
-import { loginNP } from '@migu-api-enhanced/login';
-import { signNinan } from '@migu-api-enhanced/activity';
+import { changeQuality } from 'migu-api-enhanced/utils';
+import { getMrc } from 'migu-api-enhanced/mrc';
+import { loginNP } from 'migu-api-enhanced/login';
+import { signNinan } from 'migu-api-enhanced/activity';
 const album = await getAlbumInfo('1123');
 // or
 import * as migu from 'migu-api-enhanced';

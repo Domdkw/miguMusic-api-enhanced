@@ -36,6 +36,8 @@ import { getCloudDLUrl } from '../modules/cloud_dl';
 import { getUserPhoneInfo } from '../modules/user_phoneInfo';
 import { getUserOrdered } from '../modules/user_ordered';
 import { getUserLikeList } from '../modules/user_like_list';
+import { addEpicComment } from "../modules/comment_epic_add";
+import { deleteEpicComment } from "../modules/comment_epic_del";
 
 export default function (app: Hono) {
     app.get('/user/badge', async (c) => {
@@ -245,7 +247,6 @@ export default function (app: Hono) {
     });
 
     app.get('/user/audioBook', async (c) => {
-        const pacmtoken = c.req.query('pacmtoken') ?? '';
         const {data, newPacmToken} = await getUserAudioBook(
             c.req.query('pacmtoken') ?? '',
             Number(c.req.query('recentListenNum') ?? 10),
@@ -335,7 +336,23 @@ export default function (app: Hono) {
     app.get('/user/comment/delete', async (c) => {
         const {data, newPacmToken} = await deleteComment(
             c.req.query('pacmtoken') ?? '',
-            c.req.query('resourceId') ?? '',
+            c.req.query('commentId') ?? '',
+        );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/comment/epic/add', async (c) => {
+        const {data, newPacmToken} = await addEpicComment(
+            c.req.query('commentId') ?? '',
+            c.req.query('pacmtoken') ?? '',
+        );
+        return c.json({ success: true, ...data, pacmtoken: newPacmToken });
+    });
+
+    app.get('/user/comment/epic/delete', async (c) => {
+        const {data, newPacmToken} = await deleteEpicComment(
+            c.req.query('commentId') ?? '',
+            c.req.query('pacmtoken') ?? '',
         );
         return c.json({ success: true, ...data, pacmtoken: newPacmToken });
     });

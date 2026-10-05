@@ -1,16 +1,19 @@
 import { ckfetch } from '../utils/h5fetch';
 
 /**
- * 删除评论
- * @param pacmtoken 用户token
+ * 删除神评
  * @param commentId 评论id
+ * @param pacmtoken 用户token
  * @returns 删除结果，包含新pacmtoken
  */
-export const deleteComment = async (pacmtoken: string, commentId: string) => {
-    const { data, cookies } = await ckfetch(`https://app.u.nf.migu.cn/MIGUM2.0/v1.0/user/delComment.do`
+export const deleteEpicComment = async (
+    commentId: string,
+    pacmtoken: string,
+) => {
+    const { data, cookies } = await ckfetch(`https://app.c.nf.migu.cn/user/api/comment/cancel-recommend/v1.0`
         ,{
-            method: 'GET',
-            params: {resourceId: commentId, hasAudited: "false"},
+            method: 'POST',
+            body: JSON.stringify({ commentId }),
             cookie: { pacmtoken },
             headers: {
                 "channel": "0146891",

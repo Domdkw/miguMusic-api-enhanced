@@ -518,7 +518,35 @@
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
 | pacmtoken | string | 是 | 登录凭证 |  |
-| resourceId | string | 是 | 评论 ID | |
+| commentId | string | 是 | 评论 ID | |
+
+---
+
+## 评论-神评-添加
+
+**接口地址**: `/user/comment/epic/add`  
+**导出函数**: `addEpicComment`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| commentId | string | 是 | 评论 ID | |
+| pacmtoken | string | 是 | 登录凭证 |  |
+
+---
+
+## 评论-神评-删除
+
+**接口地址**: `/user/comment/epic/delete`  
+**导出函数**: `deleteEpicComment`
+
+### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| commentId | string | 是 | 评论 ID | |
+| pacmtoken | string | 是 | 登录凭证 |  |
 
 ---
 
