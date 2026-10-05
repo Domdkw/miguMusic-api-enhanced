@@ -522,7 +522,7 @@
 
 ---
 
-## 评论-神评-添加
+## 评论-神评-推荐
 
 **接口地址**: `/user/comment/epic/add`  
 **导出函数**: `addEpicComment`

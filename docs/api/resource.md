@@ -106,7 +106,7 @@ raw：原始MRC歌词密文
 | ------- | ------ | ------ | ------ | ------ |
 | songIds | string | 是 | 歌曲 ID 列表（逗号分隔） | 233851696,234592877 |
 
-### 通过 songId 获取歌曲ids (songId, contentId)
+### 通过 songId 查询歌曲ids (songId, contentId)
 
 **接口地址**: `/songinfo/songId/simple`  
 **导出函数**: `getSongIds`
