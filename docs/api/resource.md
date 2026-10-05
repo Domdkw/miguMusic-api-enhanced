@@ -84,15 +84,38 @@ raw：原始MRC歌词密文
 
 ## 获取歌曲信息
 
-**接口地址**: `/songinfo`  
-**导出函数**: `getSongInfo`
+### 通过 contentId
 
-### 参数说明
+**接口地址**: `/songinfo/contentId`  
+**导出函数**: `getSongInfoByContentIds`
+
+#### 参数说明
 
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
 | contentIds | string | 是 | 歌曲 ID 列表（逗号分隔） | 600919000007791840,600929000001520013 |
 
+### 通过 songId
+
+**接口地址**: `/songinfo/songId`  
+**导出函数**: `getSongInfoBySongIds`
+
+#### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| songIds | string | 是 | 歌曲 ID 列表（逗号分隔） | 233851696,234592877 |
+
+### 通过 songId 获取歌曲ids (songId, contentId)
+
+**接口地址**: `/songinfo/songId/simple`  
+**导出函数**: `getSongIds`
+
+#### 参数说明
+
+| 参数名 | 类型 | 必填 | 说明 | 示例 |
+| ------- | ------ | ------ | ------ | ------ |
+| songId | string | 是 | 单个歌曲 ID | 2498 |
 ---
 
 ## 获取评论

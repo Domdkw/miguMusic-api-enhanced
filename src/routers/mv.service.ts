@@ -7,7 +7,7 @@ import { getConcertUrl } from '../modules/concert_url';
 import { getConcertDetail } from '../modules/concert_detail';
 import { getConcertComment } from '../modules/concert_comment';
 import { getConcertRecommendMv } from '../modules/concert_mv';
-import { getMvBySong } from '../modules/mv_song';
+import { getMvBySong } from '../modules/song_mv';
 
 export default function (app: Hono) {
     app.get('/mv/info', async (c) => {
