@@ -6,9 +6,7 @@
 
 ?> contentId 和 copyrightId 是歌曲的唯一标识，可以二选一。都传 > contentId > copyrightId
 
-?> 请记住，每个接口都有它的使用价值🧐😏，不会放没什么用的上去。例如没有放上去的没用接口(mini2.4)
-
-?> 接口后端默认走PQ，传入其他的会自动转换，转换后`url`，转换前`oriUrl`。
+?> 可传入参数302，有值则返回重定向，适用范围：v1、v2、h5v2.4、db。302 !== undefined
 
 ## 播放地址 dlv1
 

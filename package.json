@@ -1,6 +1,6 @@
 {
   "name": "migu-api-enhanced",
-  "version": "2.28.0",
+  "version": "2.28.1",
   "license": "MIT",
   "author": "Domdkw",
   "description": "咪咕音乐 API 增强 SDK（多平台部署 + NPM 包）",

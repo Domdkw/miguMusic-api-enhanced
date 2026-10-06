@@ -22,6 +22,8 @@ export default function (app: Hono) {
         const resourceType = c.req.query('resourceType') || '2';
         const toneFlag = c.req.query('toneFlag') || 'PQ';
         const data = await getUrlV1(contentId, copyrightId, toneFlag, resourceType);
+        if(c.req.query('302') !== undefined)
+            return c.redirect(data?.data?.url || '', 302);
         return c.json({ success: true, ...data });
     });
 
@@ -31,6 +33,8 @@ export default function (app: Hono) {
         const toneFlag = c.req.query('toneFlag') || 'PQ';
         const pacmtoken = c.req.query('pacmtoken') || '';
         const data = await getUrlV2(contentId, copyrightId, toneFlag, pacmtoken);
+        if(c.req.query('302') !== undefined)
+            return c.redirect(data?.data?.url || '', 302);
         return c.json({ success: true, ...data });
     });
 
@@ -50,6 +54,8 @@ export default function (app: Hono) {
         }
         // ===END===
 
+        if(c.req.query('302') !== undefined)
+            return c.redirect(data?.data?.url || '', 302);
         return c.json({ success: true, ...data });
     });
 
@@ -73,8 +79,12 @@ export default function (app: Hono) {
         // 统一返回结构: { success: boolean, data?: { url: string }, error?: string }
         if (!success) {
             const data = await getUrlV1(contentId, '', 'PQ', '2');
+            if(c.req.query('302') !== undefined)
+                return c.redirect(data?.data?.url || '', 302);
             return c.json({ success: true, ...data, hit: false });
         }
+        if(c.req.query('302') !== undefined)
+            return c.redirect(url || '', 302);
         return c.json({ success: true, data: { url }, hit: true });
     });
 }
