@@ -10,7 +10,7 @@ importers:
     dependencies:
       axios:
         specifier: ^1.18.0
-        version: 1.19.0(debug@4.4.3(supports-color@10.0.0))(supports-color@10.0.0)
+        version: 1.20.0(debug@4.4.3(supports-color@10.0.0))(supports-color@10.0.0)
       crypto-js:
         specifier: ^4.2.0
         version: 4.2.0
@@ -20,7 +20,7 @@ importers:
         version: 4.20260702.1
       '@hono/node-server':
         specifier: ^2.0.10
-        version: 2.1.1(hono@4.13.5)
+        version: 2.1.6(hono@4.13.16)
       '@libsql/client':
         specifier: ^0.17.4
         version: 0.17.4
@@ -41,10 +41,10 @@ importers:
         version: 0.28.2
       hono:
         specifier: ^4.12.31
-        version: 4.13.5
+        version: 4.13.16
       hono-mem-cache:
         specifier: ^0.4.0
-        version: 0.4.0(hono@4.13.5)
+        version: 0.4.0(hono@4.13.16)
       pako:
         specifier: ^3.0.1
         version: 3.0.1
@@ -587,11 +587,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@hono/node-server@2.1.1':
-    resolution: {integrity: sha512-ELuehkj5VCBdgEw9zs+ivkKwyzzUCSQuE96YmiPvn1ECBoZCczbFXJLeEGMTYjphP6gydh4pHMqEYPVMYUVgQg==}
+  '@hono/node-server@2.1.6':
+    resolution: {integrity: sha512-p/KH9MnfNcsm3sR6x4lNgm5j+QN4Et8srKredl9DZfXiyZ1UQ3aQ2YVpFLbqktYN5JI+DB+VZFKM2PqE5hLKjQ==}
     engines: {node: '>=20'}
     peerDependencies:
-      hono: ^4
+      hono: ^4 || ^5.0.0-0
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -1037,8 +1037,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  axios@1.19.0:
-    resolution: {integrity: sha512-ht/iuYZXEjFxLH/Hkezgd7m6JKlHHXEUSneaDz8uZe1Gj5QZtCnpyDsckvAiEnT89OEbCLmnte4R4sn7P0EKFw==}
+  axios@1.20.0:
+    resolution: {integrity: sha512-r8aOh8j9cGKpgQAqpzrUHnSIc6a59Y3Xf/cv8sy1DrHCkZHzQGEuoq1tARk6qSyDdtQGSDgpb9kFlruzPvrgwg==}
 
   blake3-wasm@2.1.5:
     resolution: {integrity: sha512-F1+K8EbfOZE49dtoPtmxUQrpXaBIl3ICvasLh+nJta0xkz+9kF/7uet9fLnwKqhDrmj6g+6K3Tw9yQPUg2ka5g==}
@@ -1194,8 +1194,8 @@ packages:
   fix-dts-default-cjs-exports@1.0.1:
     resolution: {integrity: sha512-pVIECanWFC61Hzl2+oOCtoJ3F17kglZC/6N94eRWycFgBH35hHx0Li604ZIzhseh97mf2p0cv7vVrOZGoqhlEg==}
 
-  follow-redirects@1.16.0:
-    resolution: {integrity: sha512-y5rN/uOsadFT/JfYwhxRS5R7Qce+g3zG97+JrtFZlC9klX/W5hD7iiLzScI4nZqUS7DNUdhPgw4xI8W2LuXlUw==}
+  follow-redirects@1.16.3:
+    resolution: {integrity: sha512-toOSoqN6d51Wjf1aOFJYcoVv1aND9rj/CwjLU0Vz40oDuSpWDayCeKe4JpL5NL0WdFvoOOCI3BRo69HahjbR1A==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -1247,8 +1247,8 @@ packages:
     peerDependencies:
       hono: ^4.0.0
 
-  hono@4.13.5:
-    resolution: {integrity: sha512-O6+/eCYRkzzzy0rPWwKLiGBR1nFuUPZynnwjxN1MBA62NNqbT0wQEzQyK2gSO5yDIDB336sXQleAhOHrzlYyKw==}
+  hono@4.13.16:
+    resolution: {integrity: sha512-AOLOEhvrV+iH92xXCnFr/5+3KjPKcI3xP63XJtX5spAnkznPdHijlIsUTpi7/9EhWqrTCekw5c5zh1K+YsVw7A==}
     engines: {node: '>=16.9.0'}
 
   https-proxy-agent@5.0.1:
@@ -1874,9 +1874,9 @@ snapshots:
   '@esbuild/win32-x64@0.28.2':
     optional: true
 
-  '@hono/node-server@2.1.1(hono@4.13.5)':
+  '@hono/node-server@2.1.6(hono@4.13.16)':
     dependencies:
-      hono: 4.13.5
+      hono: 4.13.16
 
   '@img/colour@1.1.0': {}
 
@@ -2195,9 +2195,9 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@1.19.0(debug@4.4.3(supports-color@10.0.0))(supports-color@10.0.0):
+  axios@1.20.0(debug@4.4.3(supports-color@10.0.0))(supports-color@10.0.0):
     dependencies:
-      follow-redirects: 1.16.0(debug@4.4.3(supports-color@10.0.0))
+      follow-redirects: 1.16.3(debug@4.4.3(supports-color@10.0.0))
       form-data: 4.0.6
       https-proxy-agent: 5.0.1(supports-color@10.0.0)
       proxy-from-env: 2.1.0
@@ -2387,7 +2387,7 @@ snapshots:
       mlly: 1.8.2
       rollup: 4.62.4
 
-  follow-redirects@1.16.0(debug@4.4.3(supports-color@10.0.0)):
+  follow-redirects@1.16.3(debug@4.4.3(supports-color@10.0.0)):
     optionalDependencies:
       debug: 4.4.3(supports-color@10.0.0)
 
@@ -2446,12 +2446,12 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  hono-mem-cache@0.4.0(hono@4.13.5):
+  hono-mem-cache@0.4.0(hono@4.13.16):
     dependencies:
-      hono: 4.13.5
+      hono: 4.13.16
       lru-cache: 11.5.2
 
-  hono@4.13.5: {}
+  hono@4.13.16: {}
 
   https-proxy-agent@5.0.1(supports-color@10.0.0):
     dependencies:
