@@ -8,7 +8,8 @@ import { getSearchHot } from '../modules/search_hot';
 import { getSearchDefault } from '../modules/search_default';
 import { searchMv } from '../modules/search_mv';
 import { searchSuggest } from '../modules/search_suggest';
-import { searchRbt } from '../modules/search_rbt';
+import { searchCrbt } from '../modules/search_crbt';
+import { searchVrbt } from '../modules/search_vrbt';
 import { searchTicket } from '../modules/search_ticket';
 import { getSearchSingerTab } from '../modules/search_singerTab';
 import { getSearchSingerTabList } from '../modules/search_singerTab_list';
@@ -70,10 +71,17 @@ export default function (app: Hono) {
         return c.json({ success: true, ...data });
     });
 
-    app.get('/search/rbt', async (c) => {
+    app.get('/search/crbt', async (c) => {
         const text = c.req.query('text') ?? '';
         const page = c.req.query('page') ?? 1;
-        const data = await searchRbt(text, Number(page));
+        const data = await searchCrbt(text, Number(page));
+        return c.json({ success: true, ...data });
+    });
+
+    app.get('/search/vrbt', async (c) => {
+        const text = c.req.query('text') ?? '';
+        const page = c.req.query('page') ?? 1;
+        const data = await searchVrbt(text, Number(page));
         return c.json({ success: true, ...data });
     });
 

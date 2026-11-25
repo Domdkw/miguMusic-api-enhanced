@@ -69,14 +69,6 @@ typeOrder : 类型排序，默认 0，0-默认，1-最新，2-最热
 | ------- | ------ | ------ | ------ | ------ |
 | text | string | 是 | 搜索关键词 | APT. |
 
-### 请求示例
-
-```
-/search/singer?text=APT.
-```
-
----
-
 ## 搜索专辑
 
 **接口地址**: `/search/album`  
@@ -89,14 +81,6 @@ typeOrder : 类型排序，默认 0，0-默认，1-最新，2-最热
 | text | string | 是 | 搜索关键词 | lighting |
 | page | number | 否 | 页码，默认 1 | 1 |
 | typeOrder | number | 否 | 类型排序，默认 0 | 0 |
-
-### 请求示例
-
-```
-/search/album?text=lighting&page=1&typeOrder=0
-```
-
----
 
 ## 搜索 MV
 
@@ -113,13 +97,6 @@ typeOrder : 类型排序，默认 0，0-默认，1-最新，2-最热
 | page | number | 否 | 页码，默认 1 | 1 |
 | typeOrder | number | 否 | 类型排序，默认 0 | 0 |
 
-### 请求示例
-
-```
-/search/video?text=APT.&page=1&typeOrder=0
-```
-
----
 
 ## 搜索歌词
 
@@ -133,13 +110,6 @@ typeOrder : 类型排序，默认 0，0-默认，1-最新，2-最热
 | text | string | 是 | 搜索关键词 | APT. |
 | page | number | 否 | 页码，默认 1 | 1 |
 
-### 请求示例
-
-```
-/search/lrc?text=APT.&page=1
-```
-
----
 
 ## 搜索短视频
 
@@ -149,8 +119,9 @@ typeOrder : 类型排序，默认 0，0-默认，1-最新，2-最热
 
 ## 搜索彩铃
 
-**接口地址**: `/search/rbt`  
-**导出函数**: `searchRbt`
+**接口地址**: 视频彩铃：`/search/vrbt` 
+**接口地址**: 音频彩铃：`/search/crbt`
+**导出函数**: `searchVrbt` `searchCrbt`
 
 [彩铃接口](svideo.md#视频彩铃url)
 
@@ -160,14 +131,6 @@ typeOrder : 类型排序，默认 0，0-默认，1-最新，2-最热
 | ------- | ------ | ------ | ------ | ------ |
 | text | string | 是 | 搜索关键词 | APT. |
 | page | number | 否 | 页码，默认 1 | 1 |
-
-### 请求示例
-
-```
-/search/rbt?text=APT.&page=1
-```
-
----
 
 ## 搜索演唱会
 
@@ -184,14 +147,6 @@ typeOrder : 类型排序，默认 0，0-默认，1-最新，2-最热
 | page | number | 否 | 页码，默认 1 | 1 |
 
 
-### 请求示例
-
-```
-/search/concert?text=APT.&page=1
-```
-
----
-
 ## 搜索票务
 
 **接口地址**: `/search/ticket`  
@@ -207,14 +162,6 @@ typeOrder : 类型排序，默认 0，0-默认，1-最新，2-最热
 | text | string | 是 | 搜索关键词 | APT. |
 | page | number | 否 | 页码，默认 1 | 1 |
 
-### 请求示例
-
-```
-/search/ticket?text=APT.&page=1
-```
-
----
-
 ## 歌手标签
 
 **接口地址**: `/search/singerTab`  
@@ -223,14 +170,6 @@ typeOrder : 类型排序，默认 0，0-默认，1-最新，2-最热
 ### 参数说明
 
 无需参数
-
-### 请求示例
-
-```
-/search/singerTab
-```
-
----
 
 ## 歌手列表
 
@@ -242,9 +181,3 @@ typeOrder : 类型排序，默认 0，0-默认，1-最新，2-最热
 | 参数名 | 类型 | 必填 | 说明 | 示例 |
 | ------- | ------ | ------ | ------ | ------ |
 | tab | string | 是 | 歌手标签 | huayu-nan |
-
-### 请求示例
-
-```
-/search/singerTab/list?tab=huayu-nan
-```
