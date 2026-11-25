@@ -7,7 +7,7 @@ import { h5fetch } from '../utils/h5fetch';
  * @returns 歌曲ID信息
  */
 export const getSongIds = async (songId: string, channel: string = "014X031") => {
-    const res = await h5fetch(`https://app.c.nf.migu.cn//strategy/song-purchase/status/v1.0`
+    const res = await h5fetch(`https://app.c.vip.migu.cn/strategy/song-purchase/status/v1.0`
         ,{
             params: { songId },
             headers: {

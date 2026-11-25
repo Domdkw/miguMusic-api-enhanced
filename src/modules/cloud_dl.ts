@@ -10,7 +10,7 @@ import { ckfetch } from '../utils/h5fetch';
  * @returns 地址和新的pacmtoken
  */
 export const getCloudDLUrl = async (pacmtoken: string, contentId: string, toneFlag: string = 'PQ') => {
-    const { data, cookies } = await ckfetch('https://app.c.nf.migu.cn/MIGUM3.0/strategy/cloud/download-url/v1.0', {
+    const { data, cookies } = await ckfetch('https://app.c.vip.migu.cn/MIGUM3.0/strategy/cloud/download-url/v1.0', {
         cookie: { pacmtoken },
         headers: { "channel": "0146931", "version": "7.41.13"},
         params: {

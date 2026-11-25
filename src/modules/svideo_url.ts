@@ -9,5 +9,5 @@ import { h5fetch } from '../utils/h5fetch';
 export const getSVideoUrl = async (contentIds: string, formatType: string = 'HQ') => {
     contentIds = contentIds.replace(/,/g, '|');
     // origin: |
-    return await h5fetch(`https://app.c.nf.migu.cn/strategy/short-video/play/v1.0?contentIds=${contentIds}&formatType=${formatType}`);
+    return await h5fetch(`https://app.c.vip.migu.cn/strategy/short-video/play/v1.0?contentIds=${contentIds}&formatType=${formatType}`);
 };
