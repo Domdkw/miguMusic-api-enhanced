@@ -5,7 +5,7 @@
 // origin: https://passport.migu.cn/login?sourceid=220029&forceAuthn=true&hideRegister=1&hideForgetPass=1&callbackURL=PostToken
 
 
-import axios from 'axios';
+import { h5fetch } from '../utils/h5fetch';
 import { getDeviceId } from '../utils/device';
 
 /**
@@ -29,10 +29,9 @@ const genInternetSign = async(): Promise<string | undefined>=> {
     // 发送请求
     const url = `https://passport.migu.cn/api/genInternetSign?preSign=${preSign}&msgid=${msgId}&systemtime=${time}&sourceid=220029&signature=${signature}`;
     //console.log(url)
-    const res = await axios.get(url);
+    const data = await h5fetch(url);
 
     // 解析响应
-    const data = res.data;
     if(!data || data.status !== 2000) return undefined;
 
     // 提取rsaSign
@@ -59,17 +58,16 @@ const getSTToken = async(uniToken: string): Promise<{token: string, msisdn: stri
         'isFirst': 1,
     }
     
-    const res = await axios.post('https://passport.migu.cn/authn/uniTokenValidate'
-        ,{
-            params: $,
-            headers:{
-                'content-type':'application/x-www-form-urlencoded; charset=UTF-8'
-            },
-        }
-    );
-    if(!res.data) return {error:'fetch uni e'}
-    
-    const json = res.data, 
+    const data = await h5fetch('https://passport.migu.cn/authn/uniTokenValidate', {
+        method: 'POST',
+        body: $,
+        headers: {
+            'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        },
+    });
+    if(!data) return {error:'fetch uni e'}
+
+    const json = data, 
         status:string = json.status?.toString() || '', 
         token:string = json.result?.token || '',
         msisdn:string = json.result?.msisdn || '';

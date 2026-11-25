@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { _fetch } from '../utils/h5fetch';
 
 /** 获取逐行歌词（自建）
  * @param contentId 单个歌曲ID，
@@ -10,7 +10,7 @@ export const getLyric = async (contentId: string, type:string = 'lrc') => {
     const types = type.split(',');
     if(types.length === 0) return {error:'types is empty!', success:false};
 
-    const res = await axios.get(`https://app.u.nf.migu.cn/MIGUM2.0/v1.0/content/resourceinfo.do?resourceId=${contentId}&resourceType=2`);
+    const res = await _fetch(`https://app.u.nf.migu.cn/MIGUM2.0/v1.0/content/resourceinfo.do?resourceId=${contentId}&resourceType=2`);
     const code = res.data.code.toString() || '';
     const data = res.data.resource[0] || {};
 
@@ -28,7 +28,7 @@ export const getLyric = async (contentId: string, type:string = 'lrc') => {
     if(types.includes('lrc')){
         lrcUrl = data.lrcUrl || '';
         if(lrcUrl !== '') {
-            const lrcRes = await axios.get(lrcUrl);
+            const lrcRes = await _fetch(lrcUrl);
             if(lrcRes.status === 200){
                 lrc = lrcRes.data || '';
             }
@@ -38,7 +38,7 @@ export const getLyric = async (contentId: string, type:string = 'lrc') => {
     if(types.includes('trc')){
         trcUrl = data.trcUrl || '';
         if(trcUrl !== '') {
-            const trcRes = await axios.get(trcUrl);
+            const trcRes = await _fetch(trcUrl);
             if(trcRes.status === 200){
                 trc = trcRes.data || '';
             }

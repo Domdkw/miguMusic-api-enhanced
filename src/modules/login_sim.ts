@@ -3,7 +3,7 @@
 //origin: https://passport.migu.cn
 //author: Domdkw 2026.7.9
 
-import axios from 'axios';
+import { h5fetch } from '../utils/h5fetch';
 import { URLParams } from '../utils/URLParams';
 
 //main
@@ -54,19 +54,16 @@ export const loginSim = {
 
         const form = URLParams($);
         
-        const send = await axios.post(`https://passport.migu.cn/api/simauth/send`
-            ,form
-            ,{
-                headers:{
-                    'Host':'passport.migu.cn',
-                    'Content-Type':'application/x-www-form-urlencoded',
-                    'Referer': 'https://passport.migu.cn/login',
-                    'Origin': 'https://passport.migu.cn',
-                },
-            }
-        );
-        
-        const sendbody = send.data;
+        const sendbody = await h5fetch(`https://passport.migu.cn/api/simauth/send`, {
+            method: 'POST',
+            body: form,
+            headers: {
+                'Host': 'passport.migu.cn',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Referer': 'https://passport.migu.cn/login',
+                'Origin': 'https://passport.migu.cn',
+            },
+        });
 
         if(!sendbody && sendbody.status != '2000'){
             return {error:sendbody};
@@ -88,20 +85,16 @@ export const loginSim = {
 
         const form = URLParams($);
 
-        const query = await axios.post(`https://passport.migu.cn/api/simauth/query`
-            ,form
-            ,{
-                method:'POST',
-                headers:{
-                    'Host':'passport.migu.cn',
-                    'Content-Type':'application/x-www-form-urlencoded',
-                    'Referer': 'https://passport.migu.cn/login',
-                    'Origin': 'https://passport.migu.cn',
-                },
-            }
-        );
-
-        const querybody = query.data;
+        const querybody = await h5fetch(`https://passport.migu.cn/api/simauth/query`, {
+            method: 'POST',
+            body: form,
+            headers: {
+                'Host': 'passport.migu.cn',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Referer': 'https://passport.migu.cn/login',
+                'Origin': 'https://passport.migu.cn',
+            },
+        });
 
         if(querybody.status == '4071'){
             //waiting

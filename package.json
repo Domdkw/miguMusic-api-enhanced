@@ -98,7 +98,7 @@
     "wrangler": "^4.168.0"
   },
   "dependencies": {
-    "axios": "^1.18.0",
+    "axios": "^1.13.5",
     "crypto-js": "^4.2.0"
   },
   "workspaces": ["."]

@@ -2,7 +2,7 @@
 // origin: https://passport.migu.cn/
 // author: Domdkw
 
-import axios from 'axios';
+import { h5fetch } from '../utils/h5fetch';
 import { URLParams } from '../utils/URLParams';
 
 function randomString(): string {
@@ -64,17 +64,16 @@ export const loginNP = {
 
         const form = URLParams($);
 
-        const res = await axios.post(`https://passport.migu.cn/authn`,
-            form,
-            {
-                headers:{
-                    'Host':'passport.migu.cn',
-                    'Content-Type':'application/x-www-form-urlencoded',
-                    'Referer': 'https://passport.migu.cn/login',
-                    'Origin': 'https://passport.migu.cn',
-                },
-            }
-        );
-        return res.data;
+        const data = await h5fetch(`https://passport.migu.cn/authn`, {
+            method: 'POST',
+            body: form,
+            headers: {
+                'Host': 'passport.migu.cn',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Referer': 'https://passport.migu.cn/login',
+                'Origin': 'https://passport.migu.cn',
+            },
+        });
+        return data;
     }
 }

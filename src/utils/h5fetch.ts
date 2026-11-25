@@ -1,10 +1,19 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-type H5FetchInit = RequestInit & {
+type H5FetchInit = Omit<RequestInit, 'body'> & {
+    body?: any;
     maxRedirects?: number;
     cookie?: Record<string, string>;
     params?: Record<string, string | number | boolean | undefined>;
 };
+
+// 统一 axios 实例，所有请求都由该实例发出
+const client = axios.create({
+    adapter: ['fetch', 'xhr', 'http'],
+    fetchOptions: {
+        cache: 'no-store',
+    }
+});
 
 // 内部请求函数
 export const _fetch = async (url: string, init?: H5FetchInit & AxiosRequestConfig) => {
@@ -33,13 +42,15 @@ export const _fetch = async (url: string, init?: H5FetchInit & AxiosRequestConfi
         params: init?.params,
         maxRedirects: init?.maxRedirects,
         data: init?.body,
+        responseType: init?.responseType,
+        timeout: init?.timeout,
     };
 
     if (init?.signal) {
         axiosConfig.signal = init.signal;
     }
 
-    return await axios(axiosConfig);
+    return await client(axiosConfig);
 };
 
 // fetch API 兼容层,只返回 body
