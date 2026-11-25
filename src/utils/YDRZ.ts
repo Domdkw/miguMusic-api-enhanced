@@ -1,5 +1,5 @@
 import CryptoJS from 'crypto-js';
-import axios from 'axios';
+import { h5fetch } from './h5fetch';
 
 export type LoginOneClickData = {
     version: string,
@@ -151,18 +151,17 @@ export const YDRZ = {
         }
         //console.log(requestData);
         
-        const res = await axios.post("https://verify.cmpassport.com/h5/getPreMobile"
-            ,requestData
-            ,{
-                headers:{
-                    'Referer':'https://passport.migu.cn/',
-                    'Origin':'https://passport.migu.cn',
-                },
-            }
-        );
-        
-        if(!res.data) return; //console.error('fetch yd e');
-        const json = res.data, token = json?.token || '';
+        const json = await h5fetch("https://verify.cmpassport.com/h5/getPreMobile", {
+            method: 'POST',
+            body: requestData,
+            headers: {
+                'Referer': 'https://passport.migu.cn/',
+                'Origin': 'https://passport.migu.cn',
+            },
+        });
+
+        if(!json) return; //console.error('fetch yd e');
+        const token = json?.token || '';
         if(!token) return; //console.error('no token',json)
         //console.log(token)
         return token;

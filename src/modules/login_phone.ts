@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { h5fetch } from '../utils/h5fetch';
 import { URLParams } from '../utils/URLParams'
 
 
@@ -45,17 +45,14 @@ export const loginPhone = {
 
         const query = URLParams($);
 
-        const res = await axios.get(`https://passport.migu.cn/login/dynamicpassword?${query}`
-            ,{
-                headers:{
-                    'Host':'passport.migu.cn',
-                    'Referer': 'https://passport.migu.cn/login',
-                    'Origin': 'https://passport.migu.cn',
-                }
+        const data = await h5fetch(`https://passport.migu.cn/login/dynamicpassword?${query}`, {
+            headers: {
+                'Host': 'passport.migu.cn',
+                'Referer': 'https://passport.migu.cn/login',
+                'Origin': 'https://passport.migu.cn',
             }
-        );
+        });
 
-        const data = res.data;
         return data;
     },
 
@@ -97,19 +94,17 @@ export const loginPhone = {
 
         const form = URLParams($);
 
-        const res = await axios.post(`https://passport.migu.cn/authn/dynamicpassword`
-            ,form
-            ,{
-                headers:{
-                    'Host':'passport.migu.cn',
-                    'Content-Type':'application/x-www-form-urlencoded',
-                    'Referer': 'https://passport.migu.cn/login',
-                    'Origin': 'https://passport.migu.cn',
-                },
-            }
-        );
-        
-        const data = res.data;
+        const data = await h5fetch(`https://passport.migu.cn/authn/dynamicpassword`, {
+            method: 'POST',
+            body: form,
+            headers: {
+                'Host': 'passport.migu.cn',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Referer': 'https://passport.migu.cn/login',
+                'Origin': 'https://passport.migu.cn',
+            },
+        });
+
         //console.log('data', data);
         return data;
     }

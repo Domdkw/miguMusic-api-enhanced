@@ -35,7 +35,8 @@
 | ------- | ------ | ------ | ------ | ------ |
 | contentId | string | 是 | Content ID | 600929000003297424 |
 | copyrightId | string | 是 | Copyright ID | 6005974GS6W |
-| resourceType | string | 否 | 资源类型，默认值为 2（歌曲） | 2 |
+| resourceType | string | 否 | 资源类型，默认值为 2（歌曲），可选值：2（歌曲）、0（彩铃） | 2 |
+| resourceName | string | 否 | 资源名称 song(默认)/rbt (version>=2.28.2) | song |
 | toneFlag | string | 否 | 音质标识（默认 PQ） | PQ |
 
 ### 请求示例

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { _fetch } from '../utils/h5fetch';
 
 /** 获取mrc歌词（自建）
  * @note 此方法使用es2020新语法，小心老旧浏览器，如有问题请使用api代理或提issues
@@ -14,7 +14,7 @@ export const getMrc = async (contentId: string, type:string = 'standard') => {
     if(contentId === '') return {error:'contentId is empty!', success:false};
     if(type === '') return {error:'type is empty!', success:false};
 
-    const res = await axios.get(`https://app.u.nf.migu.cn/MIGUM2.0/v1.0/content/resourceinfo.do?resourceId=${contentId}&resourceType=2`);
+    const res = await _fetch(`https://app.u.nf.migu.cn/MIGUM2.0/v1.0/content/resourceinfo.do?resourceId=${contentId}&resourceType=2`);
     const code = res.data.code.toString() || '';
     const data = res.data.resource[0] || {};
 
@@ -30,7 +30,7 @@ export const getMrc = async (contentId: string, type:string = 'standard') => {
     let mrc = '';
     const mrcUrl = data.mrcUrl || '';
     if(mrcUrl !== '') {
-        const mrcRes = await axios.get(mrcUrl);
+        const mrcRes = await _fetch(mrcUrl);
         if(mrcRes.status === 200){
             mrc = mrcRes.data || ''; //raw
             if(type === 'standard' || type === 'mg'){

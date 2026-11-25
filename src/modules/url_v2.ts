@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { h5fetch } from '../utils/h5fetch';
 import { getDeviceId } from '../utils/device'
 
 export const getUrlV2 = async (contentId: string, copyrightId: string, toneFlag: string = 'PQ', pacmtoken: string = '') => {
@@ -19,7 +19,7 @@ export const getUrlV2 = async (contentId: string, copyrightId: string, toneFlag:
         "referer": "https://music.migu.cn/",
     };
 
-    const res = await axios.get(
+    const buf = await h5fetch(
         `https://app.c.vip.migu.cn/strategy/pc/listen/v2.0?contentId=${contentId}&copyrightId=${copyrightId}&scene=&netType=01&resourceType=2&toneFlag=${toneFlag}`,
         {
             headers: headers,
@@ -27,7 +27,7 @@ export const getUrlV2 = async (contentId: string, copyrightId: string, toneFlag:
         }
     );
 
-    return await decryptData(res.data);
+    return await decryptData(buf);
 };
 
 const SECURE = "Jk8qzuePiJ1qE3mDYhLQ3T73DtDoAhLP"
