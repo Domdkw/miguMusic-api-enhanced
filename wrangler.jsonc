@@ -18,9 +18,17 @@
   // 敏感信息（如 API 密钥）请使用 Secrets（wrangler secret put <NAME>）
   "vars": {
     "ALLOWED_ORIGINS": "*",
-    "USE_DATABASE": "true",
+    "USE_DATABASE": "false",
     "AUTO_STORE_URL": "false"
   },
+  "previews": {
+    // ...
+    "vars": {
+      "ALLOWED_ORIGINS": "*",
+      "AUTO_STORE_URL": "false",
+      "USE_DATABASE": "false"
+    },
+  }
   // KV namespace 配置（生产环境需要替换为实际的 id）
   // 创建命令: wrangler kv:namespace create URL_KV
   // "kv_namespaces": [

@@ -19,7 +19,10 @@ export default function (app: Hono) {
     app.get('/url/v1', async (c) => {
         const contentId = c.req.query('contentId') || '';
         const copyrightId = c.req.query('copyrightId') || '';
-        const resourceType = c.req.query('resourceType') || '2';
+        let resourceType = c.req.query('resourceType') || '2';
+        const resourceName = c.req.query('resourceName') || 'song';
+        if(resourceName !== '')
+            resourceType = resourceName === 'rbt' ? '0' : '2';
         const toneFlag = c.req.query('toneFlag') || 'PQ';
         const data = await getUrlV1(contentId, copyrightId, toneFlag, resourceType);
         if(c.req.query('302') !== undefined)

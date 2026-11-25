@@ -7,7 +7,7 @@ import { h5fetch } from '../utils/h5fetch';
 export const getVrbtUrl = async (contentIds: string) => {
     contentIds = contentIds.replace(/,/g, '|');
     // origin: |
-    return await h5fetch(`https://app.c.nf.migu.cn/strategy/vrbt/play/v1.0?contentIds=${contentIds}`
+    return await h5fetch(`https://app.c.vip.migu.cn/strategy/vrbt/play/v1.0?contentIds=${contentIds}`
         ,{
             headers:{
                 "channel": "014X031"

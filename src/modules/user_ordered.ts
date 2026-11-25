@@ -7,7 +7,7 @@ import { ckfetch } from '../utils/h5fetch';
  */
 export const getUserOrdered = async (pacmtoken: string) => {
     if(!pacmtoken) return {data:{success: false,code: "290001",info: "请先登录"},newPacmToken:undefined};
-    const { data, cookies } = await ckfetch('https://app.c.nf.migu.cn/MIGUM3.0/strategy/song-ordered/v2.0', {
+    const { data, cookies } = await ckfetch('https://app.c.vip.migu.cn/MIGUM3.0/strategy/song-ordered/v2.0', {
         cookie: { pacmtoken },
         headers: { "channel": "014X031" }
     });
