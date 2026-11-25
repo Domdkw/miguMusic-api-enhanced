@@ -118,8 +118,7 @@ app.notFound(c => {
     return c.json(
         {
             success: false,
-            error: 'Not Found',
-            message: '请求的资源不存在',
+            error: 'Not Found'
         },
         404
     );
@@ -130,8 +129,7 @@ app.onError((err, c) => {
     return c.json(
         {
             success: false,
-            error: 'Internal Server Error',
-            message: err.message,
+            error: err.message
         },
         500
     );
