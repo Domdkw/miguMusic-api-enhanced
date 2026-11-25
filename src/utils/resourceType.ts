@@ -20,6 +20,8 @@ export const getResourceId = (name: string) => {
             return 'D';
         case 'dalbum':
             return '5';
+        case 'rbt':
+            return '0';
         case 'vrbt':
             return 'M';
         default:
