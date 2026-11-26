@@ -1,5 +1,4 @@
 import { h5fetch } from '../utils/h5fetch';
-import { changeQuality } from '../utils/quality';
 
 export const getUrlH5V24 = async (contentId: string, copyrightId: string, toneFlag: string = 'PQ') => {
     const headers = {
@@ -22,8 +21,6 @@ export const getUrlH5V24 = async (contentId: string, copyrightId: string, toneFl
     if (data?.data?.url === '') {
         return { success: false, error: 'URL 为空' };
     }
-    data.data.oriUrl = data.data.url || '';
-    data.data.url = changeQuality(data.data.url || '', toneFlag, 'PQ', true);
     return data;
 };
 

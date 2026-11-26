@@ -20,8 +20,16 @@ export const getUrlV2 = async (contentId: string, copyrightId: string, toneFlag:
     };
 
     const buf = await h5fetch(
-        `https://app.c.vip.migu.cn/strategy/pc/listen/v2.0?contentId=${contentId}&copyrightId=${copyrightId}&scene=&netType=01&resourceType=2&toneFlag=${toneFlag}`,
+        `https://app.c.vip.migu.cn/strategy/pc/listen/v2.0`,
         {
+            params: {
+                contentId,
+                copyrightId,
+                scene: '',
+                netType: '01',
+                resourceType: '2',
+                toneFlag: toneFlag
+            },
             headers: headers,
             responseType: 'arraybuffer'
         }
