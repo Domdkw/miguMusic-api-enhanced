@@ -91,7 +91,7 @@
     "hono": "^4.12.31",
     "hono-mem-cache": "^0.4.0",
     "pako": "^3.0.1",
-    "tsup": "^8.5.1",
+    "tsup": "9.0.0",
     "tsx": "^4.19.2",
     "typescript": "^5.9.3",
     "unstorage": "^1.17.5",
@@ -101,5 +101,7 @@
     "axios": "^1.13.5",
     "crypto-js": "^4.2.0"
   },
-  "workspaces": ["."]
+  "workspaces": [
+    "."
+  ]
 }
