@@ -1,6 +1,48 @@
 import { h5fetch } from '../utils/h5fetch';
+import type { ApiResponse } from '../types/api';
+import type { SingerBrief } from '../types/base';
+import type { OpNumItem } from '../types/opNum';
 
-export const searchCrbt = async (text: string, page: number = 1) => {
+/** 铃声搜索结果的 song 字段 */
+interface SearchCrbtSong {
+    resourceType: string;
+    contentId: string;
+    songId: string;
+    songName: string;
+    copyrightId: string;
+    copyrightType: number;
+    ringToneId: string;
+    ringCopyrightId: string;
+    haveShockRing: number;
+    relatedSongs: Array<{
+        resourceType: string;
+        resourceTypeName: string;
+        copyrightId: string;
+        productId: string;
+    }>;
+    duration: number;
+    img1: string;
+    img2: string;
+    img3: string;
+    singerList: SingerBrief[];
+    highlights: string[];
+    validTime: string;
+    price: string;
+    status: string;
+    vipType: string;
+    showLabels: Array<{
+        type: string;
+        text: string;
+    }>;
+    opNumItem: OpNumItem;
+}
+
+export type SearchCrbtResponse = ApiResponse<{
+    hasNext: boolean;
+    items: Array<{ song: SearchCrbtSong }>;
+}>;
+
+export const searchCrbt = async (text: string, page: number = 1): Promise<SearchCrbtResponse> => {
     const res = await h5fetch('https://c.musicapp.migu.cn/MIGUM2.0/v1.0/content/tone_search_all.do',
         {
             params: {
