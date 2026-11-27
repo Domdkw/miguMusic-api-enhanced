@@ -30,16 +30,7 @@ function strToUtf8Bytes(e: string) {
     return new TextEncoder().encode(e)
 }
 function utf8Bytes2str(bytes: Uint8Array): string {
-    const result: string[] = []
-    for (const byte of bytes) {
-        if (byte < 16) {
-            result.push(String.fromCharCode(byte))
-        } else {
-            result.push('%')
-            result.push(byte.toString(16))
-        }
-    }
-    return decodeURIComponent(result.join(''))
+    return new TextDecoder('utf-8').decode(bytes);
 }
 function decode(e: Uint8Array, t: string) {
     if (0 == t.length)
