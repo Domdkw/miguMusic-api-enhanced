@@ -7,3 +7,4 @@ export * from '../utils/quality';
 export { getResourceId } from '../utils/resourceType';
 export * from '../utils/decryptMrc';
 export * from '../utils/YDRZ';
+export * from '../utils/decryptH5Res';
