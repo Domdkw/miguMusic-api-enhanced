@@ -6,7 +6,8 @@
 
 ?> contentId 和 copyrightId 是歌曲的唯一标识，可以二选一。都传 > contentId > copyrightId
 
-?> 可传入参数302，有值则返回重定向，适用范围：v1、v2、h5v2.4、db。302 !== undefined
+?> 可传入参数302，有值则返回重定向，适用范围：v1、v2、h5v2.4、db。即：302 !== undefined \
+npm包版本 >= 2.28.3 listen接口不支持音质转换，仅返回传入的音质。请使用 ~/utils
 
 ## 播放地址 dlv1
 

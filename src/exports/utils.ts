@@ -1,10 +1,8 @@
 //export { ua, randomUA } from './ua';
-export { getDeviceId } from '../utils/device';
-export { getPublicKey } from '../utils/publicKey';
+export * from '../utils/device';
 export { RSAKey } from '../utils/rsalib.js';
-export { URLParams } from '../utils/URLParams';
 export * from '../utils/quality';
-export { getResourceId } from '../utils/resourceType';
+export * from '../utils/resourceType';
 export * from '../utils/decryptMrc';
 export * from '../utils/YDRZ';
 export * from '../utils/decryptH5Res';
