@@ -18,9 +18,5 @@ export const getUrlH5V24 = async (contentId: string, copyrightId: string, toneFl
         }
     );
 
-    const data = decryptData(buf);
-    if (data?.data?.url === '') {
-        return { success: false, error: 'URL 为空' };
-    }
-    return data;
+    return decryptData(buf);
 };

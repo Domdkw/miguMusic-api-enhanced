@@ -23,7 +23,7 @@ function decryptBlob(e: Uint8Array, r: string) {
     return o
 }
 
-export function decryptData(buf: ArrayBuffer): { code: number, info: string, data: Record<string, any> } | null {
+export function decryptData(buf: ArrayBuffer): { code: string, info: string, data: Record<string, any> } | null {
     const u = decryptBlob(new Uint8Array(buf), SECURE),
     p = u ? textDecode(u) : null;
 
@@ -31,6 +31,6 @@ export function decryptData(buf: ArrayBuffer): { code: number, info: string, dat
         const data = p ? JSON.parse(p) : null;
         return data
     }catch(e) {
-        throw new Error('decryptData error')
+        return {code: '200000', info: 'decryptData error', data: {}}
     };
 }
